@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Language } from './types';
 import { SITE_DATA } from './constants';
-import { Github, Mail, MapPin, Globe, FileText, User, Calendar, BookOpen, Linkedin, Lock, LogOut, Database, Terminal, Cpu, ChevronDown, BarChart3, ArrowDown } from 'lucide-react';
+import { Github, Mail, MapPin, Globe, FileText, User, Calendar, BookOpen, Linkedin, Lock, LogOut, Database, Terminal, Cpu, ChevronDown, ArrowDown } from 'lucide-react';
 import Timeline from './components/Timeline';
 import PublicationCard from './components/PublicationCard';
-import VisitorStats from './components/VisitorStats';
 import ResourceLibrary from './components/ResourceLibrary';
 import BlogSection from './components/BlogSection';
 
@@ -253,22 +252,6 @@ function App() {
             </div>
           </div>
 
-          {/* Stats Section - Grid Style */}
-          <div className="bg-zinc-50 border-y-2 border-black py-12 relative overflow-hidden">
-             {/* Background Grid */}
-             <div className="absolute inset-0 opacity-5" 
-                  style={{backgroundImage: 'linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)', backgroundSize: '20px 20px'}}>
-             </div>
-             <div className="container mx-auto px-4 relative z-10">
-                <div className="flex items-center gap-2 mb-8 text-black">
-                   <BarChart3 className="w-4 h-4" />
-                   <h3 className="text-xs font-bold uppercase tracking-widest">
-                     ./system_metrics
-                   </h3>
-                </div>
-                <VisitorStats stats={SITE_DATA.stats} lang={lang} />
-             </div>
-          </div>
         </section>
 
         {/* Publications Section */}

@@ -17,7 +17,7 @@ export const SITE_DATA: AppData = {
       { en: "Non-parametric Statistics", zh: "非参数统计" },
       { en: "Web 3", zh: "Web 3" }
     ],
-    avatarUrl: "https://chaoanli.github.io/ChaoanLi.png",
+    avatarUrl: "/ChaoanLi.png",
     linkedin: "https://www.linkedin.com/in/chaoan-li",
     researchgate: "https://www.researchgate.net/profile/Chaoan-Li-2",
     googleScholar: "https://scholar.google.com/citations?user=AVFau-sAAAAJ",

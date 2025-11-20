@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { Language } from './types';
 import { SITE_DATA } from './constants';
-import { Github, Mail, Linkedin, Terminal } from 'lucide-react';
+import { Github, Mail, Linkedin, Terminal, Menu, X } from 'lucide-react';
 
 // Pages
 import Home from './pages/Home';
@@ -40,9 +40,11 @@ const NAV_ITEMS = [
 
 function AppContent() {
   const [lang, setLang] = useState<Language>('en');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
 
   const toggleLang = () => setLang(prev => prev === 'en' ? 'zh' : 'en');
+  const closeMobileMenu = () => setMobileMenuOpen(false);
 
   const SocialLinks = ({ className = "", iconSize = "w-5 h-5" }) => (
     <div className={`flex gap-6 ${className}`}>
@@ -107,17 +109,18 @@ function AppContent() {
       {/* Fixed Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-40 bg-white/95 border-b-2 border-black backdrop-blur-sm">
         <div className="container mx-auto px-4 h-14 flex items-center justify-between">
-          <Link to="/" className="font-bold text-lg text-black flex items-center gap-2">
+          <Link to="/" className="font-bold text-lg text-black flex items-center gap-2" onClick={closeMobileMenu}>
             <span className="bg-black text-white px-1">root@chaoan:</span>
             <span className="cursor-blink text-black">~</span>
           </Link>
 
-          <div className="flex items-center gap-1 sm:gap-4">
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-1 sm:gap-4">
             {NAV_ITEMS.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
-                className={`hidden sm:block px-3 py-1 text-xs transition-all border border-transparent hover:border-black ${
+                className={`px-3 py-1 text-xs transition-all border border-transparent hover:border-black ${
                   location.pathname === item.path || 
                   (item.path === '/blog' && location.pathname.startsWith('/blog'))
                     ? 'text-white bg-black font-bold border-black' 
@@ -137,8 +140,54 @@ function AppContent() {
               {lang === 'en' ? '[EN]' : '[中文]'}
             </button>
           </div>
+
+          {/* Mobile Menu Button */}
+          <div className="flex md:hidden items-center gap-2">
+            <button 
+              onClick={toggleLang}
+              className="px-2 py-1 text-xs font-bold border border-zinc-300 hover:border-black hover:bg-black hover:text-white transition-all text-zinc-600"
+            >
+              {lang === 'en' ? 'EN' : '中文'}
+            </button>
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 text-black hover:bg-zinc-100 transition-colors"
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
         </div>
       </nav>
+
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-30 md:hidden">
+          <div 
+            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+            onClick={closeMobileMenu}
+          />
+          <div className="absolute top-14 right-0 left-0 bg-white border-b-2 border-black">
+            <div className="container mx-auto px-4 py-4 space-y-2">
+              {NAV_ITEMS.map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  onClick={closeMobileMenu}
+                  className={`block px-4 py-3 text-sm font-bold transition-all border-2 ${
+                    location.pathname === item.path || 
+                    (item.path === '/blog' && location.pathname.startsWith('/blog'))
+                      ? 'bg-black text-white border-black' 
+                      : 'bg-white text-black border-black hover:bg-zinc-100'
+                  }`}
+                >
+                  {item.label[lang]}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Main Content */}
       <main className="pt-14">

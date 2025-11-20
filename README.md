@@ -1,74 +1,55 @@
 # Chaoan Li - Personal Academic Website
 
-这是 Chaoan Li 的个人学术网站，展示研究成果、学术历程和个人项目。
+A clean, minimalist academic website showcasing research, publications, and professional timeline.
 
-## ✨ 特性
+## Stack
 
-- 🎨 现代化的 Brutalist 设计风格
-- 📱 完全响应式，支持移动端
-- 🌐 双语支持（中文/英文）
-- 📊 访客统计可视化
-- 📚 论文展示和时间线
-- 🎯 资源库和博客系统
+- React 19 with TypeScript
+- Vite for build tooling
+- Brutalist design aesthetic
 
-## 🚀 快速开始
+## Development
 
-### 安装依赖
 ```bash
+# Install dependencies
 npm install --legacy-peer-deps
-```
 
-### 本地运行
-```bash
+# Start dev server
 npm run dev
-```
 
-然后打开浏览器访问 `http://localhost:5173`
-
-### 构建生产版本
-```bash
+# Build for production
 npm run build
 ```
 
-## 📦 部署
+## Deployment
 
-详细的部署指南请查看 [DEPLOY.md](./DEPLOY.md)
+The site is configured for automatic deployment to GitHub Pages via GitHub Actions. Push to `main` branch to deploy.
 
-支持以下部署方式：
-- GitHub Pages（推荐，已配置自动部署）
-- Vercel
-- Netlify
+For detailed deployment instructions, see [DEPLOY.md](./DEPLOY.md).
 
-## 🛠️ 技术栈
+## Configuration
 
-- **React 19** - UI 框架
-- **TypeScript** - 类型安全
-- **Vite** - 构建工具
-- **Lucide React** - 图标库
-- **Recharts** - 图表库
+All personal information is centralized in `constants.ts`:
+- Profile details and bio
+- Publications list
+- Timeline events
+- Blog posts
+- Resource links
 
-## 📝 自定义
+## Project Structure
 
-所有个人信息都在 `constants.ts` 文件中，您可以轻松修改：
+```
+├── components/          # React components
+├── App.tsx             # Main application
+├── constants.ts        # Site configuration
+├── types.ts            # TypeScript definitions
+└── vite.config.ts      # Build configuration
+```
 
-- 个人简介
-- 研究兴趣
-- 论文列表
-- 时间线事件
-- 博客文章
-- 资源链接
+## License
 
-## 📄 许可证
-
-MIT License
-
-## 🔗 链接
-
-- **网站**: https://chaoanli.github.io
-- **GitHub**: https://github.com/ChaoanLi
-- **Email**: chaoan@tamu.edu
-- **播客**: [EasyPod](https://www.easypod.fun/)
+MIT License - see [LICENSE](./LICENSE) for details.
 
 ---
 
-Built with ❤️ by Chaoan Li
+**Live Site**: [chaoanli.github.io](https://chaoanli.github.io)

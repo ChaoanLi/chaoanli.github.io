@@ -108,12 +108,12 @@ export const SITE_DATA: AppData = {
       title: { en: "Welcome to My Website", zh: "欢迎来到我的个人网站" },
       date: "2025-01-15",
       summary: {
-        en: "Hello! This is my personal academic website. More blog posts coming soon...",
-        zh: "你好！这是我的个人学术网站。更多博客文章即将推出..."
+        en: "Personal academic website for research and publications.",
+        zh: "个人学术网站，展示研究和发表成果。"
       },
       content: {
-        en: "Welcome to my academic homepage. I will share my research insights, learning experiences, and thoughts on data science and machine learning here. Stay tuned!",
-        zh: "欢迎来到我的学术主页。我将在这里分享我的研究见解、学习经历以及对数据科学和机器学习的思考。敬请期待！"
+        en: "This site hosts my research publications, academic timeline, and occasional thoughts on data science and statistics.",
+        zh: "本站展示我的研究论文、学术历程以及对数据科学和统计学的一些思考。"
       },
       tags: ["Introduction", "Updates"],
       likes: 0,
@@ -125,53 +125,35 @@ export const SITE_DATA: AppData = {
       id: "r1",
       name: { en: "My Projects", zh: "我的项目" },
       links: [
-        { title: "EasyPod Podcast", url: "https://www.easypod.fun/", description: "My Mandarin chat podcast about tech, life, and everything in between." },
-        { title: "GitHub Profile", url: "https://github.com/ChaoanLi", description: "Check out my code repositories and projects." }
+        { title: "EasyPod Podcast", url: "https://www.easypod.fun/", description: "Mandarin podcast on tech and academia." },
+        { title: "GitHub Profile", url: "https://github.com/ChaoanLi", description: "Code repositories and projects." }
       ]
     },
     {
       id: "r2",
       name: { en: "Research Tools", zh: "科研工具" },
       links: [
-        { title: "Zotero", url: "https://www.zotero.org", description: "Reference management software for researchers." },
-        { title: "Overleaf", url: "https://www.overleaf.com", description: "Collaborative LaTeX editor for academic writing." },
-        { title: "arXiv", url: "https://arxiv.org", description: "Open-access archive for scholarly articles." }
+        { title: "Zotero", url: "https://www.zotero.org", description: "Reference management." },
+        { title: "Overleaf", url: "https://www.overleaf.com", description: "Collaborative LaTeX editor." },
+        { title: "arXiv", url: "https://arxiv.org", description: "Open-access preprint archive." }
       ]
     },
     {
       id: "r3",
       name: { en: "Learning Resources", zh: "学习资源" },
       links: [
-        { title: "Coursera", url: "https://www.coursera.org", description: "Online courses from top universities." },
-        { title: "Google Scholar", url: "https://scholar.google.com", description: "Search engine for scholarly literature." },
-        { title: "Math StackExchange", url: "https://math.stackexchange.com", description: "Q&A for mathematics at all levels." }
+        { title: "Coursera", url: "https://www.coursera.org", description: "Online courses." },
+        { title: "Google Scholar", url: "https://scholar.google.com", description: "Academic search engine." },
+        { title: "Math StackExchange", url: "https://math.stackexchange.com", description: "Mathematics Q&A community." }
       ]
     },
     {
       id: "r4",
       name: { en: "Academic Communities", zh: "学术社区" },
       links: [
-        { title: "ResearchGate", url: "https://www.researchgate.net", description: "Social networking site for scientists and researchers." },
-        { title: "ORCID", url: "https://orcid.org", description: "Unique identifier for researchers and contributors." }
+        { title: "ResearchGate", url: "https://www.researchgate.net", description: "Academic networking platform." },
+        { title: "ORCID", url: "https://orcid.org", description: "Researcher identifier registry." }
       ]
     }
-  ],
-  stats: {
-    totalVisitors: 45231,
-    daily: [
-      { date: 'Mon', visitors: 120 },
-      { date: 'Tue', visitors: 150 },
-      { date: 'Wed', visitors: 200 },
-      { date: 'Thu', visitors: 180 },
-      { date: 'Fri', visitors: 250 },
-      { date: 'Sat', visitors: 300 },
-      { date: 'Sun', visitors: 280 },
-    ],
-    geo: [
-      { country: 'China', visitors: 40 },
-      { country: 'USA', visitors: 35 },
-      { country: 'Europe', visitors: 15 },
-      { country: 'Others', visitors: 10 },
-    ]
-  }
+  ]
 };

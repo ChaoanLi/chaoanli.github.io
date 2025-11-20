@@ -70,33 +70,10 @@ export interface ResourceCategory {
   links: ResourceLink[];
 }
 
-export interface VisitorStat {
-  date: string;
-  visitors: number;
-  [key: string]: string | number;
-}
-
-export interface GeoStat {
-  country: string;
-  visitors: number;
-  [key: string]: string | number;
-}
-
 export interface AppData {
   profile: Profile;
   publications: Publication[];
   timeline: TimelineEvent[];
   blog: BlogPost[];
   resources: ResourceCategory[];
-  stats: {
-    daily: VisitorStat[];
-    geo: GeoStat[];
-    totalVisitors: number;
-  };
-}
-
-export interface ChatMessage {
-  role: 'user' | 'model';
-  text: string;
-  isThinking?: boolean;
 }

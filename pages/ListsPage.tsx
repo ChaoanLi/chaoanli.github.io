@@ -1,6 +1,6 @@
 import React from 'react';
 import { Book, Film, Code, Target } from 'lucide-react';
-import { Language } from '../types';
+import { Language, BookItem, MovieItem, SkillItem, GoalItem } from '../types';
 import { SITE_DATA } from '../constants';
 
 interface Props {

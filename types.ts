@@ -81,21 +81,35 @@ export interface Project {
   status?: 'active' | 'archived' | 'in-progress';
 }
 
-export interface ListItem {
+export interface BookItem {
   title: string;
+  author?: string;
   completed: boolean;
-  author?: string;  // for books
-  year?: string;    // for movies
-  progress?: number; // for skills
-  name?: string;    // for skills
-  deadline?: string; // for goals
+}
+
+export interface MovieItem {
+  title: string;
+  year?: string;
+  completed: boolean;
+}
+
+export interface SkillItem {
+  name: string;
+  progress?: number;
+  completed: boolean;
+}
+
+export interface GoalItem {
+  title: string;
+  deadline?: string;
+  completed: boolean;
 }
 
 export interface Lists {
-  books: ListItem[];
-  movies: ListItem[];
-  skills: ListItem[];
-  goals: ListItem[];
+  books: BookItem[];
+  movies: MovieItem[];
+  skills: SkillItem[];
+  goals: GoalItem[];
 }
 
 export interface AppData {

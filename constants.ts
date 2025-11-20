@@ -100,6 +100,16 @@ export const SITE_DATA: AppData = {
       title: { en: "B.S. in Mathematics", zh: "数学学士学位" },
       description: { en: "Graduated from University of Science and Technology Beijing. Double degree in Financial Engineering.", zh: "毕业于北京科技大学数学与应用数学专业，辅修金融工程双学位。" },
       type: "education"
+    },
+    {
+      id: "t8",
+      year: "2014",
+      title: { en: "High School Diploma", zh: "高中毕业" },
+      description: {
+        en: "Graduated from The No.1 High School Affiliated to Central China Normal University.",
+        zh: "毕业于华中师范大学第一附属中学。"
+      },
+      type: "education"
     }
   ],
   blog: [
@@ -173,22 +183,30 @@ export const SITE_DATA: AppData = {
   ],
   lists: {
     books: [
-      { title: "Deep Learning", author: "Ian Goodfellow", completed: false },
-      { title: "The Master Algorithm", author: "Pedro Domingos", completed: false }
+      { title: "Machine Learning", author: "Zhi-Hua Zhou", completed: false },
+      { title: "Dream of the Red Chamber", author: "Xueqing Cao", completed: false }
       // Add more books in constants.ts
     ],
     movies: [
-      { title: "The Social Network", year: "2010", completed: false },
-      { title: "Her", year: "2013", completed: false }
+      { title: "Our Little Sister", year: "2015", completed: false },
+      { title: "Her", year: "2013", completed: false },
+      { title: "One battle after another", year: "2025", completed: false }
       // Add more movies in constants.ts
     ],
+    series: [
+      { title: "Breaking Bad", year: "2008", completed: false },
+      { title: "Seinfeld", year: "1989", completed: false }
+      // Add more Series in constants.ts
+    ],
     skills: [
-      { name: "Advanced PyTorch", progress: 60, completed: false },
-      { name: "Rust Programming", progress: 30, completed: false }
+      { name: "C++", progress: 10, completed: false },
+      { name: "SQL", progress: 50, completed: false },
+      { name: "Ethereum", progress: 10, completed: false }
       // Add more skills in constants.ts
     ],
     goals: [
-      { title: "Publish 2 papers in 2025", deadline: "2025-12-31", completed: false },
+      { title: "find an internship before 2027", deadline: "2027-06-30", completed: false },
+      { title: "Accomplish 2 papers in 2025", deadline: "2025-12-31", completed: false },
       { title: "Complete PhD qualifying exam", deadline: "2025-06-30", completed: true }
       // Add more goals in constants.ts
     ]

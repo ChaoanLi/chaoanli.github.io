@@ -1,6 +1,6 @@
 import React from 'react';
-import { Book, Film, Code, Target } from 'lucide-react';
-import { Language, BookItem, MovieItem, SkillItem, GoalItem } from '../types';
+import { Book, Film, Code, Target, Tv } from 'lucide-react';
+import { Language, BookItem, MovieItem, SeriesItem, SkillItem, GoalItem } from '../types';
 import { SITE_DATA } from '../constants';
 
 interface Props {
@@ -19,12 +19,12 @@ const ListsPage: React.FC<Props> = ({ lang }) => {
           </h1>
           <p className="text-zinc-600 text-sm">
             {lang === 'en' 
-              ? 'Books to read, movies to watch, skills to learn, and goals to achieve' 
-              : '想读的书、想看的电影、想学的技能和想实现的目标'}
+              ? 'Books to read, movies to watch, series to binge, skills to learn, and goals to achieve' 
+              : '想读的书、想看的电影、想追的剧、想学的技能和想实现的目标'}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           
           {/* Reading List */}
           <div className="border-2 border-black bg-white">
@@ -90,6 +90,42 @@ const ListsPage: React.FC<Props> = ({ lang }) => {
                       </p>
                       {movie.year && (
                         <p className="text-xs text-zinc-600">({movie.year})</p>
+                      )}
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
+
+          {/* Series */}
+          <div className="border-2 border-black bg-white">
+            <div className="bg-black text-white p-4 flex items-center gap-2">
+              <Tv className="w-5 h-5" />
+              <h2 className="font-bold uppercase tracking-wider">
+                {lang === 'en' ? 'Series List' : '追剧清单'}
+              </h2>
+            </div>
+            <div className="p-4 space-y-2">
+              {SITE_DATA.lists.series.length === 0 ? (
+                <p className="text-zinc-500 text-sm italic">
+                  {lang === 'en' ? 'No series added yet.' : '暂无剧集'}
+                </p>
+              ) : (
+                SITE_DATA.lists.series.map((series, idx) => (
+                  <div key={idx} className="flex items-start gap-2 py-2 border-b border-zinc-200 last:border-0">
+                    <input 
+                      type="checkbox" 
+                      checked={series.completed} 
+                      readOnly
+                      className="mt-1 accent-black"
+                    />
+                    <div className="flex-1">
+                      <p className={`font-medium ${series.completed ? 'line-through text-zinc-500' : 'text-black'}`}>
+                        {series.title}
+                      </p>
+                      {series.year && (
+                        <p className="text-xs text-zinc-600">({series.year})</p>
                       )}
                     </div>
                   </div>

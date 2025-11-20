@@ -93,6 +93,12 @@ export interface MovieItem {
   completed: boolean;
 }
 
+export interface SeriesItem {
+  title: string;
+  year?: string;
+  completed: boolean;
+}
+
 export interface SkillItem {
   name: string;
   progress?: number;
@@ -108,6 +114,7 @@ export interface GoalItem {
 export interface Lists {
   books: BookItem[];
   movies: MovieItem[];
+  series: SeriesItem[];
   skills: SkillItem[];
   goals: GoalItem[];
 }

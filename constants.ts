@@ -69,7 +69,7 @@ export const SITE_DATA: AppData = {
     {
       id: "t3",
       year: "2024",
-      title: { en: "M.S. in Pure Mathematics", zh: "纯粹数学硕士学位" },
+      title: { en: "M.S. in Pure Mathematics", zh: "基础数学硕士学位" },
       description: { en: "Graduated from Beijing Normal University. Thesis: Real-Variable Characterizations and Applications of Anisotropic Ball Campanato and Hardy Spaces.", zh: "毕业于北京师范大学。论文：各向异性球Campanato和Hardy空间的实变量刻画及其应用。" },
       type: "education"
     },
@@ -110,6 +110,26 @@ export const SITE_DATA: AppData = {
         zh: "毕业于华中师范大学第一附属中学。"
       },
       type: "education"
+    },
+    {
+      id: "t9",
+      year: "2011",
+      title: { en: "Entered the No.1 High School Affiliated to Central China Normal University as a county student", zh: "以专县生的身份进入华中师范大学第一附属中学" },
+      description: {
+        en: "Entered the No.1 High School Affiliated to Central China Normal University as a county student.",
+        zh: "以专县生的身份进入华中师范大学第一附属中学。"
+      },
+      type: "education"
+    },
+    {
+      id: "t10",
+      year: "2000",
+      title: { en: "Hello World!", zh: "Start of the lifejourney" },
+      description: {
+        en: "Born in Yichang, Hubei, China.",
+        zh: "出生于湖北宜昌。"
+      },
+      type: "education"
     }
   ],
   blog: [
@@ -133,19 +153,24 @@ export const SITE_DATA: AppData = {
   resources: [
     {
       id: "r1",
-      name: { en: "My Projects", zh: "我的项目" },
+      name: { en: "Social Media", zh: "社交媒体" },
       links: [
-        { title: "EasyPod Podcast", url: "https://www.easypod.fun/", description: "Mandarin podcast on tech and academia." },
-        { title: "GitHub Profile", url: "https://github.com/ChaoanLi", description: "Code repositories and projects." }
+        { title: "X(Twitter)", url: "https://x.com/", description: "X(Twitter) is a social media platform." },
+        { title: "LinkedIn", url: "https://www.linkedin.com/", description: "LinkedIn is a professional networking platform." },
+        { title: "YouTube", url: "https://www.youtube.com/", description: "YouTube is a video sharing platform." },
+        { title: "Bilibili", url: "https://www.bilibili.com/", description: "Bilibili is a video sharing platform." }
       ]
     },
+
     {
       id: "r2",
       name: { en: "Research Tools", zh: "科研工具" },
       links: [
+        { title: "Notion", url: "https://www.notion.so/", description: "Notion is a note-taking and project management tool." },
         { title: "Zotero", url: "https://www.zotero.org", description: "Reference management." },
         { title: "Overleaf", url: "https://www.overleaf.com", description: "Collaborative LaTeX editor." },
-        { title: "arXiv", url: "https://arxiv.org", description: "Open-access preprint archive." }
+        { title: "arXiv", url: "https://arxiv.org", description: "Open-access preprint archive." },
+        { title: "HackMD", url: "https://hackmd.io/", description: "HackMD is a platform for writing and sharing markdown documents." }
       ]
     },
     {
@@ -155,14 +180,76 @@ export const SITE_DATA: AppData = {
         { title: "Coursera", url: "https://www.coursera.org", description: "Online courses." },
         { title: "Google Scholar", url: "https://scholar.google.com", description: "Academic search engine." },
         { title: "Math StackExchange", url: "https://math.stackexchange.com", description: "Mathematics Q&A community." }
+
       ]
     },
     {
       id: "r4",
       name: { en: "Academic Communities", zh: "学术社区" },
       links: [
-        { title: "ResearchGate", url: "https://www.researchgate.net", description: "Academic networking platform." },
-        { title: "ORCID", url: "https://orcid.org", description: "Researcher identifier registry." }
+        { title: "arXiv", url: "https://arxiv.org", description: "Open-access preprint archive." },
+        { title: "MathOverflow", url: "https://mathoverflow.net", description: "Mathematics Q&A community." },
+        { title: "mastodon", url: "https://mastodon.social", description: "Social media platform." },
+        { title: "Learning C++", url: "https://www.learncpp.com/", description: "Learning C++ is a website for learning C++." },
+        { title: "Open Quant", url: "https://www.openquant.net/", description: "Open Quant is a website for learning quantitative finance." }
+      ]
+    },
+    {
+      id: "r5",
+      name: { en: "Code Platforms", zh: "代码平台" },
+      links: [
+        { title: "GitHub", url: "https://github.com/ChaoanLi", description: "Code repositories and projects." },
+        { title: "Hugging Face", url: "https://huggingface.co/", description: "Model repositories and projects." },
+        { title: "Kaggle", url: "https://kaggle.com/", description: "Data science and machine learning platform." },
+        { title: "Colab", url: "https://colab.research.google.com/", description: "Google's cloud platform for machine learning and data science." },
+        { title: "LeetCode", url: "https://leetcode.com/", description: "LeetCode is a platform for practicing coding problems." }
+
+      ]
+    },
+    {
+      id: "r6",
+      name: { en: "Forum Platforms", zh: "论坛平台" },
+      links: [
+        { title: "Reddit", url: "https://www.reddit.com/", description: "Reddit is a platform for discussing and sharing content." },
+        { title: "1point3acres", url: "https://www.1point3acres.com/", description: "1point3acres is a forum for discussing and sharing content." },
+        { title: "uscard", url: "https://www.uscardforum.com/", description: "uscard is a forum for discussing and sharing content." },
+        { title: "teamblind", url: "https://www.teamblind.com/", description: "teamblind is a forum for discussing and sharing content." },
+        { title: "V2EX", url: "https://www.v2ex.com/", description: "V2EX is a forum for discussing and sharing content." }
+      ]
+    },
+    {
+      id: "r7",
+      name: { en: "PT Platforms", zh: "PT平台" },
+      links: [
+        { title: "mteam", url: "https://www.mteam.cc/", description: "mteam is a platform for discussing and sharing content." },
+        { title: "BYRPT", url: "https://www.byr.pt/", description: "BYRPT is a platform for discussing and sharing content." },
+        { title: "TJUPT", url: "https://www.tjupt.org/", description: "TJUPT is a platform for discussing and sharing content." }
+      ]
+    },
+    {
+      id: "r8",
+      name: { en: "Recommended Personal Websites", zh: "推荐个人网站" },
+      links: [
+        { title: "Terence Tao", url: "https://terrytao.wordpress.com/", description: "Research blog of Terence Tao." },
+        { title: "Scott Anderson", url: "https://scottaaronson.blog/", description: "Research blog of Scott Anderson." },
+        { title: "3Blue1Brown", url: "https://www.3blue1brown.com/", description: "3Blue1Brown is a website for mathematics." },
+        { title: "Xiany Zhang", url: "https://zhangxiany-tamu.github.io/", description: "Website of Xianyang Zhang." },
+        { title: "Rui Tuo", url: "https://sites.google.com/site/ruituo2017/", description: "Website of Rui Tuo." }
+      ]
+    },
+    {
+      id: "r9",
+      name: { en: "Other Resources", zh: "其他资源" },
+      links: [
+        { title: "Zlib", url: "https://z-library.ec/", description: "Zlib is a library for free books." },
+        { title: "VPN Price List", url: "https://www.duangks.com/", description: "price of different vpns" },
+        { title: "kmoe", url: "https://kzo.moe/", description: "kmoe is a website for comic." },
+        { title: "Axutongxue", url: "http://axutongxue.com/", description: "Axutongxue is a website for everything." },
+        { title: "Windows Activation", url: "https://jihuowin.com/index.php", description: "Windows Activation is a website for activating Windows." },
+        { title: "Love PDF", url: "https://www.ilovepdf.com/", description: "i Love PDF is a website for free PDF editor." },
+        { title: "LDtoolkit", url: "https://tool.pc.wiki/", description: "LDtoolkit is a website for PC tools." },
+        { title: "OldmanTvg", url: "https://www.oldmantvg.net/", description: "OldmanTvg is a website for oldman tvg." },
+        { title: "maigoo", url: "https://www.maigoo.com/", description: "maigoo is a website for ranking brands ." }
       ]
     }
   ],
@@ -178,8 +265,68 @@ export const SITE_DATA: AppData = {
       tech: ["Podcasting", "Content Creation"],
       liveUrl: "https://www.easypod.fun/",
       status: "active"
+    },
+    {
+      id: "p2",
+      title: { en: "EasyGrader", zh: "智能评分助手" },
+      description: {
+        en: "AI-powered grading assistant using Google Gemini API for automated assessment",
+        zh: "基于 Google Gemini API 的 AI 智能评分助手，用于自动化评估"
+      },
+      category: "AI Tool",
+      tech: ["React", "TypeScript", "Vite", "Gemini API"],
+      liveUrl: "https://chaoanli.github.io/EasyGrader/",
+      githubUrl: "https://github.com/ChaoanLi/EasyGrader",
+      status: "active"
+    },
+    {
+      id: "p3",
+      title: { en: "LakeAEcurve-INLA", zh: "湖泊面积-海拔曲线重建" },
+      description: {
+        en: "Bayesian reconstruction of lake area–elevation (AE) curves using INLA and SPDE-based spatial modeling.",
+        zh: "使用 INLA 和基于 SPDE 的空间建模进行湖泊面积-海拔曲线的贝叶斯重建。"
+      },
+      category: "Research",
+      tech: ["R", "INLA", "Bayesian Statistics", "Spatial Modeling"],
+      githubUrl: "https://github.com/ChaoanLi/LakeAEcurve-INLA",
+      status: "active"
+    },
+    {
+      id: "p4",
+      title: { en: "ModelValidator", zh: "模型验证框架" },
+      description: {
+        en: "Statistical framework for validating computer models via global and subdomain hypothesis testing.",
+        zh: "通过全局和子域假设检验验证计算机模型的统计框架。"
+      },
+      category: "Research",
+      tech: ["R", "Statistical Testing", "Model Validation"],
+      githubUrl: "https://github.com/ChaoanLi/ModelValidator",
+      status: "active"
+    },
+    {
+      id: "p5",
+      title: { en: "E-value", zh: "多重检验校正评估" },
+      description: {
+        en: "Implementation and comparison of multiple-testing correction methods with performance evaluation framework and visualization tools for FDR control assessment.",
+        zh: "多重假设检验校正方法的实现与比较，包含性能评估框架和 FDR 控制可视化工具。"
+      },
+      category: "Research",
+      tech: ["R", "Multiple Testing", "FDR Control", "Visualization"],
+      githubUrl: "https://github.com/ChaoanLi/E-value",
+      status: "active"
+    },
+    {
+      id: "p6",
+      title: { en: "BIBD4ML", zh: "机器学习方法评估" },
+      description: {
+        en: "Evaluate and compare the performance of multiple machine learning methods using a Balanced Incomplete Block Design (BIBD).",
+        zh: "使用平衡不完全区组设计 (BIBD) 评估和比较多个机器学习方法的性能。"
+      },
+      category: "Research",
+      tech: ["R", "Machine Learning", "Experimental Design", "BIBD"],
+      githubUrl: "https://github.com/ChaoanLi/BIBD4ML",
+      status: "active"
     }
-    // Add your projects here
   ],
   lists: {
     books: [

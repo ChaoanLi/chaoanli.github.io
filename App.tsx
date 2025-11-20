@@ -6,6 +6,8 @@ import { Github, Mail, Linkedin, Terminal } from 'lucide-react';
 
 // Pages
 import Home from './pages/Home';
+import ResearchPage from './pages/ResearchPage';
+import HistoryPage from './pages/HistoryPage';
 import BlogPage from './pages/BlogPage';
 import BlogPost from './pages/BlogPost';
 import ResourcesPage from './pages/ResourcesPage';
@@ -28,6 +30,8 @@ const GoogleScholarIcon = ({ className }: { className?: string }) => (
 
 const NAV_ITEMS = [
   { path: '/', label: { en: '~/home', zh: '~/主页' } },
+  { path: '/research', label: { en: '~/research', zh: '~/研究' } },
+  { path: '/history', label: { en: '~/history', zh: '~/历程' } },
   { path: '/blog', label: { en: '~/blog', zh: '~/博客' } },
   { path: '/projects', label: { en: '~/projects', zh: '~/项目' } },
   { path: '/lists', label: { en: '~/lists', zh: '~/清单' } },
@@ -114,7 +118,8 @@ function AppContent() {
                 key={item.path}
                 to={item.path}
                 className={`hidden sm:block px-3 py-1 text-xs transition-all border border-transparent hover:border-black ${
-                  location.pathname === item.path || (item.path === '/blog' && location.pathname.startsWith('/blog'))
+                  location.pathname === item.path || 
+                  (item.path === '/blog' && location.pathname.startsWith('/blog'))
                     ? 'text-white bg-black font-bold border-black' 
                     : 'text-zinc-500 hover:text-black'
                 }`}
@@ -139,6 +144,8 @@ function AppContent() {
       <main className="pt-14">
         <Routes>
           <Route path="/" element={<Home lang={lang} SocialLinks={SocialLinks} />} />
+          <Route path="/research" element={<ResearchPage lang={lang} />} />
+          <Route path="/history" element={<HistoryPage lang={lang} />} />
           <Route path="/blog" element={<BlogPage lang={lang} />} />
           <Route path="/blog/:slug" element={<BlogPost lang={lang} />} />
           <Route path="/projects" element={<ProjectsPage lang={lang} />} />

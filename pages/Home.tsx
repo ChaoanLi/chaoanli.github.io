@@ -2,8 +2,6 @@ import React from 'react';
 import { MapPin, Cpu } from 'lucide-react';
 import { Language } from '../types';
 import { SITE_DATA } from '../constants';
-import Timeline from '../components/Timeline';
-import PublicationCard from '../components/PublicationCard';
 
 interface Props {
   lang: Language;
@@ -14,7 +12,7 @@ const Home: React.FC<Props> = ({ lang, SocialLinks }) => {
   return (
     <>
       {/* Hero / About Section */}
-      <section id="about" className="relative min-h-screen flex items-center justify-center border-b-2 border-black">
+      <section id="about" className="relative min-h-screen flex items-center justify-center">
         <div className="container mx-auto px-4 py-20">
           <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-12">
             
@@ -69,36 +67,6 @@ const Home: React.FC<Props> = ({ lang, SocialLinks }) => {
             </div>
 
           </div>
-        </div>
-      </section>
-
-      {/* Publications Section */}
-      <section id="publications" className="py-24 border-b-2 border-black bg-white">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <div className="flex items-end gap-4 mb-12 border-b-2 border-black pb-4">
-            <h2 className="text-3xl font-bold text-black">
-              {lang === 'en' ? 'Selected Publications' : '精选论文'}
-            </h2>
-            <span className="text-zinc-500 text-sm font-mono mb-1">[{SITE_DATA.publications.length}]</span>
-          </div>
-          <div className="grid gap-6">
-            {SITE_DATA.publications.map(pub => (
-              <PublicationCard key={pub.id} pub={pub} lang={lang} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Timeline Section */}
-      <section id="timeline" className="py-24 border-b-2 border-black bg-zinc-50 relative">
-        <div className="container mx-auto px-4">
-          <div className="mb-16 text-center">
-            <h2 className="text-3xl font-bold text-black mb-2">
-              {lang === 'en' ? 'Execution Log' : '执行日志'}
-            </h2>
-            <p className="text-zinc-500 text-xs font-mono">Trace route of career path</p>
-          </div>
-          <Timeline items={SITE_DATA.timeline} lang={lang} />
         </div>
       </section>
     </>

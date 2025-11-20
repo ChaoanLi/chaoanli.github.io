@@ -83,7 +83,9 @@ For detailed content management instructions, see [CONTENT_GUIDE.md](./CONTENT_G
 
 ## Pages
 
-- `/` - Home (About, Publications, Timeline)
+- `/` - Home (About & Introduction)
+- `/research` - Publications and research work
+- `/history` - Academic timeline and milestones
 - `/blog` - Blog with archive and tags
 - `/blog/:slug` - Individual blog posts
 - `/projects` - Project showcase
@@ -95,6 +97,8 @@ For detailed content management instructions, see [CONTENT_GUIDE.md](./CONTENT_G
 ```
 ├── pages/               # Page components
 │   ├── Home.tsx
+│   ├── ResearchPage.tsx
+│   ├── HistoryPage.tsx
 │   ├── BlogPage.tsx
 │   ├── BlogPost.tsx
 │   ├── ProjectsPage.tsx

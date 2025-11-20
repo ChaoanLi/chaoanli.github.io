@@ -160,7 +160,7 @@ export const SITE_DATA: AppData = {
     {
       id: "p1",
       title: { en: "EasyPod", zh: "轻松愉快播客" },
-      description: { 
+      description: {
         en: "A Mandarin chat podcast exploring tech, academia, and life experiences.",
         zh: "一档讨论技术、学术和生活的中文播客节目。"
       },

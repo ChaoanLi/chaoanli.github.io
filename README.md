@@ -1,50 +1,118 @@
 # Chaoan Li - Personal Academic Website
 
-A clean, minimalist academic website showcasing research, publications, and professional timeline.
+A modern academic website with multi-page routing, blog system, and project showcase.
 
-## Stack
+## Features
+
+- Multi-page architecture with React Router
+- Markdown-based blog system
+- Project portfolio
+- Personal lists (books, movies, skills, goals)
+- Resource library
+- Bilingual support (English/Chinese)
+- Responsive brutalist design
+
+## Tech Stack
 
 - React 19 with TypeScript
+- React Router for navigation
+- React Markdown for blog posts
 - Vite for build tooling
-- Brutalist design aesthetic
 
-## Development
+## Quick Start
 
 ```bash
 # Install dependencies
 npm install --legacy-peer-deps
 
-# Start dev server
+# Start development server
 npm run dev
 
 # Build for production
 npm run build
 ```
 
-## Deployment
+## Adding Content
 
-The site is configured for automatic deployment to GitHub Pages via GitHub Actions. Push to `main` branch to deploy.
+### Blog Posts
 
-For detailed deployment instructions, see [DEPLOY.md](./DEPLOY.md).
+Create Markdown files in `content/blog/`:
 
-## Configuration
+```markdown
+---
+title: Your Post Title
+date: 2025-01-20
+tags: [Tag1, Tag2]
+excerpt: Post summary
+---
 
-All personal information is centralized in `constants.ts`:
-- Profile details and bio
-- Publications list
-- Timeline events
-- Blog posts
-- Resource links
+Your content here...
+```
+
+### Projects
+
+Edit `constants.ts`:
+
+```typescript
+projects: [
+  {
+    id: "project-id",
+    title: { en: "Project", zh: "项目" },
+    description: { en: "Description", zh: "描述" },
+    tech: ["React", "TypeScript"],
+    liveUrl: "https://...",
+    status: "active"
+  }
+]
+```
+
+### Lists
+
+Add items to `lists` in `constants.ts`:
+
+```typescript
+lists: {
+  books: [{ title: "Book", author: "Author", completed: false }],
+  movies: [{ title: "Movie", year: "2024", completed: false }],
+  skills: [{ name: "Skill", progress: 50, completed: false }],
+  goals: [{ title: "Goal", deadline: "2025-12-31", completed: false }]
+}
+```
+
+For detailed content management instructions, see [CONTENT_GUIDE.md](./CONTENT_GUIDE.md).
+
+## Pages
+
+- `/` - Home (About, Publications, Timeline)
+- `/blog` - Blog with archive and tags
+- `/blog/:slug` - Individual blog posts
+- `/projects` - Project showcase
+- `/lists` - Personal lists and goals
+- `/resources` - Curated resource links
 
 ## Project Structure
 
 ```
-├── components/          # React components
-├── App.tsx             # Main application
+├── pages/               # Page components
+│   ├── Home.tsx
+│   ├── BlogPage.tsx
+│   ├── BlogPost.tsx
+│   ├── ProjectsPage.tsx
+│   ├── ListsPage.tsx
+│   └── ResourcesPage.tsx
+├── components/          # Reusable components
+├── content/
+│   └── blog/           # Markdown blog posts
 ├── constants.ts        # Site configuration
-├── types.ts            # TypeScript definitions
-└── vite.config.ts      # Build configuration
+├── types.ts           # TypeScript definitions
+└── App.tsx            # Main app with routing
 ```
+
+## Deployment
+
+Configured for automatic deployment to GitHub Pages via GitHub Actions.
+
+Push to `main` branch to deploy. See [DEPLOY.md](./DEPLOY.md) for details.
 
 ## License
 

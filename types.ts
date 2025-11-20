@@ -70,10 +70,40 @@ export interface ResourceCategory {
   links: ResourceLink[];
 }
 
+export interface Project {
+  id: string;
+  title: LocalizedText;
+  description: LocalizedText;
+  category: string;
+  tech?: string[];
+  liveUrl?: string;
+  githubUrl?: string;
+  status?: 'active' | 'archived' | 'in-progress';
+}
+
+export interface ListItem {
+  title: string;
+  completed: boolean;
+  author?: string;  // for books
+  year?: string;    // for movies
+  progress?: number; // for skills
+  name?: string;    // for skills
+  deadline?: string; // for goals
+}
+
+export interface Lists {
+  books: ListItem[];
+  movies: ListItem[];
+  skills: ListItem[];
+  goals: ListItem[];
+}
+
 export interface AppData {
   profile: Profile;
   publications: Publication[];
   timeline: TimelineEvent[];
   blog: BlogPost[];
   resources: ResourceCategory[];
+  projects: Project[];
+  lists: Lists;
 }

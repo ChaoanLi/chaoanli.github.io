@@ -155,5 +155,42 @@ export const SITE_DATA: AppData = {
         { title: "ORCID", url: "https://orcid.org", description: "Researcher identifier registry." }
       ]
     }
-  ]
+  ],
+  projects: [
+    {
+      id: "p1",
+      title: { en: "EasyPod", zh: "轻松愉快播客" },
+      description: { 
+        en: "A Mandarin chat podcast exploring tech, academia, and life experiences.",
+        zh: "一档讨论技术、学术和生活的中文播客节目。"
+      },
+      category: "Media",
+      tech: ["Podcasting", "Content Creation"],
+      liveUrl: "https://www.easypod.fun/",
+      status: "active"
+    }
+    // Add your projects here
+  ],
+  lists: {
+    books: [
+      { title: "Deep Learning", author: "Ian Goodfellow", completed: false },
+      { title: "The Master Algorithm", author: "Pedro Domingos", completed: false }
+      // Add more books in constants.ts
+    ],
+    movies: [
+      { title: "The Social Network", year: "2010", completed: false },
+      { title: "Her", year: "2013", completed: false }
+      // Add more movies in constants.ts
+    ],
+    skills: [
+      { name: "Advanced PyTorch", progress: 60, completed: false },
+      { name: "Rust Programming", progress: 30, completed: false }
+      // Add more skills in constants.ts
+    ],
+    goals: [
+      { title: "Publish 2 papers in 2025", deadline: "2025-12-31", completed: false },
+      { title: "Complete PhD qualifying exam", deadline: "2025-06-30", completed: true }
+      // Add more goals in constants.ts
+    ]
+  }
 };

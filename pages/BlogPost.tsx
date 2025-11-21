@@ -5,6 +5,37 @@ import remarkGfm from 'remark-gfm';
 import { ArrowLeft, Calendar, Tag } from 'lucide-react';
 import { Language } from '../types';
 
+// Simple frontmatter parser for browser
+function parseFrontmatter(content: string) {
+  const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
+  const match = content.match(frontmatterRegex);
+  
+  if (!match) {
+    return { data: {}, content: content };
+  }
+  
+  const frontmatterText = match[1];
+  const body = match[2];
+  const data: any = {};
+  
+  frontmatterText.split('\n').forEach(line => {
+    const colonIndex = line.indexOf(':');
+    if (colonIndex === -1) return;
+    
+    const key = line.substring(0, colonIndex).trim();
+    let value = line.substring(colonIndex + 1).trim();
+    
+    // Parse arrays [item1, item2, item3]
+    if (value.startsWith('[') && value.endsWith(']')) {
+      value = value.slice(1, -1).split(',').map(v => v.trim());
+    }
+    
+    data[key] = value;
+  });
+  
+  return { data, content: body };
+}
+
 interface Props {
   lang: Language;
 }
@@ -27,19 +58,57 @@ const BlogPost: React.FC<Props> = ({ lang }) => {
 
   const loadPost = async () => {
     try {
-      // In production, you would fetch the markdown file
-      // For now, using placeholder
+      // Import markdown file dynamically
+      const modules = import.meta.glob('../content/blog/*.md', { query: '?raw', import: 'default' });
+      
+      // Find the file matching the slug
+      const matchingPath = Object.keys(modules).find(path => path.includes(`/${slug}.md`));
+      
+      if (!matchingPath) {
+        console.error('Post not found:', slug);
+        setPost(null);
+        setLoading(false);
+        return;
+      }
+      
+      const content = await modules[matchingPath]() as string;
+      
+      // Parse frontmatter
+      const { data, content: body } = parseFrontmatter(content);
+      
+      const title = lang === 'en' ? data.title : (data.title_zh || data.title);
+      
+      // Split content by language separator (---) - must have empty lines around it
+      const sections = body.split(/\n\s*---\s*\n/);
+      let markdownContent = '';
+      
+      if (sections.length >= 2) {
+        // Has both English and Chinese sections
+        markdownContent = lang === 'en' ? sections[0] : sections[1];
+      } else {
+        // Only one section
+        markdownContent = sections[0];
+      }
+      
+      // Fix image paths - convert relative paths to work with vite
+      markdownContent = markdownContent.replace(
+        /!\[([^\]]*)\]\(\.\/([^)]+)\)/g,
+        (match, alt, filename) => {
+          // Import the image and get its URL
+          return `![${alt}](/content/blog/${filename})`;
+        }
+      );
+      
       setPost({
-        title: lang === 'en' ? 'Welcome to My Blog' : '欢迎来到我的博客',
-        date: '2025-01-15',
-        tags: ['Meta', 'Introduction'],
-        content: lang === 'en' 
-          ? `# Welcome to My Blog\n\nThis is my personal blog where I share thoughts on research, technology, and life.\n\n## What to Expect\n\nI'll be writing about:\n- Research insights and paper reviews\n- Data science and machine learning topics\n- Academic life experiences\n- Tech explorations\n\nStay tuned for more content!`
-          : `# 欢迎来到我的博客\n\n这是我的个人博客，我将在这里分享关于研究、技术和生活的思考。\n\n## 期待内容\n\n我会写关于：\n- 研究见解和论文评论\n- 数据科学和机器学习话题\n- 学术生活经验\n- 技术探索\n\n敬请期待更多内容！`
+        title,
+        date: data.date,
+        tags: data.tags || [],
+        content: markdownContent.trim()
       });
       setLoading(false);
     } catch (error) {
       console.error('Error loading post:', error);
+      setPost(null);
       setLoading(false);
     }
   };
@@ -107,19 +176,19 @@ const BlogPost: React.FC<Props> = ({ lang }) => {
         {/* Post Content */}
         <div className="prose prose-lg max-w-none
           prose-headings:font-bold prose-headings:text-black
-          prose-h1:text-3xl prose-h1:mb-4
-          prose-h2:text-2xl prose-h2:mb-3 prose-h2:mt-8
-          prose-h3:text-xl prose-h3:mb-2 prose-h3:mt-6
-          prose-p:text-zinc-700 prose-p:leading-relaxed prose-p:mb-4
+          prose-h1:text-3xl prose-h1:mb-6 prose-h1:mt-8
+          prose-h2:text-2xl prose-h2:mb-4 prose-h2:mt-10
+          prose-h3:text-xl prose-h3:mb-3 prose-h3:mt-8
+          prose-p:text-zinc-700 prose-p:leading-loose prose-p:mb-6
           prose-a:text-black prose-a:underline hover:prose-a:no-underline
           prose-strong:text-black prose-strong:font-bold
           prose-code:bg-zinc-100 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:before:content-none prose-code:after:content-none
           prose-pre:bg-zinc-900 prose-pre:text-zinc-100 prose-pre:p-4 prose-pre:rounded-none prose-pre:border-2 prose-pre:border-black
-          prose-ul:my-4 prose-ul:list-disc prose-ul:pl-6
-          prose-ol:my-4 prose-ol:list-decimal prose-ol:pl-6
-          prose-li:text-zinc-700 prose-li:mb-2
-          prose-blockquote:border-l-4 prose-blockquote:border-black prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-zinc-600
-          prose-img:border-2 prose-img:border-black
+          prose-ul:my-6 prose-ul:list-disc prose-ul:pl-6
+          prose-ol:my-6 prose-ol:list-decimal prose-ol:pl-6
+          prose-li:text-zinc-700 prose-li:mb-3 prose-li:leading-loose
+          prose-blockquote:border-l-4 prose-blockquote:border-black prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-zinc-600 prose-blockquote:my-6
+          prose-img:border-2 prose-img:border-black prose-img:my-8 prose-img:rounded
         ">
           <ReactMarkdown remarkPlugins={[remarkGfm]}>
             {post.content}

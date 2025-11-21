@@ -1,7 +1,38 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar, Tag, Archive } from 'lucide-react';
 import { Language } from '../types';
+
+// Simple frontmatter parser for browser
+function parseFrontmatter(content: string) {
+  const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
+  const match = content.match(frontmatterRegex);
+  
+  if (!match) {
+    return { data: {}, content: content };
+  }
+  
+  const frontmatterText = match[1];
+  const body = match[2];
+  const data: any = {};
+  
+  frontmatterText.split('\n').forEach(line => {
+    const colonIndex = line.indexOf(':');
+    if (colonIndex === -1) return;
+    
+    const key = line.substring(0, colonIndex).trim();
+    let value = line.substring(colonIndex + 1).trim();
+    
+    // Parse arrays [item1, item2, item3]
+    if (value.startsWith('[') && value.endsWith(']')) {
+      value = value.slice(1, -1).split(',').map(v => v.trim());
+    }
+    
+    data[key] = value;
+  });
+  
+  return { data, content: body };
+}
 
 interface BlogPost {
   slug: string;
@@ -18,31 +49,69 @@ interface Props {
 
 const BlogPage: React.FC<Props> = ({ lang }) => {
   const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [archiveYear, setArchiveYear] = useState<string | null>(null);
+
+  const loadBlogPosts = useCallback(async () => {
+    setLoading(true);
+    setError(null);
+    
+    try {
+      // Import all markdown files dynamically
+      const modules = import.meta.glob('../content/blog/*.md', { query: '?raw', import: 'default' });
+      const posts: BlogPost[] = [];
+      
+      console.log('🔍 Loading blog posts, found:', Object.keys(modules).length, 'files');
+      
+      for (const path in modules) {
+        try {
+          const content = await modules[path]() as string;
+          const slug = path.split('/').pop()?.replace('.md', '') || '';
+          
+          console.log(`✅ Loaded ${slug}`);
+          
+          // Parse frontmatter
+          const { data } = parseFrontmatter(content);
+          
+          const title = lang === 'en' ? data.title : (data.title_zh || data.title);
+          const excerpt = lang === 'en' ? data.excerpt : (data.excerpt_zh || data.excerpt);
+          
+          posts.push({
+            slug,
+            title,
+            date: data.date,
+            excerpt,
+            tags: data.tags || [],
+            lang
+          });
+        } catch (err) {
+          console.error(`❌ Error processing file:`, err);
+        }
+      }
+      
+      console.log('✨ All loaded posts:', posts.length);
+      
+      if (posts.length === 0) {
+        setError('No posts could be loaded. Check console for details.');
+      }
+      
+      // Sort by date (newest first)
+      posts.sort((a, b) => b.date.localeCompare(a.date));
+      setPosts(posts);
+    } catch (error) {
+      console.error('💥 Error loading blog posts:', error);
+      setError(`Error loading posts: ${error}`);
+    } finally {
+      setLoading(false);
+    }
+  }, [lang]);
 
   useEffect(() => {
     // Load blog posts from markdown files
     loadBlogPosts();
-  }, []);
-
-  const loadBlogPosts = async () => {
-    // This will be populated with actual markdown files
-    // For now, using placeholder data
-    const samplePosts: BlogPost[] = [
-      {
-        slug: 'welcome',
-        title: lang === 'en' ? 'Welcome to My Blog' : '欢迎来到我的博客',
-        date: '2025-01-15',
-        excerpt: lang === 'en' 
-          ? 'Introduction to this blog and what to expect.' 
-          : '博客介绍和内容预告。',
-        tags: ['Meta', 'Introduction'],
-        lang: lang
-      }
-    ];
-    setPosts(samplePosts);
-  };
+  }, [loadBlogPosts]);
 
   const years = Array.from(new Set(posts.map(p => p.date.substring(0, 4)))).sort().reverse();
   const allTags = Array.from(new Set(posts.flatMap(p => p.tags)));
@@ -130,10 +199,29 @@ const BlogPage: React.FC<Props> = ({ lang }) => {
 
           {/* Blog Posts */}
           <div className="lg:col-span-3 space-y-6">
-            {filteredPosts.length === 0 ? (
+            {loading ? (
+              <div className="border-2 border-black p-8 text-center">
+                <p className="text-zinc-600">
+                  {lang === 'en' ? 'Loading posts...' : '加载中...'}
+                </p>
+              </div>
+            ) : error ? (
+              <div className="border-2 border-red-500 p-8 text-center bg-red-50">
+                <p className="text-red-600 font-bold mb-2">
+                  {lang === 'en' ? 'Error Loading Posts' : '加载文章出错'}
+                </p>
+                <p className="text-sm text-red-500">{error}</p>
+                <p className="text-xs text-zinc-500 mt-4">
+                  {lang === 'en' ? 'Check browser console (F12) for details' : '请查看浏览器控制台(F12)了解详情'}
+                </p>
+              </div>
+            ) : filteredPosts.length === 0 ? (
               <div className="border-2 border-black p-8 text-center">
                 <p className="text-zinc-600">
                   {lang === 'en' ? 'No posts found.' : '暂无文章。'}
+                </p>
+                <p className="text-xs text-zinc-500 mt-2">
+                  Total posts loaded: {posts.length}
                 </p>
               </div>
             ) : (

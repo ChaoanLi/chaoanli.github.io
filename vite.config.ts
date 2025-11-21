@@ -18,8 +18,21 @@ export default defineConfig({
       '@': path.resolve(__dirname, '.'),
     }
   },
+  publicDir: 'public',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
+    // Copy content directory to dist during build
+    rollupOptions: {
+      output: {
+        assetFileNames: 'assets/[name].[hash][extname]'
+      }
+    }
+  },
+  server: {
+    fs: {
+      // Allow serving files from content directory
+      allow: ['..']
+    }
   }
 });

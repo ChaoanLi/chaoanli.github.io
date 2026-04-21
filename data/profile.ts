@@ -11,10 +11,9 @@ export const profile: Profile = {
     zh: "我是德州农工大学数据科学专业的博士生，目前在工业与系统工程系担任研究助理，由Dr. Rui Tuo指导。同时，我还主持了一个中文聊天播客轻松愉快。"
   },
   researchInterests: [
-    { en: "Large Language Model", zh: "大语言模型" },
-    { en: "Quantitative Finance", zh: "量化金融" },
-    { en: "Non-parametric Statistics", zh: "非参数统计" },
-    { en: "Web 3", zh: "Web 3" }
+    { en: "Machine Learning", zh: "机器学习" },
+    { en: "Mathematical Algorithms in AI", zh: "AI中的数学算法" },
+    { en: "Non-parametric Statistics", zh: "非参数统计" }
   ],
   avatarUrl: "/ChaoanLi.png",
   linkedin: "https://www.linkedin.com/in/chaoan-li",

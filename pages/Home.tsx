@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
 import { Language } from "../types";
 import { SITE_DATA } from "../constants";
 import { researchImages } from "../components/ResearchFigure";
@@ -62,19 +61,6 @@ export default function Home({ lang }: { lang: Language }) {
             </a>
           </div>
         </div>
-        <aside>
-          <img
-            src={SITE_DATA.profile.avatarUrl}
-            alt={en ? "Chaoan Li’s illustrated portrait" : "李朝安的插画头像"}
-            width="180"
-            height="220"
-          />
-          <p>
-            College Station, Texas
-            <br />
-            chaoan@tamu.edu
-          </p>
-        </aside>
       </section>
       <section className="academic-research" aria-labelledby="research-title">
         <div className="academic-section-heading">
@@ -153,56 +139,10 @@ export default function Home({ lang }: { lang: Language }) {
             </p>
           </div>
         </div>
-        <div className="academic-event">
-          <span>2026</span>
-          <div>
-            <h3>INFORMS</h3>
-            <p>
-              {en
-                ? "Poster presentation · materials to be added"
-                : "海报展示 · 展示材料待补充"}
-            </p>
-          </div>
-        </div>
       </section>
-      <section className="academic-software">
-        <div className="academic-section-heading">
-          <h2>{en ? "Selected software" : "软件项目"}</h2>
-          <Link to="/projects">{en ? "All projects" : "全部项目"} ↗</Link>
-        </div>
-        <div className="academic-software-grid">
-          <article>
-            <h3>
-              <a href="https://github.com/ChaoanLi/EasyGrader">
-                EasyGrader / AutoGrade Studio <ArrowUpRight size={16} />
-              </a>
-            </h3>
-            <p>
-              {en
-                ? "Rubric-based LLM grading and feedback, used during a teaching assistantship. Batch submissions, configurable policies, and CSV export for instructor review."
-                : "在助教工作中使用的 LLM 作业评分与反馈工具，支持自定义评分标准、批量提交与 CSV 导出，供教师复核。"}
-            </p>
-          </article>
-          <article>
-            <h3>
-              <a href="https://github.com/ChaoanLi/BSMoption">
-                BSMoption <ArrowUpRight size={16} />
-              </a>
-            </h3>
-            <p>
-              {en
-                ? "Black–Scholes–Merton pricing, American-option binomial trees, implied volatility and Greeks in an interactive bilingual application."
-                : "交互式双语期权工具，包含 Black–Scholes–Merton 定价、美式期权二项树、隐含波动率和 Greeks。"}
-            </p>
-          </article>
-        </div>
-      </section>
-      <p className="academic-personal">
-        {en
-          ? "Outside research, I co-host the Mandarin podcast "
-          : "研究之外，我和朋友一起主持中文播客 "}
-        <a href="https://podcast.chaoanli.com/">轻松愉快 ↗</a>
-        {en ? "." : "。"}
+      <p className="academic-software-note">
+        {en ? "Software: " : "软件："}
+        <Link to="/projects">EasyGrader / AutoGrade Studio · BSMoption ↗</Link>
       </p>
     </div>
   );

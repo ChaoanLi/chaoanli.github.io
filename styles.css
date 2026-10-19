@@ -9,10 +9,53 @@
 }
 .academic-intro {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 160px;
+  grid-template-columns: minmax(0, 1fr);
   gap: 60px;
   padding: 64px 0 48px;
   border-bottom: 1px solid var(--line);
+}
+.academic-intro > div {
+  max-width: 820px;
+}
+.academic-software-note {
+  margin: 25px 0 40px;
+  font-size: 13px;
+  line-height: 1.8;
+}
+.academic-software-note a {
+  border-bottom: 1px solid var(--line);
+}
+.site-footer.academic-footer {
+  padding-block: 0 22px;
+}
+.software-page {
+  max-width: 1000px;
+  padding-block: 48px;
+}
+.software-page h1 {
+  font: 38px var(--serif);
+  margin: 0 0 16px;
+}
+.software-page > p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+.software-entry {
+  padding: 30px 0;
+  border-bottom: 1px solid var(--line);
+}
+.software-entry h2 {
+  font: 25px var(--serif);
+  margin: 0 0 13px;
+}
+.software-entry p {
+  font-size: 14px;
+  line-height: 1.8;
+  max-width: 780px;
+}
+.software-entry .research-row-links {
+  margin-top: 20px;
 }
 .academic-intro h1 {
   font: 52px/1.15 var(--serif);

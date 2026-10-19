@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Language } from "../types";
 import { formatNewsDate, NewsItem } from "../data/news";
 
@@ -15,9 +16,15 @@ export default function NewsList({ items, lang, compact = false }: {
           <div>
             <h3>{item.title[lang]}</h3>
             {!compact && <p>{item.description[lang]}</p>}
+            {item.href.startsWith("/") && !item.href.endsWith(".pdf") ? (
+            <Link className="news-material-link" to={item.href}>
+              {item.linkLabel[lang]} <span aria-hidden="true">→</span>
+            </Link>
+            ) : (
             <a className="news-material-link" href={item.href} target="_blank" rel="noreferrer">
               {item.linkLabel[lang]} <span aria-hidden="true">↗</span>
             </a>
+            )}
           </div>
         </article>
       ))}

@@ -97,45 +97,6 @@ export default function Home({ lang }: { lang: Language }) {
           </article>
         ))}
       </section>
-      <section className="academic-events">
-        <div className="academic-section-heading">
-          <h2>{en ? "Talks & posters" : "报告与海报"}</h2>
-        </div>
-        <div className="academic-event">
-          <time dateTime="2026-08-11">{en ? "Aug 11, 2026" : "2026年8月11日"}</time>
-          <div>
-            <h3>
-              CRSE Workshop · The Wharton School, University of Pennsylvania
-            </h3>
-            <p>
-              {en
-                ? "Selected oral presenter · Philadelphia · Workshop: August 11–13, 2026"
-                : "入选口头报告 · 费城 · Workshop：2026年8月11–13日"}
-            </p>
-            <p className="academic-talk-title">Statistical Validation of Computer Models via Frequency-Domain Methods</p>
-            <div className="research-row-links">
-              <a href="/presentations/crse-2026-slides.pdf" target="_blank" rel="noreferrer">{en ? "View slides (PDF · 16 pages)" : "查看幻灯片（PDF · 16页）"} ↗</a>
-            </div>
-          </div>
-          <a className="presentation-preview" href="/presentations/crse-2026-slides.pdf" target="_blank" rel="noreferrer" aria-label={en ? "Open CRSE Workshop slides PDF" : "打开 CRSE Workshop 幻灯片 PDF"}>
-            <img src="/presentations/crse-2026-preview.png" alt={en ? "Title slide of the CRSE Workshop presentation" : "CRSE Workshop 报告封面"} width="1400" height="788" loading="lazy" />
-          </a>
-        </div>
-        <div className="academic-event">
-          <time dateTime="2026-04-17">{en ? "Apr 17, 2026" : "2026年4月17日"}</time>
-          <div>
-            <h3>Texas Digital Twin Symposium · Texas A&M University</h3>
-            <p>{en ? "Poster presentation · College Station, TX" : "海报展示 · 得克萨斯州大学城"}</p>
-            <p className="academic-talk-title">Statistical Validation for Digital Twins: Global and Subdomain Hypothesis Testing</p>
-            <div className="research-row-links">
-              <a href="/presentations/texas-digital-twin-2026-poster.pdf" target="_blank" rel="noreferrer">{en ? "View poster (PDF)" : "查看海报（PDF）"} ↗</a>
-            </div>
-          </div>
-          <a className="presentation-preview" href="/presentations/texas-digital-twin-2026-poster.pdf" target="_blank" rel="noreferrer" aria-label={en ? "Open Texas Digital Twin Symposium poster PDF" : "打开 Texas Digital Twin Symposium 海报 PDF"}>
-            <img src="/presentations/texas-digital-twin-2026-preview.png" alt={en ? "Research poster on global and subdomain validation of digital twins" : "数字孪生全局与子域统计验证研究海报"} width="1400" height="1260" loading="lazy" />
-          </a>
-        </div>
-      </section>
       <p className="academic-podcast-note">
         {en ? "Outside research, I co-host a Chinese conversation podcast. " : "研究之外，我也和朋友共同主持一档中文闲聊播客。"}
         <a href="https://podcast.chaoanli.com/">{en ? "Listen to the podcast" : "收听播客"} ↗</a>

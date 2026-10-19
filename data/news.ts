@@ -22,8 +22,8 @@ export const news: NewsItem[] = [
       en: "I presented Statistical Validation of Computer Models via Frequency-Domain Methods at the Wharton School, University of Pennsylvania. The workshop took place August 11–13 in Philadelphia.",
       zh: "在宾夕法尼亚大学 Wharton School 报告了计算机模型统计验证的频域方法。此次 Workshop 于8月11–13日在费城举行。",
     },
-    href: "/presentations/crse-2026-slides.pdf",
-    linkLabel: { en: "Presentation slides", zh: "报告幻灯片" },
+    href: "/research#talk-crse-2026",
+    linkLabel: { en: "Talk & slides", zh: "报告与幻灯片" },
   },
   {
     id: "digital-twin-2026",
@@ -36,8 +36,8 @@ export const news: NewsItem[] = [
       en: "I presented Statistical Validation for Digital Twins: Global and Subdomain Hypothesis Testing at Texas A&M University in College Station.",
       zh: "在德州农工大学展示海报 Statistical Validation for Digital Twins: Global and Subdomain Hypothesis Testing，介绍数字孪生的全局与子域统计验证。",
     },
-    href: "/presentations/texas-digital-twin-2026-poster.pdf",
-    linkLabel: { en: "Research poster", zh: "研究海报" },
+    href: "/research#poster-digital-twin-2026",
+    linkLabel: { en: "Poster & details", zh: "海报与详情" },
   },
 ].sort((a, b) => b.date.localeCompare(a.date));
 

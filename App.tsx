@@ -26,7 +26,7 @@ function Site() {
     if (!location.hash) return;
     let cancelled = false;
     const images = Array.from(
-      document.querySelectorAll<HTMLImageElement>("#main-content img"),
+      document.querySelectorAll<HTMLImageElement>('#main-content img:not([loading="lazy"])'),
     );
     Promise.all(
       images.map((image) => image.decode().catch(() => undefined)),

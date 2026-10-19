@@ -5,13 +5,14 @@ import {
   Route,
   Link,
   useLocation,
+  Navigate,
 } from "react-router-dom";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { Language } from "./types";
 import { SITE_DATA } from "./constants";
 import Home from "./pages/Home";
 import ProjectsPage from "./pages/ProjectsPage";
-import NewsPage from "./pages/NewsPage";
+import NowPage, { NowArchive } from "./pages/NowPage";
 const ResearchPage = lazy(() => import("./pages/ResearchPage"));
 
 function Site() {
@@ -40,9 +41,14 @@ function Site() {
   }, [location.pathname, location.hash]);
   useEffect(() => {
     document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
-  }, [lang]);
+    const pageTitle = location.pathname.startsWith("/now")
+      ? (location.pathname === "/now/archive" ? `${lang === "en" ? "Archive" : "归档"} · nownownow` : "nownownow")
+      : location.pathname.startsWith("/research") ? (lang === "en" ? "Research" : "研究")
+      : location.pathname.startsWith("/projects") ? "Software" : "";
+    document.title = pageTitle ? `${pageTitle} · Chaoan Li` : "Chaoan Li";
+  }, [lang, location.pathname]);
   const nav = [
-    { path: "/news", en: "News", zh: "动态" },
+    { path: "/now", en: "nownownow", zh: "nownownow" },
     { path: "/research", en: "Research", zh: "研究" },
     { path: "/projects", en: "Software", zh: "软件" },
   ];
@@ -116,7 +122,10 @@ function Site() {
           <Route path="/" element={<Home lang={lang} />} />
           <Route path="/research" element={<Suspense fallback={<p className="site-wrap">{lang === "en" ? "Loading research…" : "正在加载研究…"}</p>}><ResearchPage lang={lang} /></Suspense>} />
           <Route path="/projects" element={<ProjectsPage lang={lang} />} />
-          <Route path="/news" element={<NewsPage lang={lang} />} />
+          <Route path="/news" element={<Navigate to="/now" replace />} />
+          <Route path="/now" element={<NowPage lang={lang} />} />
+          <Route path="/now/archive" element={<NowArchive lang={lang} />} />
+          <Route path="/now/:date" element={<NowPage lang={lang} />} />
           <Route
             path="*"
             element={

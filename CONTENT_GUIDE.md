@@ -2,16 +2,29 @@
 
 This guide explains how to add and manage content for your website.
 
-## Adding News
+## Updating nownownow
 
-Edit `data/news.ts` to add an item with a unique `id`, an ISO `date`
-(`YYYY-MM-DD`), bilingual `title`, `description`, and `linkLabel`, plus a
-public `href` for the supporting material. Dates are displayed without timezone
-shifts. The News page groups items by year in reverse chronological order;
-the homepage automatically shows the latest three. Add only confirmed events.
+Add a new object to `data/now.json` with its update `date` (`YYYY-MM-DD`),
+bilingual `title`, `excerpt`, and `paragraphs`. Use the writing/update date,
+not a past event's date. Keep existing objects intact: append a new dated entry
+instead of replacing the previous entry. Do not add imagined experiences or thoughts.
+
+The newest dated entry automatically becomes `/now` and the homepage preview.
+Every earlier entry appears in `/now/archive`; every entry keeps its stable
+`/now/YYYY-MM-DD` URL. These URLs are generated as real static entry points by
+the build. No scheduled job is needed: archiving happens when a new dated entry
+is published. Duplicate or invalid dates fail the build. `/news` redirects to `/now`.
+
+Run `npm run test:now` to verify archive selection and `npm run build` to generate
+the route entry points. The first entry has an empty archive, rather than invented history.
 
 The shared appearance of the public pages is in `appearance.css`, loaded after
 the original stylesheet. It uses system fonts and requires no remote font files.
+
+Research figures use their real image/viewBox dimensions from
+`data/researchImageSizes.ts`. Keep this map in sync when replacing scientific
+figures or adding interactive variants; mathematical labels remain part of the
+original figure. Detailed research and presentation materials live on `/research`.
 
 ## Adding Blog Posts
 

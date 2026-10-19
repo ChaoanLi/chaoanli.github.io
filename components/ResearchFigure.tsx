@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Language } from "../types";
 import MathFormula from "./MathFormula";
 import { researchStories } from "../data/researchStories";
+import { researchImageSizes } from "../data/researchImageSizes";
 
 export const researchImages: Record<string, string> = {
   validation: "/research/validation-shear-layer.png",
@@ -54,7 +55,7 @@ export default function ResearchFigure({
       : `尺度 ${scale} 的各向异性球上的函数、${degree} 次多项式投影与残差。`,
   };
   return (
-    <figure className="research-figure">
+    <figure className={`research-figure research-figure-${kind}`}>
       <div className="figure-toolbar">
         <span className="figure-type">
           {kind === "validation" || kind === "calibration"
@@ -122,8 +123,9 @@ export default function ResearchFigure({
         <img
           src={image}
           alt={alt[kind]}
-          width="1000"
-          height={kind === "validation" ? "750" : "480"}
+          width={Math.round(researchImageSizes[image].width)}
+          height={Math.round(researchImageSizes[image].height)}
+          style={{ aspectRatio: `${researchImageSizes[image].width} / ${researchImageSizes[image].height}` }}
         />
       </a>
       <figcaption aria-live="polite">

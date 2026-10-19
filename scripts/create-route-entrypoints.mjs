@@ -1,8 +1,10 @@
 // GitHub Pages has no SPA rewrite rule. Give each top-level route a real
 // entry point so shared research links return 200 instead of the 404 fallback.
-import { copyFile, mkdir } from "node:fs/promises";
+import { copyFile, mkdir, readFile } from "node:fs/promises";
+import { organizeNowEntries } from "../data/now-archive.mjs";
 
-const routes = ["research", "projects", "news"];
+const snapshots = organizeNowEntries(JSON.parse(await readFile(new URL("../data/now.json", import.meta.url), "utf8")));
+const routes = ["research", "projects", "news", "now", "now/archive", ...snapshots.entries.map(entry => `now/${entry.date}`)];
 for (const route of routes) {
   await mkdir(`dist/${route}`, { recursive: true });
   await copyFile("dist/index.html", `dist/${route}/index.html`);

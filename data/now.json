@@ -1,0 +1,20 @@
+[
+  {
+    "date": "2026-10-19",
+    "title": { "en": "A poster competition, and Philadelphia", "zh": "海报比赛，和费城" },
+    "excerpt": {
+      "en": "No prize at the poster competition, plenty learned at the workshop, and some difficult driving in Philadelphia.",
+      "zh": "海报比赛没有拿到奖，workshop 学到了很多。在费城开车对我来说有点难。"
+    },
+    "paragraphs": {
+      "en": [
+        "I took part in the INFORMS poster competition. I felt the presentation went pretty well, though I didn’t win a prize.",
+        "I went to the CRSE Workshop in Philadelphia and learned a lot. Everyone was very kind. Driving in Philadelphia was pretty difficult for me."
+      ],
+      "zh": [
+        "参加了 INFORMS 的海报比赛，讲得还不错，不过没有拿到奖。",
+        "去了费城的 CRSE Workshop，学到了很多，大家都很亲切。对我来说，在费城开车确实有点难。"
+      ]
+    }
+  }
+]

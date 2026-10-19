@@ -2,9 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Language } from "../types";
 import { SITE_DATA } from "../constants";
-import { researchStories } from "../data/researchStories";
-import NewsList from "../components/NewsList";
-import { news } from "../data/news";
+import { now, formatNowDate } from "../data/now";
 
 export default function Home({ lang }: { lang: Language }) {
   const en = lang === "en";
@@ -21,7 +19,11 @@ export default function Home({ lang }: { lang: Language }) {
               ? "Ph.D. student · Industrial Engineering · Data Science"
               : "工业工程博士生 · 数据科学方向"}
           </p>
-          <p className="academic-bio">{SITE_DATA.profile.bio[lang]}</p>
+          <p className="academic-bio">
+            {en
+              ? "I study statistical validation and calibration of computer models, advised by Rui Tuo. My background is in harmonic analysis."
+              : "我的导师是 Rui Tuo。目前研究计算机模型的统计验证与校准，此前做过调和分析。"}
+          </p>
           <p className="academic-secondary">
             {en
               ? "I also work on statistical questions in LLM watermarking and build software for research and teaching."
@@ -48,63 +50,16 @@ export default function Home({ lang }: { lang: Language }) {
           <img src={SITE_DATA.profile.avatarUrl} alt={en ? "Portrait of Chaoan Li" : "李朝安的头像"} width="240" height="240" fetchPriority="high" />
         </aside>
       </section>
-      <section className="home-news" aria-labelledby="home-news-title">
-        <div className="academic-section-heading">
-          <h2 id="home-news-title">{en ? "News" : "动态"}</h2>
-          <Link to="/news">{en ? "All updates" : "全部动态"} <span aria-hidden="true">→</span></Link>
-        </div>
-        <NewsList items={news.slice(0, 3)} lang={lang} compact />
-      </section>
-      <section className="academic-research" aria-labelledby="research-title">
-        <div className="academic-section-heading">
-          <h2 id="research-title">{en ? "Research" : "研究"}</h2>
-          <Link to="/research">
-            {en ? "Figures & paper details" : "图表与论文详情"} ↗
-          </Link>
-        </div>
-        <p className="academic-section-note">
-          {en
-            ? "Computer model validation & calibration; harmonic analysis."
-            : "计算机模型验证与校准；调和分析。"}
-        </p>
-        {SITE_DATA.publications.map((pub) => (
-          <article className="research-summary" key={pub.id}>
-            <div>
-              <p className="research-category">
-                {pub.tags[0]}
-              </p>
-              <h3><Link to={`/research#${pub.id}`}>{researchStories[pub.id].question[lang]}</Link></h3>
-              <p className="research-paper-title">{pub.title}</p>
-              <p className="research-author-line">{pub.authors.join(", ")}</p>
-              <p className="research-venue">
-                {pub.venue}, {pub.year}
-              </p>
-              <p className="research-summary-text">{researchStories[pub.id].contribution[lang]}</p>
-              <div className="research-row-links">
-                <Link to={`/research#${pub.id}`}>
-                  {en ? "Read the research story" : "了解研究与图表"} ↗
-                </Link>
-                {pub.link && (
-                  <a href={pub.link} target="_blank" rel="noreferrer">
-                    {en ? "Paper" : "论文"} ↗
-                  </a>
-                )}
-                {pub.id === "calibration" && (
-                  <span>{en ? "Manuscript under review" : "论文在审"}</span>
-                )}
-              </div>
-            </div>
-          </article>
-        ))}
-      </section>
-      <p className="academic-podcast-note">
-        {en ? "Outside research, I co-host a Chinese conversation podcast. " : "研究之外，我也和朋友共同主持一档中文闲聊播客。"}
-        <a href="https://podcast.chaoanli.com/">{en ? "Listen to the podcast" : "收听播客"} ↗</a>
-      </p>
-      <p className="academic-software-note">
-        {en ? "Software: " : "软件："}
-        <Link to="/projects">EasyGrader / AutoGrade Studio · BSMoption ↗</Link>
-      </p>
+      {now.latest && (
+        <section className="home-now" aria-labelledby="home-now-title">
+          <div className="academic-section-heading">
+            <h2 id="home-now-title">nownownow</h2>
+            <Link to="/now">{en ? "Read more" : "读近况"} →</Link>
+          </div>
+          <time dateTime={now.latest.date}>{formatNowDate(now.latest.date, lang)}</time>
+          <p>{now.latest.excerpt[lang]}</p>
+        </section>
+      )}
     </div>
   );
 }

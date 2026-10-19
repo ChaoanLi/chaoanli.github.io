@@ -120,14 +120,14 @@ export default function ResearchPage({ lang }: { lang: Language }) {
         <div className="academic-event" id="poster-digital-twin-2026">
           <time dateTime="2026-04-17">{en ? "Apr 17, 2026" : "2026年4月17日"}</time>
           <div>
-            <h3>Texas Digital Twin Symposium · Texas A&M University</h3>
-            <p>{en ? "Poster presentation · College Station, TX" : "海报展示 · 得克萨斯州大学城"}</p>
+            <h3>INFORMS · {en ? "Poster competition" : "海报比赛"}</h3>
+            <p>{en ? "Poster presentation" : "海报展示"}</p>
             <p className="academic-talk-title">Statistical Validation for Digital Twins: Global and Subdomain Hypothesis Testing</p>
             <div className="research-row-links">
               <a href="/presentations/texas-digital-twin-2026-poster.pdf" target="_blank" rel="noreferrer">{en ? "View poster (PDF)" : "查看海报（PDF）"} ↗</a>
             </div>
           </div>
-          <a className="presentation-preview" href="/presentations/texas-digital-twin-2026-poster.pdf" target="_blank" rel="noreferrer" aria-label={en ? "Open Texas Digital Twin Symposium poster PDF" : "打开 Texas Digital Twin Symposium 海报 PDF"}>
+          <a className="presentation-preview" href="/presentations/texas-digital-twin-2026-poster.pdf" target="_blank" rel="noreferrer" aria-label={en ? "Open research poster PDF" : "打开研究海报 PDF"}>
             <img src="/presentations/texas-digital-twin-2026-preview.png" alt={en ? "Research poster on global and subdomain validation of digital twins" : "数字孪生全局与子域统计验证研究海报"} width="1400" height="1260" loading="lazy" />
           </a>
         </div>

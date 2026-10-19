@@ -7,7 +7,7 @@ export const profile: Profile = {
   email: "chaoan@tamu.edu",
   location: { en: "College Station, TX", zh: "美国 得克萨斯州" },
   bio: {
-    en: "I am a Ph.D. student majoring in Data Science at Texas A&M University. Currently, I work as a research assistant in the Wm Michael Barnes '64 Department of Industrial & Systems Engineering. I also host a Mandarin chat podcast EasyPod (https://www.easypod.fun/).",
+    en: "I am a Ph.D. student majoring in Data Science at Texas A&M University. Currently, I work as a research assistant in the Wm Michael Barnes '64 Department of Industrial & Systems Engineering. I also host a Mandarin chat podcast EasyPod (https://podcast.chaoanli.com/).",
     zh: "我是德州农工大学数据科学专业的博士生，目前在工业与系统工程系担任研究助理，由Dr. Rui Tuo指导。同时，我还主持了一个中文聊天播客轻松愉快。"
   },
   researchInterests: [

@@ -212,6 +212,9 @@ function AppContent() {
            <p className="text-xs font-mono mb-2">
              © {new Date().getFullYear()} {SITE_DATA.profile.name.en}
            </p>
+           <a href="https://podcast.chaoanli.com/" className="text-xs underline">
+             {lang === 'en' ? 'Podcast: 轻松愉快' : '播客：轻松愉快'}
+           </a>
         </div>
       </footer>
     </div>

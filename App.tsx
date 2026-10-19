@@ -1,232 +1,248 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
-import { Language } from './types';
-import { SITE_DATA } from './constants';
-import { Github, Mail, Linkedin, Terminal, Menu, X } from 'lucide-react';
+import React, { useEffect, useState } from "react";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+  useLocation,
+} from "react-router-dom";
+import { ArrowUpRight, Github, Mail, Menu, X } from "lucide-react";
+import { Language } from "./types";
+import { SITE_DATA } from "./constants";
+import Home from "./pages/Home";
+import ResearchPage from "./pages/ResearchPage";
+import HistoryPage from "./pages/HistoryPage";
+import BlogPage from "./pages/BlogPage";
+import BlogPost from "./pages/BlogPost";
+import ProjectsPage from "./pages/ProjectsPage";
+import ListsPage from "./pages/ListsPage";
+import ResourcesPage from "./pages/ResourcesPage";
 
-// Pages
-import Home from './pages/Home';
-import ResearchPage from './pages/ResearchPage';
-import HistoryPage from './pages/HistoryPage';
-import BlogPage from './pages/BlogPage';
-import BlogPost from './pages/BlogPost';
-import ResourcesPage from './pages/ResourcesPage';
-import ListsPage from './pages/ListsPage';
-import ProjectsPage from './pages/ProjectsPage';
-
-// Custom Icons
-const ResearchGateIcon = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
-    <path d="M19.54 6.57c-1.02 0-1.96.21-2.79.6l-.62-1.71c.89-.37 1.94-.57 3.11-.57 1.94 0 3.47.5 4.39 1.35.84.76 1.27 1.74 1.27 2.87 0 1.27-.4 2.29-1.23 3.07-.84.77-1.95 1.17-3.43 1.17H19v5.34h-2.6V13.3h-2v-1.8h2V9.09c0-.7.15-1.22.46-1.55.3-.34.78-.5 1.52-.5.47 0 .92.08 1.31.23l.85-1.8zm-10 4.93h1.53v6.84h-2.4l-.27-1.24c-.73.99-1.7 1.48-2.96 1.48-1.2 0-2.2-.42-2.93-1.24-.7-.82-1.06-1.92-1.06-3.29 0-1.38.36-2.48 1.07-3.29.72-.81 1.69-1.22 2.92-1.22 1.25 0 2.22.46 2.91 1.38l.24-1.42H9.54v6zm-1.42 4.27c.53 0 .93-.2 1.21-.57.29-.4.42-.92.42-1.61 0-1.44-.54-2.15-1.63-2.15-.53 0-.94.19-1.22.57-.29.39-.43.92-.43 1.61 0 .68.14 1.2.43 1.58.28.38.69.57 1.22.57z"/>
-  </svg>
-);
-
-const GoogleScholarIcon = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
-    <path d="M5.242 13.769L0.5 9.5 12 1l11.5 9-4.742 4.269C18.623 15.597 17.078 16 15.5 16c-2.69 0-4.968-1.162-5.258-2.231zM12 3.5L3.5 9.5 12 15.5l8.5-6L12 3.5z"/>
-    <path d="M12 17c-3.822 0-7.114-1.392-7.938-4.287C4.018 12.856 4 13.023 4 13.2 4 16.954 7.582 20 12 20s8-3.046 8-6.8c0-.177-.018-.344-.062-.487C19.114 15.608 15.822 17 12 17z"/>
-  </svg>
-);
-
-const NAV_ITEMS = [
-  { path: '/', label: { en: '~/home', zh: '~/主页' } },
-  { path: '/research', label: { en: '~/research', zh: '~/研究' } },
-  { path: '/history', label: { en: '~/history', zh: '~/历程' } },
-  { path: '/blog', label: { en: '~/blog', zh: '~/博客' } },
-  { path: '/projects', label: { en: '~/projects', zh: '~/项目' } },
-  { path: '/lists', label: { en: '~/lists', zh: '~/清单' } },
-  { path: '/resources', label: { en: '~/resources', zh: '~/资源' } },
-];
-
-function AppContent() {
-  const [lang, setLang] = useState<Language>('en');
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+function Site() {
+  const [lang, setLang] = useState<Language>("en");
+  const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
-
-  const toggleLang = () => setLang(prev => prev === 'en' ? 'zh' : 'en');
-  const closeMobileMenu = () => setMobileMenuOpen(false);
-
-  const SocialLinks = ({ className = "", iconSize = "w-5 h-5" }) => (
-    <div className={`flex gap-6 ${className}`}>
-      {SITE_DATA.profile.email && (
-        <a 
-          href={`mailto:${SITE_DATA.profile.email}`} 
-          className="text-zinc-500 hover:text-black transition-colors"
-          title="Email"
-        >
-          <Mail className={iconSize} />
-        </a>
-      )}
-      {SITE_DATA.profile.github && (
-        <a 
-          href={SITE_DATA.profile.github} 
-          target="_blank" 
-          rel="noreferrer" 
-          className="text-zinc-500 hover:text-black transition-colors"
-          title="GitHub"
-        >
-          <Github className={iconSize} />
-        </a>
-      )}
-      {SITE_DATA.profile.googleScholar && (
-        <a 
-          href={SITE_DATA.profile.googleScholar} 
-          target="_blank" 
-          rel="noreferrer" 
-          className="text-zinc-500 hover:text-black transition-colors"
-          title="Google Scholar"
-        >
-          <GoogleScholarIcon className={iconSize} />
-        </a>
-      )}
-      {SITE_DATA.profile.linkedin && (
-        <a 
-          href={SITE_DATA.profile.linkedin} 
-          target="_blank" 
-          rel="noreferrer" 
-          className="text-zinc-500 hover:text-black transition-colors"
-          title="LinkedIn"
-        >
-          <Linkedin className={iconSize} />
-        </a>
-      )}
-      {SITE_DATA.profile.researchgate && (
-        <a 
-          href={SITE_DATA.profile.researchgate} 
-          target="_blank" 
-          rel="noreferrer" 
-          className="text-zinc-500 hover:text-black transition-colors"
-          title="ResearchGate"
-        >
-          <ResearchGateIcon className={iconSize} />
-        </a>
-      )}
+  useEffect(() => {
+    setMenuOpen(false);
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+  useEffect(() => {
+    document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+  }, [lang]);
+  const nav = [
+    { path: "/research", en: "Research", zh: "研究" },
+    { path: "/projects", en: "Projects", zh: "作品" },
+    { path: "/blog", en: "Writing", zh: "随笔" },
+  ];
+  const more = [
+    { path: "/history", en: "Background", zh: "个人经历" },
+    { path: "/lists", en: "On my shelf", zh: "阅读与生活" },
+    { path: "/resources", en: "Bookmarks", zh: "书签" },
+  ];
+  const SocialLinks = () => (
+    <div className="social-links">
+      <a href={`mailto:${SITE_DATA.profile.email}`} aria-label="Email">
+        <Mail size={17} />
+      </a>
+      <a
+        href={SITE_DATA.profile.github}
+        aria-label="GitHub"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <Github size={17} />
+      </a>
+      <a
+        href={SITE_DATA.profile.googleScholar}
+        target="_blank"
+        rel="noreferrer"
+      >
+        Scholar <ArrowUpRight size={13} />
+      </a>
+      <a href={SITE_DATA.profile.linkedin} target="_blank" rel="noreferrer">
+        LinkedIn <ArrowUpRight size={13} />
+      </a>
     </div>
   );
-
   return (
-    <div className="min-h-screen bg-white text-zinc-900 font-mono">
-      {/* Fixed Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-40 bg-white/95 border-b-2 border-black backdrop-blur-sm">
-        <div className="container mx-auto px-4 h-14 flex items-center justify-between">
-          <Link to="/" className="font-bold text-lg text-black flex items-center gap-2" onClick={closeMobileMenu}>
-            <span className="bg-black text-white px-1">root@chaoan:</span>
-            <span className="cursor-blink text-black">~</span>
+    <div className="editorial-site">
+      <a className="skip-link" href="#main-content">
+        {lang === "en" ? "Skip to content" : "跳到正文"}
+      </a>
+      <header className="site-header">
+        <div className="site-wrap header-inner">
+          <Link to="/" className="wordmark" aria-label="Chaoan Li home">
+            chaoan li<span className="brand-dot">.</span>
+            <span className="wordmark-cn">李朝安</span>
           </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-1 sm:gap-4">
-            {NAV_ITEMS.map((item) => (
+          <nav className="desktop-nav" aria-label="Main navigation">
+            {nav.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
-                className={`px-3 py-1 text-xs transition-all border border-transparent hover:border-black ${
-                  location.pathname === item.path || 
-                  (item.path === '/blog' && location.pathname.startsWith('/blog'))
-                    ? 'text-white bg-black font-bold border-black' 
-                    : 'text-zinc-500 hover:text-black'
-                }`}
+                aria-current={
+                  location.pathname.startsWith(item.path) ? "page" : undefined
+                }
               >
-                {item.label[lang]}
+                {item[lang]}
               </Link>
             ))}
-
-            <div className="w-px h-4 bg-zinc-300 mx-2"></div>
-
-            <button 
-              onClick={toggleLang}
-              className="px-2 py-1 text-xs font-bold border border-zinc-300 hover:border-black hover:bg-black hover:text-white transition-all text-zinc-600"
+            <details className="more-nav">
+              <summary>
+                {lang === "en" ? "More" : "更多"} <span>⌄</span>
+              </summary>
+              <div>
+                {more.map((item) => (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    onClick={(e) =>
+                      e.currentTarget
+                        .closest("details")
+                        ?.removeAttribute("open")
+                    }
+                  >
+                    {item[lang]}
+                  </Link>
+                ))}
+                <a href="https://podcast.chaoanli.com/">
+                  {lang === "en" ? "The podcast" : "轻松愉快"} ↗
+                </a>
+              </div>
+            </details>
+          </nav>
+          <div className="header-actions">
+            <button
+              className="language-switch"
+              onClick={() => setLang(lang === "en" ? "zh" : "en")}
+              aria-label={lang === "en" ? "切换到中文" : "Switch to English"}
             >
-              {lang === 'en' ? '[EN]' : '[中文]'}
-            </button>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div className="flex md:hidden items-center gap-2">
-            <button 
-              onClick={toggleLang}
-              className="px-2 py-1 text-xs font-bold border border-zinc-300 hover:border-black hover:bg-black hover:text-white transition-all text-zinc-600"
-            >
-              {lang === 'en' ? 'EN' : '中文'}
+              {lang === "en" ? "中文" : "EN"}
             </button>
             <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-black hover:bg-zinc-100 transition-colors"
-              aria-label="Toggle menu"
+              className="mobile-toggle"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label={lang === "en" ? "Toggle navigation" : "切换导航"}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-navigation"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {menuOpen ? <X size={21} /> : <Menu size={21} />}
             </button>
           </div>
         </div>
-      </nav>
-
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="fixed inset-0 z-30 md:hidden">
-          <div 
-            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-            onClick={closeMobileMenu}
-          />
-          <div className="absolute top-14 right-0 left-0 bg-white border-b-2 border-black">
-            <div className="container mx-auto px-4 py-4 space-y-2">
-              {NAV_ITEMS.map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  onClick={closeMobileMenu}
-                  className={`block px-4 py-3 text-sm font-bold transition-all border-2 ${
-                    location.pathname === item.path || 
-                    (item.path === '/blog' && location.pathname.startsWith('/blog'))
-                      ? 'bg-black text-white border-black' 
-                      : 'bg-white text-black border-black hover:bg-zinc-100'
-                  }`}
-                >
-                  {item.label[lang]}
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Main Content */}
-      <main className="pt-14">
+        {menuOpen && (
+          <nav
+            id="mobile-navigation"
+            className="mobile-nav"
+            aria-label="Mobile navigation"
+          >
+            {[...nav, ...more].map((item) => (
+              <Link to={item.path} key={item.path}>
+                {item[lang]} <ArrowUpRight size={16} />
+              </Link>
+            ))}
+            <a href="https://podcast.chaoanli.com/">
+              {lang === "en" ? "The podcast" : "轻松愉快"} ↗
+            </a>
+          </nav>
+        )}
+      </header>
+      <main id="main-content" tabIndex={-1}>
         <Routes>
-          <Route path="/" element={<Home lang={lang} SocialLinks={SocialLinks} />} />
+          <Route path="/" element={<Home lang={lang} />} />
           <Route path="/research" element={<ResearchPage lang={lang} />} />
-          <Route path="/history" element={<HistoryPage lang={lang} />} />
-          <Route path="/blog" element={<BlogPage lang={lang} />} />
-          <Route path="/blog/:slug" element={<BlogPost lang={lang} />} />
           <Route path="/projects" element={<ProjectsPage lang={lang} />} />
-          <Route path="/lists" element={<ListsPage lang={lang} />} />
-          <Route path="/resources" element={<ResourcesPage lang={lang} />} />
+          <Route
+            path="/history"
+            element={
+              <div className="secondary-content">
+                <HistoryPage lang={lang} />
+              </div>
+            }
+          />
+          <Route
+            path="/blog"
+            element={
+              <div className="secondary-content">
+                <BlogPage lang={lang} />
+              </div>
+            }
+          />
+          <Route
+            path="/blog/:slug"
+            element={
+              <div className="secondary-content">
+                <BlogPost lang={lang} />
+              </div>
+            }
+          />
+          <Route
+            path="/lists"
+            element={
+              <div className="secondary-content">
+                <ListsPage lang={lang} />
+              </div>
+            }
+          />
+          <Route
+            path="/resources"
+            element={
+              <div className="secondary-content">
+                <ResourcesPage lang={lang} />
+              </div>
+            }
+          />
+          <Route
+            path="*"
+            element={
+              <section className="site-wrap page-intro">
+                <p className="eyebrow">404</p>
+                <h1>
+                  {lang === "en" ? "A small detour." : "走到了一条小岔路。"}
+                </h1>
+                <Link className="text-link" to="/">
+                  {lang === "en" ? "Back to home" : "返回首页"} →
+                </Link>
+              </section>
+            }
+          />
         </Routes>
       </main>
-
-      {/* Footer */}
-      <footer className="bg-white text-black py-12 border-t-2 border-black">
-        <div className="container mx-auto px-4 flex flex-col items-center">
-           <div className="flex gap-6 mb-8">
-              <SocialLinks className="text-zinc-600" />
-           </div>
-           <p className="text-xs font-mono mb-2">
-             © {new Date().getFullYear()} {SITE_DATA.profile.name.en}
-           </p>
-           <a href="https://podcast.chaoanli.com/" className="text-xs underline">
-             {lang === 'en' ? 'Podcast: 轻松愉快' : '播客：轻松愉快'}
-           </a>
+      <footer className="site-footer">
+        <div className="site-wrap">
+          <div className="footer-top">
+            <div>
+              <p className="eyebrow">
+                {lang === "en" ? "KEEP IN TOUCH" : "保持联系"}
+              </p>
+              <a
+                className="footer-email"
+                href={`mailto:${SITE_DATA.profile.email}`}
+              >
+                {SITE_DATA.profile.email} <ArrowUpRight />
+              </a>
+            </div>
+            <SocialLinks />
+          </div>
+          <div className="footer-bottom">
+            <span>© {new Date().getFullYear()} Chaoan Li</span>
+            <a href="https://podcast.chaoanli.com/">
+              {lang === "en"
+                ? "Off the page: 轻松愉快 podcast"
+                : "文字之外：轻松愉快播客"}{" "}
+              ↗
+            </a>
+            <span>College Station, TX</span>
+          </div>
         </div>
       </footer>
     </div>
   );
 }
-
-function App() {
+export default function App() {
   return (
-    <Router>
-      <AppContent />
-    </Router>
+    <BrowserRouter>
+      <Site />
+    </BrowserRouter>
   );
 }
-
-export default App;

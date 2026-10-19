@@ -1,73 +1,76 @@
 import React from "react";
-import { ArrowUpRight } from "lucide-react";
 import { Language } from "../types";
 import { SITE_DATA } from "../constants";
+import ResearchFigure from "../components/ResearchFigure";
+
 export default function ResearchPage({ lang }: { lang: Language }) {
   const en = lang === "en";
   return (
-    <div className="site-wrap research-page">
-      <header className="page-intro">
-        <p className="eyebrow">
-          RESEARCH / {en ? "PUBLICATIONS" : "研究与论文"}
-        </p>
+    <div className="site-wrap research-detail-page">
+      <header className="academic-page-intro">
+        <p className="eyebrow">RESEARCH</p>
         <h1>
-          {en ? (
-            <>
-              Making sense
-              <br />
-              of <em>models.</em>
-            </>
-          ) : (
-            <>
-              认真理解，
-              <br />
-              <em>模型与世界。</em>
-            </>
-          )}
+          {en
+            ? "Model validation, calibration & harmonic analysis"
+            : "模型验证、校准与调和分析"}
         </h1>
         <p>
           {en
-            ? "Statistics, machine learning, and the validation of computer models."
-            : "统计学、机器学习，以及计算机模型的验证。"}
+            ? "Two current statistical projects and two published papers in pure mathematics. Each figure below is tied to a case study or a stated mathematical construction."
+            : "两项当前统计研究与两篇已发表的纯数学论文。以下图表分别对应案例结果或明确的数学构造。"}
         </p>
       </header>
-      <div className="research-topics">
-        {SITE_DATA.profile.researchInterests.map((v, i) => (
-          <span key={i}>{v[lang]}</span>
-        ))}
-      </div>
-      <div className="publication-list">
-        {SITE_DATA.publications.map((pub) => (
-          <article className="publication-entry" key={pub.id}>
-            <aside>
-              <span>{pub.year}</span>
-              <p>{pub.venue}</p>
-            </aside>
-            <div>
-              <h2>{pub.title}</h2>
-              <p className="publication-authors">{pub.authors.join(" · ")}</p>
-              <p className="publication-abstract">{pub.abstract[lang]}</p>
-              <div className="publication-bottom">
-                <span>{pub.tags.join(" / ")}</span>
-                {pub.link && (
-                  <a href={pub.link} target="_blank" rel="noreferrer">
-                    {en ? "Read the paper" : "阅读论文"}{" "}
-                    <ArrowUpRight size={15} />
-                  </a>
-                )}
-              </div>
-            </div>
-          </article>
-        ))}
-      </div>
-      <a
-        className="all-github"
-        href={SITE_DATA.profile.googleScholar}
-        target="_blank"
-        rel="noreferrer"
+      <nav
+        className="research-jump"
+        aria-label={en ? "Research topics" : "研究主题"}
       >
-        Google Scholar <ArrowUpRight size={18} />
-      </a>
+        {[
+          ["validation", "Validation", "模型验证"],
+          ["calibration", "Calibration", "模型校准"],
+          ["fourier", "Fourier analysis", "Fourier 分析"],
+          ["campanato", "Campanato spaces", "Campanato 空间"],
+        ].map(([id, a, b]) => (
+          <a key={id} href={`#${id}`}>
+            {en ? a : b} ↓
+          </a>
+        ))}
+      </nav>
+      {SITE_DATA.publications.map((pub, i) => (
+        <article className="research-study" id={pub.id} key={pub.id}>
+          <header>
+            <p className="research-category">
+              0{i + 1} / {pub.tags[0]}
+            </p>
+            <h2>{pub.title}</h2>
+            <p className="research-author-line">{pub.authors.join(" · ")}</p>
+            <p className="research-venue">
+              {pub.venue}, {pub.year}
+            </p>
+          </header>
+          <p className="study-description">{pub.abstract[lang]}</p>
+          <ResearchFigure kind={pub.id} lang={lang} />
+          <div className="research-row-links">
+            {pub.link && (
+              <a href={pub.link} target="_blank" rel="noreferrer">
+                {en ? "Paper / publication" : "论文／发表页"} ↗
+              </a>
+            )}
+            {pub.id === "fourier" && (
+              <a href="https://arxiv.org/abs/2306.05840">
+                {en ? "Open preprint" : "开放预印本"} ↗
+              </a>
+            )}
+            {pub.id === "campanato" && (
+              <a href="https://arxiv.org/abs/2304.12120">
+                {en ? "Open preprint" : "开放预印本"} ↗
+              </a>
+            )}
+            {pub.id === "calibration" && (
+              <span>{en ? "Manuscript under review" : "论文在审"}</span>
+            )}
+          </div>
+        </article>
+      ))}
     </div>
   );
 }

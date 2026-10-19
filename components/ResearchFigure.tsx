@@ -1,0 +1,206 @@
+import React, { useState } from "react";
+import { Language } from "../types";
+
+export const researchImages: Record<string, string> = {
+  validation: "/research/validation-shear-layer.png",
+  calibration: "/research/calibration-curves.svg",
+  fourier: "/research/fourier-0.svg",
+  campanato: "/research/campanato-0-1.svg",
+};
+
+export default function ResearchFigure({
+  kind,
+  lang,
+}: {
+  kind: string;
+  lang: Language;
+}) {
+  const en = lang === "en";
+  const [scale, setScale] = useState(0);
+  const [degree, setDegree] = useState(1);
+  const [intervals, setIntervals] = useState(false);
+  const scaleControl = (label: string) => (
+    <div className="figure-control" role="group" aria-label={label}>
+      <span>{label}</span>
+      {[-1, 0, 1].map((k) => (
+        <button key={k} aria-pressed={scale === k} onClick={() => setScale(k)}>
+          k = {k}
+        </button>
+      ))}
+    </div>
+  );
+  const image =
+    kind === "fourier"
+      ? `/research/fourier-${scale}.svg`
+      : kind === "campanato"
+        ? `/research/campanato-${scale}-${degree}.svg`
+        : kind === "calibration" && intervals
+          ? "/research/calibration-intervals.svg"
+          : researchImages[kind];
+  const alt: Record<string, string> = {
+    validation: en
+      ? "Original shear-layer analysis: physical and simulator fits, data density, global and subdomain statistics and p-values."
+      : "剪切层原始结果：物理与仿真拟合、数据密度、整体及子域统计量和 p 值。",
+    calibration: en
+      ? "Cardiac sodium-channel calibration: observed current and fitted curves, or marginal confidence intervals under two norms."
+      : "心脏钠离子通道校准：电流观测与拟合曲线，或两种范数下的参数置信区间。",
+    fourier: en
+      ? `Spatial and Fourier magnitudes of a Gaussian derivative under anisotropic dilation, scale k=${scale}.`
+      : `Gaussian 导数在各向异性伸缩下的空间函数与 Fourier 模，尺度 k=${scale}。`,
+    campanato: en
+      ? `Function, degree-${degree} polynomial projection, and residual on an anisotropic ball at scale ${scale}.`
+      : `尺度 ${scale} 的各向异性球上的函数、${degree} 次多项式投影与残差。`,
+  };
+  return (
+    <figure className="research-figure">
+      <div className="figure-toolbar">
+        <span className="figure-type">
+          {kind === "validation" || kind === "calibration"
+            ? en
+              ? "CASE STUDY · RESEARCH RESULTS"
+              : "案例研究 · 真实结果"
+            : en
+              ? "MATHEMATICAL EXAMPLE · INTERACTIVE"
+              : "数学构造 · 可交互示例"}
+        </span>
+        {kind === "calibration" && (
+          <div
+            className="figure-control"
+            role="group"
+            aria-label={en ? "Calibration figure" : "校准图表"}
+          >
+            <button
+              aria-pressed={!intervals}
+              onClick={() => setIntervals(false)}
+            >
+              {en ? "Fitted curves" : "拟合曲线"}
+            </button>
+            <button aria-pressed={intervals} onClick={() => setIntervals(true)}>
+              {en ? "Parameter intervals" : "参数区间"}
+            </button>
+          </div>
+        )}
+        {(kind === "fourier" || kind === "campanato") &&
+          scaleControl(en ? "Dilation scale" : "伸缩尺度")}
+        {kind === "campanato" && (
+          <div
+            className="figure-control"
+            role="group"
+            aria-label={en ? "Polynomial degree" : "多项式次数"}
+          >
+            {[0, 1].map((d) => (
+              <button
+                key={d}
+                aria-pressed={degree === d}
+                onClick={() => setDegree(d)}
+              >
+                d = {d}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+      <p className="figure-mobile-hint">
+        {en
+          ? "Swipe the figure horizontally · tap to open full size"
+          : "横向滑动查看完整图表 · 点击可打开原图"}
+      </p>
+      <a
+        className="figure-image-link"
+        href={image}
+        target="_blank"
+        rel="noreferrer"
+        aria-label={en ? "Open full-size research figure" : "打开研究图原图"}
+      >
+        <img
+          src={image}
+          alt={alt[kind]}
+          width="1000"
+          height={kind === "validation" ? "750" : "480"}
+        />
+      </a>
+      <figcaption aria-live="polite">
+        {kind === "validation" && (
+          <>
+            <p>
+              {en
+                ? "Physical observations (n = 32) versus simulator data (n = 11). FMMT tests the whole Mach-number range [0, 1.5] and six subdomains of width 0.25. The dashed line marks α = 0.05; non-rejection does not establish equivalence."
+                : "物理观测 n = 32，仿真数据 n = 11。FMMT 检验 Mach 数区间 [0, 1.5] 及六个宽度为 0.25 的子域。虚线为 α = 0.05；未拒绝原假设不等于证明模型等价。"}
+            </p>
+            <p className="figure-source">
+              {en
+                ? "Original figure from the public preprint, shear-layer application."
+                : "原图来自公开预印本的剪切层应用章节。"}{" "}
+              <a href="https://arxiv.org/abs/2604.17144">arXiv:2604.17144 ↗</a>
+            </p>
+          </>
+        )}
+        {kind === "calibration" && (
+          <>
+            <p>
+              {intervals
+                ? en
+                  ? "Points and marginal 95% plug-in intervals for θ₁, θ₂ and θ₃, read directly from the saved calibration results. L² and W¹ estimate different norm-defined targets. Interval overlap is not a test that the targets are equal; these are parameter intervals, not prediction bands."
+                  : "θ₁、θ₂、θ₃ 的点估计及边际 95% 插入式置信区间，直接读取已保存的校准结果。L² 与 W¹ 对应不同范数定义的目标；区间重叠不是目标相等的检验。这些是参数区间，不是预测带。"
+                : en
+                  ? "The same 19 observations and four-state Markov simulator, calibrated with L², Sobolev W¹ and RKHS objectives. Curves are recomputed from the saved parameter estimates, not traced from an image. The exact fitting-RKHS curve is shown only as a numerical benchmark."
+                  : "同一组 19 个观测、同一个四状态 Markov 模拟器，分别使用 L²、Sobolev W¹ 与 RKHS 目标校准。曲线由保存的参数估计重新计算，未从图片描点。精确拟合 RKHS 曲线仅作为数值基准。"}
+            </p>
+            <p className="figure-source">
+              {en
+                ? "Source: calibration manuscript, cardiac sodium ion-channel study; observations from the Zhang & Wang supplementary data."
+                : "来源：校准论文的心脏钠离子通道案例；观测来自 Zhang 与 Wang 的补充数据。"}{" "}
+              <a href="https://doi.org/10.1080/01621459.2024.2340793">
+                {en ? "Data provenance" : "数据出处"} ↗
+              </a>{" "}
+              ·{" "}
+              <a href="/research/data/calibration-estimates.csv">
+                {en ? "Estimates (CSV)" : "参数结果（CSV）"}
+              </a>
+            </p>
+          </>
+        )}
+        {kind === "fourier" && (
+          <>
+            <p className="figure-equation">
+              f(x) = ∂₁ exp(−π|x|²), A = diag(2, 4)
+              <br />
+              f̂ₖ(ξ) = 8ᵏ f̂((Aᵀ)ᵏ ξ)
+            </p>
+            <p>
+              {en
+                ? "Increasing k stretches the spatial function by different amounts in the two directions and compresses its spectrum through the transpose dilation. Both axes stay fixed across scales; frequency magnitude is divided by 8ᵏ for comparison. This exact Gaussian-derivative example explains the dilation identity behind the paper’s geometry, rather than simulating its general Hardy-space theorem."
+                : "增大 k 会沿两个方向以不同倍数拉伸空间函数，频谱则通过转置伸缩压缩。各尺度使用固定坐标轴；频域模除以 8ᵏ 以便比较。这个 Gaussian 导数的精确例子解释论文几何中的伸缩恒等式，不以数值示例代替一般 Hardy 空间定理。"}
+            </p>
+            <p className="figure-source">
+              {en
+                ? "Construction based on the paper’s dilation and Fourier conventions."
+                : "采用论文中的伸缩定义与 Fourier 变换约定。"}{" "}
+              <a href="https://arxiv.org/abs/2306.05840">arXiv:2306.05840 ↗</a>
+            </p>
+          </>
+        )}
+        {kind === "campanato" && (
+          <>
+            <p className="figure-equation">
+              Bₖ = AᵏΔ, |Δ| = 1 · f(x) = sin(2x₁) + x₂²/4
+              <br />∫<sub>B</sub> (f − P<sub>B</sub>
+              <sup>d</sup>f) q = 0, ∀q ∈ 𝒫<sub>d</sub>
+            </p>
+            <p>
+              {en
+                ? "Change the anisotropic ball and polynomial degree. The projection removes the constant or affine trend; the residual shows the remaining local oscillation. Uniform-grid quadrature approximates the paper’s polynomial moment condition. The displayed RMS is one local L² residual, not the full ball quasi-Banach Campanato norm or a numerical proof of Hardy–Campanato duality."
+                : "切换各向异性球的尺度和多项式次数。投影去除常数或仿射趋势，残差呈现剩余的局部振荡。均匀网格求积近似论文的多项式矩条件。图中 RMS 是单个球上的局部 L² 残差，不是完整的球拟 Banach Campanato 范数，也不是 Hardy–Campanato 对偶定理的数值证明。"}
+            </p>
+            <p className="figure-source">
+              {en
+                ? "Source: minimizing polynomial and dilated-ball definitions in the 2023 paper."
+                : "来源：2023 年论文中的最小化多项式与伸缩球定义。"}{" "}
+              <a href="https://arxiv.org/abs/2304.12120">arXiv:2304.12120 ↗</a>
+            </p>
+          </>
+        )}
+      </figcaption>
+    </figure>
+  );
+}

@@ -90,15 +90,7 @@ export default function ProjectFeature({
               ? "AI FOR EDUCATION"
               : "AI 与教育"}
         </p>
-        <h3>
-          {option
-            ? lang === "en"
-              ? "Options, made tangible."
-              : "让期权定价变得直观。"
-            : lang === "en"
-              ? "A thoughtful teaching assistant."
-              : "一个更细致的在线助教。"}
-        </h3>
+        <h3>{option ? "BSMoption" : "EasyGrader / AutoGrade Studio"}</h3>
         <p>
           {option
             ? lang === "en"

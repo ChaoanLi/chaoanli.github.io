@@ -12,8 +12,8 @@ export default function ProjectsPage({ lang }: { lang: Language }) {
       <h1>{en ? "Software" : "软件"}</h1>
       <p>
         {en
-          ? "Two independent applications for teaching and option analysis."
-          : "两个独立应用，分别用于教学评分和期权分析。"}
+          ? "Tools and applications I build."
+          : "我开发的工具与应用。"}
       </p>
       {apps.map((app) => (
         <article className="software-entry" key={app.id}>

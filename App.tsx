@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import {
   BrowserRouter,
   Routes,
@@ -10,8 +10,8 @@ import { ArrowUpRight, Menu, X } from "lucide-react";
 import { Language } from "./types";
 import { SITE_DATA } from "./constants";
 import Home from "./pages/Home";
-import ResearchPage from "./pages/ResearchPage";
 import ProjectsPage from "./pages/ProjectsPage";
+const ResearchPage = lazy(() => import("./pages/ResearchPage"));
 
 function Site() {
   const [lang, setLang] = useState<Language>("en");
@@ -67,6 +67,7 @@ function Site() {
                 {item[lang]}
               </Link>
             ))}
+            <a href="https://podcast.chaoanli.com/">{lang === "en" ? "Podcast" : "播客"} ↗</a>
             <a href="/Chaoan_Li_Resume.pdf" target="_blank" rel="noreferrer">
               {lang === "en" ? "Résumé (PDF)" : "简历（PDF）"}
             </a>
@@ -101,6 +102,7 @@ function Site() {
                 {item[lang]} <ArrowUpRight size={16} />
               </Link>
             ))}
+            <a href="https://podcast.chaoanli.com/">{lang === "en" ? "Podcast" : "播客"} ↗</a>
             <a href="/Chaoan_Li_Resume.pdf" target="_blank" rel="noreferrer">
               {lang === "en" ? "Résumé (PDF)" : "简历（PDF）"} ↗
             </a>
@@ -110,7 +112,7 @@ function Site() {
       <main id="main-content" tabIndex={-1}>
         <Routes>
           <Route path="/" element={<Home lang={lang} />} />
-          <Route path="/research" element={<ResearchPage lang={lang} />} />
+          <Route path="/research" element={<Suspense fallback={<p className="site-wrap">{lang === "en" ? "Loading research…" : "正在加载研究…"}</p>}><ResearchPage lang={lang} /></Suspense>} />
           <Route path="/projects" element={<ProjectsPage lang={lang} />} />
           <Route
             path="*"

@@ -94,3 +94,18 @@ API key, external font or paid service.
 
 `python scripts/check_research_figures.py` independently checks the analytic
 Fourier identity against a 2D numerical FFT and verifies the data and assets.
+
+## Reader-facing presentation
+
+The home page introduces each paper with an answerable question and its actual
+contribution, rather than reducing a dense multi-panel figure to a thumbnail.
+`data/researchStories.ts` holds matched English/Chinese introductions and reading
+guides. Full scientific figures, controls, sources, and technical scope remain
+on the research page. The statistical case studies remain distinct from the
+mathematical examples; no new experiments or empirical claims were added.
+
+Display equations use KaTeX with strict parsing, MathML, and locally bundled
+fonts/CSS. Definitions are available in expandable figure notes. The Campanato
+integral consistently uses B_k and P_{B_k}^d. Research code and math fonts load
+with the detail route, not the home page. The podcast has a text entrance in
+both navigation menus and a short line on the home page.

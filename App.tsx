@@ -6,17 +6,12 @@ import {
   Link,
   useLocation,
 } from "react-router-dom";
-import { ArrowUpRight, Github, Mail, Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import { Language } from "./types";
 import { SITE_DATA } from "./constants";
 import Home from "./pages/Home";
 import ResearchPage from "./pages/ResearchPage";
-import HistoryPage from "./pages/HistoryPage";
-import BlogPage from "./pages/BlogPage";
-import BlogPost from "./pages/BlogPost";
 import ProjectsPage from "./pages/ProjectsPage";
-import ListsPage from "./pages/ListsPage";
-import ResourcesPage from "./pages/ResourcesPage";
 
 function Site() {
   const [lang, setLang] = useState<Language>("en");
@@ -47,39 +42,8 @@ function Site() {
   }, [lang]);
   const nav = [
     { path: "/research", en: "Research", zh: "研究" },
-    { path: "/projects", en: "Projects", zh: "作品" },
-    { path: "/blog", en: "Writing", zh: "随笔" },
+    { path: "/projects", en: "Software", zh: "软件" },
   ];
-  const more = [
-    { path: "/history", en: "Background", zh: "个人经历" },
-    { path: "/lists", en: "On my shelf", zh: "阅读与生活" },
-    { path: "/resources", en: "Bookmarks", zh: "书签" },
-  ];
-  const SocialLinks = () => (
-    <div className="social-links">
-      <a href={`mailto:${SITE_DATA.profile.email}`} aria-label="Email">
-        <Mail size={17} />
-      </a>
-      <a
-        href={SITE_DATA.profile.github}
-        aria-label="GitHub"
-        target="_blank"
-        rel="noreferrer"
-      >
-        <Github size={17} />
-      </a>
-      <a
-        href={SITE_DATA.profile.googleScholar}
-        target="_blank"
-        rel="noreferrer"
-      >
-        Scholar <ArrowUpRight size={13} />
-      </a>
-      <a href={SITE_DATA.profile.linkedin} target="_blank" rel="noreferrer">
-        LinkedIn <ArrowUpRight size={13} />
-      </a>
-    </div>
-  );
   return (
     <div className="editorial-site">
       <a className="skip-link" href="#main-content">
@@ -103,29 +67,9 @@ function Site() {
                 {item[lang]}
               </Link>
             ))}
-            <details className="more-nav">
-              <summary>
-                {lang === "en" ? "More" : "更多"} <span>⌄</span>
-              </summary>
-              <div>
-                {more.map((item) => (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    onClick={(e) =>
-                      e.currentTarget
-                        .closest("details")
-                        ?.removeAttribute("open")
-                    }
-                  >
-                    {item[lang]}
-                  </Link>
-                ))}
-                <a href="https://podcast.chaoanli.com/">
-                  {lang === "en" ? "The podcast" : "轻松愉快"} ↗
-                </a>
-              </div>
-            </details>
+            <a href="/Chaoan_Li_Resume.pdf" target="_blank" rel="noreferrer">
+              {lang === "en" ? "Résumé (PDF)" : "简历（PDF）"}
+            </a>
           </nav>
           <div className="header-actions">
             <button
@@ -152,13 +96,13 @@ function Site() {
             className="mobile-nav"
             aria-label="Mobile navigation"
           >
-            {[...nav, ...more].map((item) => (
+            {nav.map((item) => (
               <Link to={item.path} key={item.path}>
                 {item[lang]} <ArrowUpRight size={16} />
               </Link>
             ))}
-            <a href="https://podcast.chaoanli.com/">
-              {lang === "en" ? "The podcast" : "轻松愉快"} ↗
+            <a href="/Chaoan_Li_Resume.pdf" target="_blank" rel="noreferrer">
+              {lang === "en" ? "Résumé (PDF)" : "简历（PDF）"} ↗
             </a>
           </nav>
         )}
@@ -169,53 +113,11 @@ function Site() {
           <Route path="/research" element={<ResearchPage lang={lang} />} />
           <Route path="/projects" element={<ProjectsPage lang={lang} />} />
           <Route
-            path="/history"
-            element={
-              <div className="secondary-content">
-                <HistoryPage lang={lang} />
-              </div>
-            }
-          />
-          <Route
-            path="/blog"
-            element={
-              <div className="secondary-content">
-                <BlogPage lang={lang} />
-              </div>
-            }
-          />
-          <Route
-            path="/blog/:slug"
-            element={
-              <div className="secondary-content">
-                <BlogPost lang={lang} />
-              </div>
-            }
-          />
-          <Route
-            path="/lists"
-            element={
-              <div className="secondary-content">
-                <ListsPage lang={lang} />
-              </div>
-            }
-          />
-          <Route
-            path="/resources"
-            element={
-              <div className="secondary-content">
-                <ResourcesPage lang={lang} />
-              </div>
-            }
-          />
-          <Route
             path="*"
             element={
               <section className="site-wrap page-intro">
                 <p className="eyebrow">404</p>
-                <h1>
-                  {lang === "en" ? "A small detour." : "走到了一条小岔路。"}
-                </h1>
+                <h1>{lang === "en" ? "Page not found" : "页面不存在"}</h1>
                 <Link className="text-link" to="/">
                   {lang === "en" ? "Back to home" : "返回首页"} →
                 </Link>
@@ -224,32 +126,12 @@ function Site() {
           />
         </Routes>
       </main>
-      <footer className="site-footer">
-        <div className="site-wrap">
-          <div className="footer-top">
-            <div>
-              <p className="eyebrow">
-                {lang === "en" ? "KEEP IN TOUCH" : "保持联系"}
-              </p>
-              <a
-                className="footer-email"
-                href={`mailto:${SITE_DATA.profile.email}`}
-              >
-                {SITE_DATA.profile.email} <ArrowUpRight />
-              </a>
-            </div>
-            <SocialLinks />
-          </div>
-          <div className="footer-bottom">
-            <span>© {new Date().getFullYear()} Chaoan Li</span>
-            <a href="https://podcast.chaoanli.com/">
-              {lang === "en"
-                ? "Off the page: 轻松愉快 podcast"
-                : "文字之外：轻松愉快播客"}{" "}
-              ↗
-            </a>
-            <span>College Station, TX</span>
-          </div>
+      <footer className="site-footer academic-footer">
+        <div className="site-wrap footer-bottom">
+          <span>© {new Date().getFullYear()} Chaoan Li</span>
+          <a href={`mailto:${SITE_DATA.profile.email}`}>
+            {SITE_DATA.profile.email}
+          </a>
         </div>
       </footer>
     </div>

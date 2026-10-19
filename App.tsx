@@ -27,6 +27,22 @@ function Site() {
     window.scrollTo(0, 0);
   }, [location.pathname]);
   useEffect(() => {
+    if (!location.hash) return;
+    let cancelled = false;
+    const images = Array.from(
+      document.querySelectorAll<HTMLImageElement>("#main-content img"),
+    );
+    Promise.all(
+      images.map((image) => image.decode().catch(() => undefined)),
+    ).then(() => {
+      if (!cancelled)
+        document.getElementById(location.hash.slice(1))?.scrollIntoView();
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [location.pathname, location.hash]);
+  useEffect(() => {
     document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
   }, [lang]);
   const nav = [

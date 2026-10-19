@@ -12,21 +12,7 @@ export default function ProjectsPage({ lang }: { lang: Language }) {
     <div className="site-wrap projects-page">
       <header className="page-intro">
         <p className="eyebrow">SELECTED WORK / {en ? "PROJECTS" : "作品"}</p>
-        <h1>
-          {en ? (
-            <>
-              From a question
-              <br />
-              to <em>something useful.</em>
-            </>
-          ) : (
-            <>
-              从一个问题，
-              <br />
-              到一件<em>有用的作品。</em>
-            </>
-          )}
-        </h1>
+        <h1>{en ? "Software & projects" : "软件与项目"}</h1>
         <p>
           {en
             ? "Tools, experiments, and research code. A few things I’ve been building."
@@ -41,7 +27,7 @@ export default function ProjectsPage({ lang }: { lang: Language }) {
         <div className="section-heading">
           <div>
             <p className="eyebrow">THE RESEARCH SHELF</p>
-            <h2>{en ? "Code behind the questions." : "问题背后的代码。"}</h2>
+            <h2>{en ? "Research code" : "研究代码"}</h2>
           </div>
         </div>
         {research.map((p, i) => (

@@ -7,13 +7,13 @@ export const profile: Profile = {
   email: "chaoan@tamu.edu",
   location: { en: "College Station, TX", zh: "美国 得克萨斯州" },
   bio: {
-    en: "I’m a Ph.D. student in Data Science at Texas A&M University, advised by Rui Tuo. I work on statistics, machine learning, and the validation of computer models.",
-    zh: "我是德州农工大学数据科学博士生，导师为 Rui Tuo。我的研究关注统计学、机器学习与计算机模型验证，也喜欢把想法做成可以使用的工具。",
+    en: "I am a Ph.D. student in Industrial Engineering (Data Science track) at Texas A&M University, advised by Rui Tuo. My research focuses on statistical validation and calibration of computer models: detecting model discrepancies, defining calibration targets, and quantifying uncertainty. Previously, I studied harmonic analysis with Dachun Yang at Beijing Normal University, working on anisotropic Hardy and Campanato-type spaces.",
+    zh: "我是德州农工大学工业工程博士生（数据科学方向），导师为 Rui Tuo。我的主要研究是计算机模型的统计验证与校准：检验模型偏差、定义校准目标，并量化估计的不确定性。此前，我在北京师范大学随杨大春教授研究调和分析，关注各向异性 Hardy 空间与 Campanato 型空间。",
   },
   researchInterests: [
-    { en: "Machine Learning", zh: "机器学习" },
-    { en: "Mathematical Algorithms in AI", zh: "AI中的数学算法" },
-    { en: "Non-parametric Statistics", zh: "非参数统计" },
+    { en: "Model validation & calibration", zh: "模型验证与校准" },
+    { en: "Uncertainty quantification", zh: "不确定性量化" },
+    { en: "Harmonic analysis", zh: "调和分析" },
   ],
   avatarUrl: "/ChaoanLi.png",
   linkedin: "https://www.linkedin.com/in/chaoan-li",

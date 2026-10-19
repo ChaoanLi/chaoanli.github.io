@@ -1,210 +1,209 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, ArrowUpRight, Mic2 } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Language } from "../types";
 import { SITE_DATA } from "../constants";
-import ProjectFeature from "../components/ProjectFeature";
+import { researchImages } from "../components/ResearchFigure";
+
+const summaries: Record<string, { en: string; zh: string }> = {
+  validation: {
+    en: "Global and subdomain hypothesis tests for discrepancies between physical observations and computer models. The shear-layer study shows where a simulator departs from the data.",
+    zh: "对物理过程与计算机模型之间的差异进行整体及子域检验。剪切层案例展示了模型偏差的位置。",
+  },
+  calibration: {
+    en: "A Hilbert-space formulation of calibration targets and uncertainty quantification. The cardiac ion-channel study shows how the choice of norm changes fitted parameters.",
+    zh: "用 Hilbert 空间统一校准目标与不确定性量化。心脏离子通道案例展示范数选择如何改变参数估计。",
+  },
+  fourier: {
+    en: "Continuous representatives, pointwise Fourier estimates, and Hardy–Littlewood inequalities for anisotropic Hardy spaces. Explore the spatial and frequency geometry behind the dilation.",
+    zh: "各向异性 Hardy 空间中 Fourier 变换的连续代表、逐点估计与 Hardy–Littlewood 不等式。图中可探索空间与频域的伸缩几何。",
+  },
+  campanato: {
+    en: "Hardy–Campanato duality, Littlewood–Paley and Carleson measure characterizations. Explore how local polynomial subtraction isolates oscillation on anisotropic balls.",
+    zh: "Hardy–Campanato 对偶关系、Littlewood–Paley 与 Carleson 测度刻画。图中可探索各向异性球上的多项式相减与局部振荡。",
+  },
+};
 
 export default function Home({ lang }: { lang: Language }) {
   const en = lang === "en";
   return (
-    <>
-      <section className="site-wrap home-hero">
-        <div className="hero-copy">
-          <p className="eyebrow">
-            <span className="small-dot" />
-            {en ? "RESEARCH · CODE · CONVERSATION" : "研究 · 代码 · 对话"}
-          </p>
+    <div className="site-wrap academic-home">
+      <section className="academic-intro">
+        <div>
+          <p className="eyebrow">TEXAS A&M UNIVERSITY</p>
           <h1>
-            {en ? "Chaoan Li" : "李朝安"}
-            <span className="hero-period">.</span>
+            Chaoan Li <span>李朝安</span>
           </h1>
-          <p className="hero-statement">
-            {en ? (
-              <>
-                A little theory.
-                <br />
-                <em>Something useful.</em>
-              </>
-            ) : (
-              <>
-                从一个问题出发，
-                <br />
-                <em>把想法做成作品。</em>
-              </>
-            )}
+          <p className="academic-role">
+            {en
+              ? "Ph.D. student · Industrial Engineering · Data Science"
+              : "工业工程博士生 · 数据科学方向"}
           </p>
-          <p className="hero-bio">{SITE_DATA.profile.bio[lang]}</p>
-          <div className="hero-actions">
-            <Link className="button-primary" to="/research">
-              {en ? "Explore my research" : "了解我的研究"}{" "}
-              <ArrowUpRight size={16} />
-            </Link>
+          <p className="academic-bio">{SITE_DATA.profile.bio[lang]}</p>
+          <p className="academic-secondary">
+            {en
+              ? "I also work on statistical questions in LLM watermarking and build software for research and teaching."
+              : "此外，我也研究 LLM 水印中的统计问题，并开发服务于研究与教学的软件。"}
+          </p>
+          <div className="academic-links">
+            <a href="/Chaoan_Li_Resume.pdf" target="_blank" rel="noreferrer">
+              {en ? "Résumé (PDF)" : "简历（PDF）"} ↗
+            </a>
+            <a href={`mailto:${SITE_DATA.profile.email}`}>Email ↗</a>
             <a
-              className="text-link"
-              href={`mailto:${SITE_DATA.profile.email}?subject=CV%20request`}
+              href={SITE_DATA.profile.googleScholar}
+              target="_blank"
+              rel="noreferrer"
             >
-              {en ? "Request my CV" : "索取简历"} <ArrowUpRight size={15} />
+              Google Scholar ↗
+            </a>
+            <a href={SITE_DATA.profile.github} target="_blank" rel="noreferrer">
+              GitHub ↗
             </a>
           </div>
         </div>
-        <aside className="hero-aside">
-          <div className="portrait-frame">
-            <img
-              src={SITE_DATA.profile.avatarUrl}
-              alt="Chaoan Li’s illustrated portrait"
-              width="220"
-              height="260"
-            />
-          </div>
-          <div className="portrait-caption">
-            <span>李朝安 / CHAOAN LI</span>
-            <span>College Station, Texas</span>
-          </div>
-          <div className="aside-note">
-            <span className="eyebrow">
-              {en ? "ALSO, OFF THE CLOCK" : "研究之外"}
-            </span>
-            <p>
-              {en
-                ? "Making things. Asking questions. Talking with friends."
-                : "做点工具，保持好奇，和朋友们聊聊天。"}
-            </p>
-            <a href="https://podcast.chaoanli.com/">
-              {en ? "Listen to 轻松愉快" : "听听「轻松愉快」"}{" "}
-              <ArrowUpRight size={14} />
-            </a>
-          </div>
+        <aside>
+          <img
+            src={SITE_DATA.profile.avatarUrl}
+            alt={en ? "Chaoan Li’s illustrated portrait" : "李朝安的插画头像"}
+            width="180"
+            height="220"
+          />
+          <p>
+            College Station, Texas
+            <br />
+            chaoan@tamu.edu
+          </p>
         </aside>
       </section>
-      <section className="site-wrap selected-work" aria-labelledby="work-title">
-        <div className="section-heading">
-          <div>
-            <p className="eyebrow">01 / {en ? "SELECTED WORK" : "精选作品"}</p>
-            <h2 id="work-title">
-              {en ? "Ideas you can use." : "让想法，有用一点。"}
-            </h2>
-          </div>
-          <Link className="text-link" to="/projects">
-            {en ? "All projects" : "全部项目"} <ArrowRight size={16} />
+      <section className="academic-research" aria-labelledby="research-title">
+        <div className="academic-section-heading">
+          <h2 id="research-title">{en ? "Research" : "研究"}</h2>
+          <Link to="/research">
+            {en ? "Figures & paper details" : "图表与论文详情"} ↗
           </Link>
         </div>
-        <div className="featured-grid">
-          <ProjectFeature kind="options" lang={lang} />
-          <ProjectFeature kind="grader" lang={lang} />
-        </div>
-      </section>
-      <section
-        className="site-wrap home-research"
-        aria-labelledby="research-title"
-      >
-        <div className="section-heading">
-          <div>
-            <p className="eyebrow">02 / {en ? "RESEARCH" : "研究"}</p>
-            <h2 id="research-title">
-              {en ? "Questions worth pursuing." : "值得认真追问的问题。"}
-            </h2>
-          </div>
-          <Link className="text-link" to="/research">
-            {en ? "All publications" : "全部论文"} <ArrowRight size={16} />
-          </Link>
-        </div>
-        <div className="research-editorial">
-          <p className="research-side-note">
-            {en
-              ? "How do we know a model is a good description of the world?"
-              : "我们如何判断，一个模型能否可靠地描述真实世界？"}
-          </p>
-          <div>
-            {SITE_DATA.publications.slice(0, 2).map((pub) => (
-              <article className="research-row" key={pub.id}>
-                <span className="eyebrow">
-                  {pub.year} / {pub.venue}
-                </span>
-                <h3>
+        <p className="academic-section-note">
+          {en
+            ? "Computer model validation & calibration; harmonic analysis."
+            : "计算机模型验证与校准；调和分析。"}
+        </p>
+        {SITE_DATA.publications.map((pub, i) => (
+          <article className="research-summary" key={pub.id}>
+            <Link
+              to={`/research#${pub.id}`}
+              className="research-thumbnail"
+              aria-label={
+                en ? `Explore ${pub.title}` : `查看研究：${pub.title}`
+              }
+            >
+              <img
+                src={researchImages[pub.id]}
+                alt={
+                  en
+                    ? `Research figure: ${pub.tags[0]}`
+                    : `研究图：${pub.tags[0]}`
+                }
+                loading="lazy"
+                width="480"
+                height="280"
+              />
+            </Link>
+            <div>
+              <p className="research-category">
+                0{i + 1} / {pub.tags[0]}
+              </p>
+              <h3>{pub.title}</h3>
+              <p className="research-author-line">{pub.authors.join(", ")}</p>
+              <p className="research-venue">
+                {pub.venue}, {pub.year}
+              </p>
+              <p className="research-summary-text">{summaries[pub.id][lang]}</p>
+              <div className="research-row-links">
+                <Link to={`/research#${pub.id}`}>
+                  {en ? "Explore figures" : "探索图表"} ↗
+                </Link>
+                {pub.link && (
                   <a href={pub.link} target="_blank" rel="noreferrer">
-                    {pub.title} <ArrowUpRight size={18} />
+                    {en ? "Paper" : "论文"} ↗
                   </a>
-                </h3>
-                <p>{pub.authors.join(", ")}</p>
-              </article>
-            ))}
-          </div>
-        </div>
+                )}
+                {pub.id === "calibration" && (
+                  <span>{en ? "Manuscript under review" : "论文在审"}</span>
+                )}
+              </div>
+            </div>
+          </article>
+        ))}
       </section>
-      <section
-        className="site-wrap talks-section"
-        aria-labelledby="talks-title"
-      >
-        <div className="section-heading">
+      <section className="academic-events">
+        <div className="academic-section-heading">
+          <h2>{en ? "Talks & posters" : "报告与海报"}</h2>
+        </div>
+        <div className="academic-event">
+          <span>2026</span>
           <div>
-            <p className="eyebrow">
-              03 / {en ? "OUT IN THE WORLD" : "交流与分享"}
+            <h3>
+              CRSE Workshop · The Wharton School, University of Pennsylvania
+            </h3>
+            <p>
+              {en
+                ? "Selected oral presenter · Philadelphia"
+                : "入选口头报告 · 费城"}
             </p>
-            <h2 id="talks-title">{en ? "Talks & posters." : "报告与海报。"}</h2>
           </div>
-          <p className="section-caption">
-            {en
-              ? "Ideas shared beyond the desk."
-              : "把桌前的思考，带到更远的地方。"}
-          </p>
         </div>
-        <div className="talks-grid">
-          <article className="talk-item">
-            <span className="talk-mark">
-              IN
-              <br />
-              FORMS<span>↗</span>
-            </span>
-            <div>
-              <span className="eyebrow">
-                {en ? "POSTER PRESENTATION" : "海报展示"}
-              </span>
-              <h3>INFORMS</h3>
-              <p>
-                {en
-                  ? "Poster and presentation materials to follow."
-                  : "海报与展示材料稍后补充。"}
-              </p>
-            </div>
+        <div className="academic-event">
+          <span>2026</span>
+          <div>
+            <h3>INFORMS</h3>
+            <p>
+              {en
+                ? "Poster presentation · materials to be added"
+                : "海报展示 · 展示材料待补充"}
+            </p>
+          </div>
+        </div>
+      </section>
+      <section className="academic-software">
+        <div className="academic-section-heading">
+          <h2>{en ? "Selected software" : "软件项目"}</h2>
+          <Link to="/projects">{en ? "All projects" : "全部项目"} ↗</Link>
+        </div>
+        <div className="academic-software-grid">
+          <article>
+            <h3>
+              <a href="https://github.com/ChaoanLi/EasyGrader">
+                EasyGrader / AutoGrade Studio <ArrowUpRight size={16} />
+              </a>
+            </h3>
+            <p>
+              {en
+                ? "Rubric-based LLM grading and feedback, used during a teaching assistantship. Batch submissions, configurable policies, and CSV export for instructor review."
+                : "在助教工作中使用的 LLM 作业评分与反馈工具，支持自定义评分标准、批量提交与 CSV 导出，供教师复核。"}
+            </p>
           </article>
-          <article className="talk-item">
-            <span className="talk-mark philadelphia">
-              PHL<span>↗</span>
-            </span>
-            <div>
-              <span className="eyebrow">
-                {en ? "RESEARCH TALK" : "学术报告"}
-              </span>
-              <h3>{en ? "Philadelphia" : "费城"}</h3>
-              <p>
-                {en
-                  ? "Talk details and slides to follow."
-                  : "报告详情与幻灯片稍后补充。"}
-              </p>
-            </div>
+          <article>
+            <h3>
+              <a href="https://github.com/ChaoanLi/BSMoption">
+                BSMoption <ArrowUpRight size={16} />
+              </a>
+            </h3>
+            <p>
+              {en
+                ? "Black–Scholes–Merton pricing, American-option binomial trees, implied volatility and Greeks in an interactive bilingual application."
+                : "交互式双语期权工具，包含 Black–Scholes–Merton 定价、美式期权二项树、隐含波动率和 Greeks。"}
+            </p>
           </article>
         </div>
       </section>
-      <section className="podcast-strip">
-        <div className="site-wrap podcast-strip-inner">
-          <div className="podcast-strip-label">
-            <Mic2 size={22} />
-            <span>
-              {en ? "A DIFFERENT KIND OF CONVERSATION" : "换一种方式，聊聊生活"}
-            </span>
-          </div>
-          <a href="https://podcast.chaoanli.com/">
-            <span>轻松愉快</span>
-            <ArrowUpRight size={36} />
-          </a>
-          <p>
-            {en
-              ? "A Mandarin podcast with friends, about life and the things that stay with us."
-              : "和好朋友们聊聊生活，也聊聊那些让我们念念不忘的事。"}
-          </p>
-        </div>
-      </section>
-    </>
+      <p className="academic-personal">
+        {en
+          ? "Outside research, I co-host the Mandarin podcast "
+          : "研究之外，我和朋友一起主持中文播客 "}
+        <a href="https://podcast.chaoanli.com/">轻松愉快 ↗</a>
+        {en ? "." : "。"}
+      </p>
+    </div>
   );
 }

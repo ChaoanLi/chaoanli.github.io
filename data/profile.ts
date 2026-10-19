@@ -15,7 +15,7 @@ export const profile: Profile = {
     { en: "Uncertainty quantification", zh: "不确定性量化" },
     { en: "Harmonic analysis", zh: "调和分析" },
   ],
-  avatarUrl: "/ChaoanLi.png",
+  avatarUrl: "/chaoan-li-portrait.jpg",
   linkedin: "https://www.linkedin.com/in/chaoan-li",
   researchgate: "https://www.researchgate.net/profile/Chaoan-Li-2",
   googleScholar: "https://scholar.google.com/citations?user=AVFau-sAAAAJ",

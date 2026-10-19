@@ -2,6 +2,17 @@
 
 This guide explains how to add and manage content for your website.
 
+## Adding News
+
+Edit `data/news.ts` to add an item with a unique `id`, an ISO `date`
+(`YYYY-MM-DD`), bilingual `title`, `description`, and `linkLabel`, plus a
+public `href` for the supporting material. Dates are displayed without timezone
+shifts. The News page groups items by year in reverse chronological order;
+the homepage automatically shows the latest three. Add only confirmed events.
+
+The shared appearance of the public pages is in `appearance.css`, loaded after
+the original stylesheet. It uses system fonts and requires no remote font files.
+
 ## Adding Blog Posts
 
 Blog posts are stored as Markdown files in the `content/blog/` directory.

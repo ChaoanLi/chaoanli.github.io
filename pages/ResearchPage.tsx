@@ -46,11 +46,11 @@ export default function ResearchPage({ lang }: { lang: Language }) {
           </a>
         ))}
       </nav>
-      {SITE_DATA.publications.map((pub, i) => (
+      {SITE_DATA.publications.map((pub) => (
         <article className="research-study" id={pub.id} key={pub.id}>
           <header>
             <p className="research-category">
-              0{i + 1} / {pub.tags[0]}
+              {pub.tags[0]}
             </p>
             <h2>{researchStories[pub.id].question[lang]}</h2>
             <p className="study-paper-title">{pub.title}</p>

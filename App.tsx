@@ -11,6 +11,7 @@ import { Language } from "./types";
 import { SITE_DATA } from "./constants";
 import Home from "./pages/Home";
 import ProjectsPage from "./pages/ProjectsPage";
+import NewsPage from "./pages/NewsPage";
 const ResearchPage = lazy(() => import("./pages/ResearchPage"));
 
 function Site() {
@@ -41,6 +42,7 @@ function Site() {
     document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
   }, [lang]);
   const nav = [
+    { path: "/news", en: "News", zh: "动态" },
     { path: "/research", en: "Research", zh: "研究" },
     { path: "/projects", en: "Software", zh: "软件" },
   ];
@@ -52,7 +54,7 @@ function Site() {
       <header className="site-header">
         <div className="site-wrap header-inner">
           <Link to="/" className="wordmark" aria-label="Chaoan Li home">
-            chaoan li<span className="brand-dot">.</span>
+            Chaoan Li
             <span className="wordmark-cn">李朝安</span>
           </Link>
           <nav className="desktop-nav" aria-label="Main navigation">
@@ -98,7 +100,7 @@ function Site() {
             aria-label="Mobile navigation"
           >
             {nav.map((item) => (
-              <Link to={item.path} key={item.path}>
+              <Link to={item.path} key={item.path} aria-current={location.pathname.startsWith(item.path) ? "page" : undefined}>
                 {item[lang]} <ArrowUpRight size={16} />
               </Link>
             ))}
@@ -114,6 +116,7 @@ function Site() {
           <Route path="/" element={<Home lang={lang} />} />
           <Route path="/research" element={<Suspense fallback={<p className="site-wrap">{lang === "en" ? "Loading research…" : "正在加载研究…"}</p>}><ResearchPage lang={lang} /></Suspense>} />
           <Route path="/projects" element={<ProjectsPage lang={lang} />} />
+          <Route path="/news" element={<NewsPage lang={lang} />} />
           <Route
             path="*"
             element={

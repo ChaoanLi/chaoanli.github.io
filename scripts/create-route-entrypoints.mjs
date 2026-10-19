@@ -2,7 +2,7 @@
 // entry point so shared research links return 200 instead of the 404 fallback.
 import { copyFile, mkdir } from "node:fs/promises";
 
-const routes = ["research", "projects"];
+const routes = ["research", "projects", "news"];
 for (const route of routes) {
   await mkdir(`dist/${route}`, { recursive: true });
   await copyFile("dist/index.html", `dist/${route}/index.html`);

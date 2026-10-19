@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { Language } from "../types";
 import { SITE_DATA } from "../constants";
 import { researchStories } from "../data/researchStories";
+import NewsList from "../components/NewsList";
+import { news } from "../data/news";
 
 export default function Home({ lang }: { lang: Language }) {
   const en = lang === "en";
@@ -10,7 +12,7 @@ export default function Home({ lang }: { lang: Language }) {
     <div className="site-wrap academic-home">
       <section className="academic-intro">
         <div>
-          <p className="eyebrow">TEXAS A&M UNIVERSITY</p>
+          <p className="eyebrow">Texas A&M University</p>
           <h1>
             Chaoan Li <span>李朝安</span>
           </h1>
@@ -46,6 +48,13 @@ export default function Home({ lang }: { lang: Language }) {
           <img src={SITE_DATA.profile.avatarUrl} alt={en ? "Portrait of Chaoan Li" : "李朝安的头像"} width="240" height="240" fetchPriority="high" />
         </aside>
       </section>
+      <section className="home-news" aria-labelledby="home-news-title">
+        <div className="academic-section-heading">
+          <h2 id="home-news-title">{en ? "News" : "动态"}</h2>
+          <Link to="/news">{en ? "All updates" : "全部动态"} <span aria-hidden="true">→</span></Link>
+        </div>
+        <NewsList items={news.slice(0, 3)} lang={lang} compact />
+      </section>
       <section className="academic-research" aria-labelledby="research-title">
         <div className="academic-section-heading">
           <h2 id="research-title">{en ? "Research" : "研究"}</h2>
@@ -58,11 +67,11 @@ export default function Home({ lang }: { lang: Language }) {
             ? "Computer model validation & calibration; harmonic analysis."
             : "计算机模型验证与校准；调和分析。"}
         </p>
-        {SITE_DATA.publications.map((pub, i) => (
+        {SITE_DATA.publications.map((pub) => (
           <article className="research-summary" key={pub.id}>
             <div>
               <p className="research-category">
-                0{i + 1} / {pub.tags[0]}
+                {pub.tags[0]}
               </p>
               <h3><Link to={`/research#${pub.id}`}>{researchStories[pub.id].question[lang]}</Link></h3>
               <p className="research-paper-title">{pub.title}</p>

@@ -47,8 +47,7 @@ export const projects: Project[] = [
     },
     category: "Research",
     tech: ["R", "Statistical Testing", "Model Validation"],
-    githubUrl: "https://github.com/ChaoanLi/ModelValidator",
-    status: "active"
+    status: "archived"
   },
   {
     id: "p5",

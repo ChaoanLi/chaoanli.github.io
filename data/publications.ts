@@ -6,7 +6,7 @@ export const publications: Publication[] = [
     title: "Statistical Validation of Computer Models: Global and Subdomain Hypothesis Testing",
     authors: ["Chaoan Li", "Xianyang Zhang", "Rui Tuo"],
     venue: "arXiv preprint",
-    year: 2025,
+    year: 2026,
     abstract: {
       en: "This paper develops a formal frequentist framework for both global and subdomain validation of computer models. We propose the Fourier Maximum Modulus Test (FMMT), which leverages kernel ridge regression (KRR) to estimate the discrepancy between the computer model and the physical process, followed by a frequency-domain test based on weighted generalized Fourier coefficients. The theoretical analysis establishes the asymptotic normality of these coefficients, allowing for closed-form p-values. Simulation studies and a shear-layer experiment demonstrate that FMMT achieves high power, accurate Type I error control, and strong sensitivity to localized discrepancies.",
       zh: "本文为计算机模型的整体与子域验证构建了频率论框架，提出基于核岭回归的傅里叶最大模检验（FMMT），通过加权广义傅里叶系数的频域检验量化模型与物理过程之间的差异。理论分析建立了这些系数的渐近正态性，给出解析p值。仿真研究与剪切层实验表明，FMMT具有高功效、精确的I型误差控制和对局部差异的强敏感性。"

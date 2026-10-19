@@ -1652,3 +1652,65 @@ img {
     transition: none !important;
   }
 }
+
+/* Readable research entry points; scientific plots live at detail-page size. */
+.academic-home .research-summary {
+  display: block;
+  padding: 30px 0;
+}
+.research-summary > div { max-width: 820px; }
+.academic-home .research-summary h3 { font-size: 25px; line-height: 1.4; }
+.research-paper-title, .study-paper-title {
+  font: 15px/1.65 var(--serif);
+  color: var(--muted);
+  margin: 10px 0;
+}
+.academic-home .research-summary-text { font-size: 15px; line-height: 1.85; }
+.study-paper-title { font-size: 18px; max-width: 830px; }
+.study-contribution, .figure-reading-guide {
+  font-size: 15px;
+  line-height: 1.85;
+}
+.study-contribution { max-width: 850px; margin: 22px 0; }
+.study-contribution h3, .figure-reading-guide h3 {
+  font: 600 13px/1.7 var(--sans);
+  color: var(--green);
+  margin: 0 0 7px;
+}
+.study-contribution p, .figure-reading-guide p { margin: 5px 0; }
+.figure-reading-guide { padding: 20px 22px 4px; font-size: 14px; }
+.study-technical, .figure-technical { font-size: 14px; line-height: 1.9; }
+.study-technical { max-width: 850px; margin-block: 20px; }
+.study-technical summary, .figure-technical summary {
+  cursor: pointer;
+  color: var(--green);
+  padding-block: 9px;
+  font-size: 13px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.math-formula {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 8px 3px;
+  color: var(--ink);
+  font-size: 16px;
+}
+.math-formula .katex-display { margin: 0.5em 0; text-align: left; }
+.math-formula .katex-display > .katex { text-align: left; }
+.academic-podcast-note {
+  margin: 32px 0 0;
+  padding-top: 25px;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--muted);
+}
+.academic-podcast-note a { color: var(--green); text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 700px) {
+  .academic-home .research-summary h3 { font-size: 22px; }
+  .figure-reading-guide { padding-inline: 15px; }
+  .research-figure figcaption { padding-inline: 15px; }
+  .math-formula { font-size: 14px; }
+}

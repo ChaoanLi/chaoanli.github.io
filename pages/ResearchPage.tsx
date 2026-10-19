@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Language } from "../types";
 import { SITE_DATA } from "../constants";
 import ResearchFigure from "../components/ResearchFigure";
+import { researchStories } from "../data/researchStories";
 
 export default function ResearchPage({ lang }: { lang: Language }) {
   const en = lang === "en";
+  // The research route loads on demand, after App's initial hash effect.
+  useEffect(() => {
+    const target = document.getElementById(window.location.hash.slice(1));
+    if (!target) return;
+    let cancelled = false;
+    Promise.all(Array.from(document.querySelectorAll<HTMLImageElement>(".research-study img"))
+      .map(image => image.decode().catch(() => undefined)))
+      .then(() => { if (!cancelled) target.scrollIntoView(); });
+    return () => { cancelled = true; };
+  }, []);
   return (
     <div className="site-wrap research-detail-page">
       <header className="academic-page-intro">
@@ -41,14 +52,23 @@ export default function ResearchPage({ lang }: { lang: Language }) {
             <p className="research-category">
               0{i + 1} / {pub.tags[0]}
             </p>
-            <h2>{pub.title}</h2>
+            <h2>{researchStories[pub.id].question[lang]}</h2>
+            <p className="study-paper-title">{pub.title}</p>
             <p className="research-author-line">{pub.authors.join(" · ")}</p>
             <p className="research-venue">
               {pub.venue}, {pub.year}
             </p>
           </header>
-          <p className="study-description">{pub.abstract[lang]}</p>
+          <p className="study-description">{researchStories[pub.id].answer[lang]}</p>
+          <div className="study-contribution">
+            <h3>{en ? "What this work contributes" : "这项研究的贡献"}</h3>
+            <p>{researchStories[pub.id].contribution[lang]}</p>
+          </div>
           <ResearchFigure kind={pub.id} lang={lang} />
+          <details className="study-technical">
+            <summary>{en ? "Technical summary & scope" : "技术摘要与适用范围"}</summary>
+            <p>{pub.abstract[lang]}</p>
+          </details>
           <div className="research-row-links">
             {pub.link && (
               <a href={pub.link} target="_blank" rel="noreferrer">

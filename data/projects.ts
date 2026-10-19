@@ -10,7 +10,7 @@ export const projects: Project[] = [
     },
     category: "Media",
     tech: ["Podcasting", "Content Creation"],
-    liveUrl: "https://www.easypod.fun/",
+    liveUrl: "https://podcast.chaoanli.com/",
     status: "active"
   },
   {

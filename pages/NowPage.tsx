@@ -6,6 +6,7 @@ import { now, formatNowDate } from "../data/now";
 export default function NowPage({ lang }: { lang: Language }) {
   const { date } = useParams();
   const entry = date ? now.entries.find(item => item.date === date) : now.latest;
+  const visibleEntries = date ? (entry ? [entry] : []) : now.entries.slice(0, 2);
   const en = lang === "en";
   if (!entry) return (
     <div className="site-wrap now-page">
@@ -19,13 +20,15 @@ export default function NowPage({ lang }: { lang: Language }) {
         <h1>nownownow</h1>
         <p>{en ? "What I’ve been doing, and a few thoughts along the way." : "最近做了什么，也留下一些想法。"}</p>
       </header>
-      <article className="now-entry">
-        <p className="now-date">{en ? "Updated " : "更新于 "}<time dateTime={entry.date}>{formatNowDate(entry.date, lang)}</time></p>
-        <h2>{entry.title[lang]}</h2>
-        {entry.paragraphs[lang].map((paragraph, i) => <p key={i}>{paragraph}</p>)}
-      </article>
+      {visibleEntries.map(post => (
+        <article className="now-entry" key={post.date}>
+          <p className="now-date">{en ? "Published " : "发布于 "}<Link to={`/now/${post.date}`}><time dateTime={post.date}>{formatNowDate(post.date, lang)}</time></Link></p>
+          <h2>{post.title[lang]}</h2>
+          {post.paragraphs[lang].map((paragraph, i) => <p key={i}>{paragraph}</p>)}
+        </article>
+      ))}
       <nav className="now-entry-links" aria-label={en ? "Entry navigation" : "记录导航"}>
-        {date ? <Link to="/now">{en ? "Latest entry" : "最新近况"} →</Link> : <Link to={`/now/${entry.date}`}>{en ? "Permalink" : "这篇的固定链接"} ↗</Link>}
+        {date && <Link to="/now">{en ? "Latest entries" : "最新近况"} →</Link>}
         <Link to="/now/archive">{en ? "Archive" : "归档"} →</Link>
       </nav>
     </div>

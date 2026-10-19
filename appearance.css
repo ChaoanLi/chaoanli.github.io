@@ -128,6 +128,8 @@ body { font-size: 17px; letter-spacing: -.015em; }
 .now-header h1, .now-page > h1 { font: 600 44px/1.15 var(--sans); letter-spacing: -.04em; margin-bottom: 18px; }
 .now-header > p { font-size: 17px; line-height: 1.8; color: var(--muted); }
 .now-entry { padding-top: 44px; }
+.now-entry + .now-entry { margin-top: 40px; border-top: 1px solid var(--line); }
+.now-date a:hover { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
 .now-date { font-size: 13px; line-height: 1.7; color: var(--muted); margin-bottom: 16px; }
 .now-entry h2 { font-size: 24px; font-weight: 600; line-height: 1.4; letter-spacing: -.025em; margin-bottom: 24px; }
 .now-entry > p:not(.now-date) { font-size: 18px; line-height: 1.9; margin-block: 20px; }

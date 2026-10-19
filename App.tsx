@@ -125,6 +125,7 @@ function Site() {
           <Route path="/news" element={<Navigate to="/now" replace />} />
           <Route path="/now" element={<NowPage lang={lang} />} />
           <Route path="/now/archive" element={<NowArchive lang={lang} />} />
+          <Route path="/now/2026-10-19" element={<Navigate to="/now" replace />} />
           <Route path="/now/:date" element={<NowPage lang={lang} />} />
           <Route
             path="*"

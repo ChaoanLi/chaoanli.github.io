@@ -4,12 +4,14 @@ This guide explains how to add and manage content for your website.
 
 ## Updating nownownow
 
-Add a new object to `data/now.json` with its update `date` (`YYYY-MM-DD`),
-bilingual `title`, `excerpt`, and `paragraphs`. Use the writing/update date,
-not a past event's date. Keep existing objects intact: append a new dated entry
+Add a new object to `data/now.json` with its original publication `date` (`YYYY-MM-DD`),
+bilingual `title`, `excerpt`, and `paragraphs`. Keep separate events in separate
+entries, dated to the original event/publication as specified by the author,
+rather than the date they are added to this website. Keep existing objects intact: append a new dated entry
 instead of replacing the previous entry. Do not add imagined experiences or thoughts.
 
-The newest dated entry automatically becomes `/now` and the homepage preview.
+The newest dated entry automatically becomes the homepage preview; `/now`
+shows the latest two entries, each with its own publication date and permalink.
 Every earlier entry appears in `/now/archive`; every entry keeps its stable
 `/now/YYYY-MM-DD` URL. These URLs are generated as real static entry points by
 the build. No scheduled job is needed: archiving happens when a new dated entry

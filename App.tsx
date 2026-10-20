@@ -5,6 +5,7 @@ import {
   Route,
   Link,
   useLocation,
+  useNavigate,
   Navigate,
 } from "react-router-dom";
 import { ArrowUpRight, Menu, X } from "lucide-react";
@@ -24,6 +25,7 @@ function Site() {
   });
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   useEffect(() => {
     setMenuOpen(false);
     window.scrollTo(0, 0);
@@ -91,7 +93,15 @@ function Site() {
           <div className="header-actions">
             <button
               className="language-switch"
-              onClick={() => setLang(lang === "en" ? "zh" : "en")}
+              onClick={() => {
+                const next = lang === "en" ? "zh" : "en";
+                setLang(next);
+                const params = new URLSearchParams(location.search);
+                if (params.has("lang")) {
+                  params.set("lang", next);
+                  navigate({pathname:location.pathname,search:params.toString(),hash:location.hash},{replace:true});
+                }
+              }}
               aria-label={lang === "en" ? "切换到中文" : "Switch to English"}
             >
               {lang === "en" ? "中文" : "EN"}

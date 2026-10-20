@@ -8,7 +8,7 @@ export default function StartPage({ lang }: { lang: Language }) {
   return (
     <section className="start-page" aria-label={en ? "Bookmark search" : "收藏导航"}>
       <iframe
-        src={`${collectionUrl}/embed`}
+        src={`${collectionUrl}/embed?lang=${lang}`}
         title={en ? "Chaoan’s bookmarks and search" : "Chaoan 的收藏与搜索"}
         referrerPolicy="no-referrer"
         sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation allow-downloads"

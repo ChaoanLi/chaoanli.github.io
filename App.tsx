@@ -17,7 +17,11 @@ import NowPage, { NowArchive } from "./pages/NowPage";
 const ResearchPage = lazy(() => import("./pages/ResearchPage"));
 
 function Site() {
-  const [lang, setLang] = useState<Language>("en");
+  const [lang, setLang] = useState<Language>(() => {
+    const query = new URLSearchParams(window.location.search).get("lang");
+    if (query === "zh" || query === "en") return query;
+    try { return localStorage.getItem("chaoan-site-language") === "zh" ? "zh" : "en"; } catch { return "en"; }
+  });
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   useEffect(() => {
@@ -42,6 +46,7 @@ function Site() {
   }, [location.pathname, location.hash]);
   useEffect(() => {
     document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+    try { localStorage.setItem("chaoan-site-language", lang); } catch {}
     const pageTitle = location.pathname.startsWith("/now")
       ? (location.pathname === "/now/archive" ? `${lang === "en" ? "Archive" : "归档"} · nownownow` : "nownownow")
       : location.pathname.startsWith("/research") ? (lang === "en" ? "Research" : "研究")

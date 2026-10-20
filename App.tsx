@@ -145,7 +145,7 @@ function Site() {
           />
         </Routes>
       </main>
-      {location.pathname !== "/start" && <footer className="site-footer academic-footer">
+      {location.pathname.replace(/\/+$/, "") !== "/start" && <footer className="site-footer academic-footer">
         <div className="site-wrap footer-bottom">
           <span>© {new Date().getFullYear()} Chaoan Li</span>
           <a href={`mailto:${SITE_DATA.profile.email}`}>

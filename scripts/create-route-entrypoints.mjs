@@ -4,7 +4,7 @@ import { copyFile, mkdir, readFile } from "node:fs/promises";
 import { organizeNowEntries } from "../data/now-archive.mjs";
 
 const snapshots = organizeNowEntries(JSON.parse(await readFile(new URL("../data/now.json", import.meta.url), "utf8")));
-const routes = ["research", "projects", "news", "now", "now/archive", "now/2026-10-19", ...snapshots.entries.map(entry => `now/${entry.date}`)];
+const routes = ["start", "research", "projects", "news", "now", "now/archive", "now/2026-10-19", ...snapshots.entries.map(entry => `now/${entry.date}`)];
 for (const route of routes) {
   await mkdir(`dist/${route}`, { recursive: true });
   await copyFile("dist/index.html", `dist/${route}/index.html`);

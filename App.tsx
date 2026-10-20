@@ -12,6 +12,7 @@ import { Language } from "./types";
 import { SITE_DATA } from "./constants";
 import Home from "./pages/Home";
 import ProjectsPage from "./pages/ProjectsPage";
+import StartPage from "./pages/StartPage";
 import NowPage, { NowArchive } from "./pages/NowPage";
 const ResearchPage = lazy(() => import("./pages/ResearchPage"));
 
@@ -44,13 +45,15 @@ function Site() {
     const pageTitle = location.pathname.startsWith("/now")
       ? (location.pathname === "/now/archive" ? `${lang === "en" ? "Archive" : "归档"} · nownownow` : "nownownow")
       : location.pathname.startsWith("/research") ? (lang === "en" ? "Research" : "研究")
-      : location.pathname.startsWith("/projects") ? "Software" : "";
+      : location.pathname.startsWith("/projects") ? "Software"
+      : location.pathname.startsWith("/start") ? (lang === "en" ? "Start" : "导航") : "";
     document.title = pageTitle ? `${pageTitle} · Chaoan Li` : "Chaoan Li";
   }, [lang, location.pathname]);
   const nav = [
     { path: "/now", en: "nownownow", zh: "nownownow" },
     { path: "/research", en: "Research", zh: "研究" },
     { path: "/projects", en: "Software", zh: "软件" },
+    { path: "/start", en: "Start", zh: "导航" },
   ];
   return (
     <div className="editorial-site">
@@ -122,6 +125,7 @@ function Site() {
           <Route path="/" element={<Home lang={lang} />} />
           <Route path="/research" element={<Suspense fallback={<p className="site-wrap">{lang === "en" ? "Loading research…" : "正在加载研究…"}</p>}><ResearchPage lang={lang} /></Suspense>} />
           <Route path="/projects" element={<ProjectsPage lang={lang} />} />
+          <Route path="/start" element={<StartPage lang={lang} />} />
           <Route path="/news" element={<Navigate to="/now" replace />} />
           <Route path="/now" element={<NowPage lang={lang} />} />
           <Route path="/now/archive" element={<NowArchive lang={lang} />} />
@@ -141,14 +145,14 @@ function Site() {
           />
         </Routes>
       </main>
-      <footer className="site-footer academic-footer">
+      {location.pathname !== "/start" && <footer className="site-footer academic-footer">
         <div className="site-wrap footer-bottom">
           <span>© {new Date().getFullYear()} Chaoan Li</span>
           <a href={`mailto:${SITE_DATA.profile.email}`}>
             {SITE_DATA.profile.email}
           </a>
         </div>
-      </footer>
+      </footer>}
     </div>
   );
 }

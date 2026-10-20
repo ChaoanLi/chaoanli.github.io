@@ -7,11 +7,6 @@ export default function StartPage({ lang }: { lang: Language }) {
   const en = lang === "en";
   return (
     <section className="start-page" aria-label={en ? "Bookmark search" : "收藏导航"}>
-      <div className="start-page-toolbar">
-        <a href={collectionUrl} target="_blank" rel="noopener noreferrer">
-          {en ? "Open separately" : "独立打开"} ↗
-        </a>
-      </div>
       <iframe
         src={`${collectionUrl}/embed`}
         title={en ? "Chaoan’s bookmarks and search" : "Chaoan 的收藏与搜索"}

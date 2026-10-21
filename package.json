@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "test": "node --test scripts/*.test.mjs",
     "test:now": "node --test scripts/now-archive.test.mjs",
     "sync:content": "node -e \"require('fs').cpSync('content', 'public/content', {recursive: true})\"",
     "dev": "npm run sync:content && vite",

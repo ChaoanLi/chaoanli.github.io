@@ -3,6 +3,10 @@ import { Language } from "../types";
 import { SITE_DATA } from "../constants";
 import ResearchFigure from "../components/ResearchFigure";
 import { researchStories } from "../data/researchStories";
+import { researchOrder, researchOverview } from "../data/researchOverview";
+import ResearchExplorer from "../components/ResearchExplorer";
+import ValidationEvidence from "../components/ValidationEvidence";
+import "../research-explainers.css";
 
 export default function ResearchPage({ lang }: { lang: Language }) {
   const en = lang === "en";
@@ -19,80 +23,75 @@ export default function ResearchPage({ lang }: { lang: Language }) {
   }, []);
   return (
     <div className="site-wrap research-detail-page">
-      <header className="academic-page-intro">
-        <p className="eyebrow">RESEARCH</p>
-        <h1>
-          {en
-            ? "Model validation, calibration & harmonic analysis"
-            : "模型验证、校准与调和分析"}
-        </h1>
-        <p>
-          {en
-            ? "Two current statistical projects and two published papers in pure mathematics. Each figure below is tied to a case study or a stated mathematical construction."
-            : "两项当前统计研究与两篇已发表的纯数学论文。以下图表分别对应案例结果或明确的数学构造。"}
-        </p>
+      <header className="academic-page-intro research-intro">
+        <p className="eyebrow">{en ? "RESEARCH / EXPLAINED" : "研究 / 从问题开始"}</p>
+        <h1>{en ? "What can we learn from a model’s statistical traces?" : "从统计痕迹中，读懂模型"}</h1>
+        <p>{en
+          ? "I develop statistical methods to assess model discrepancies, define calibration targets, and study signals left by AI text watermarks. My earlier work is in harmonic analysis."
+          : "我研究如何从数据中发现模型偏差、定义合适的校准目标，以及理解 AI 文本水印留下的统计痕迹。此前，我研究调和分析。"}</p>
+        <div className="research-reading-route"><span>{en ? "Start with a question" : "从一个问题开始"}</span><span aria-hidden="true">→</span><span>{en ? "Try an example" : "动手理解"}</span><span aria-hidden="true">→</span><span>{en ? "Explore the evidence" : "深入证据与方法"}</span></div>
       </header>
-      <nav
-        className="research-jump"
-        aria-label={en ? "Research topics" : "研究主题"}
-      >
-        {[
-          ["validation", "Validation", "模型验证"],
-          ["calibration", "Calibration", "模型校准"],
-          ["fourier", "Fourier analysis", "Fourier 分析"],
-          ["campanato", "Campanato spaces", "Campanato 空间"],
-          ["talks", "Talks & posters", "报告与海报"],
-        ].map(([id, a, b]) => (
-          <a key={id} href={`#${id}`}>
-            {en ? a : b} ↓
-          </a>
-        ))}
+      <div className="research-overview-heading">
+        <h2>{en ? "Five ways into my research" : "五项研究，五个入口"}</h2>
+        <p>{en ? "Newest to oldest · no specialist background needed to start" : "按研究开展时间，从新到旧 · 无需专业背景也能开始"}</p>
+      </div>
+      <nav className="research-overview" aria-label={en ? "Research topics, newest first" : "研究主题，从新到旧"}>
+        {researchOrder.map((id, index) => <a key={id} href={`#${id}`}>
+          <span className="overview-number">0{index + 1}</span>
+          <strong>{researchOverview[id].name[lang]}</strong>
+          <span>{researchStories[id].question[lang]}</span>
+          <span className="overview-open">{en ? "Explore" : "了解这项工作"} ↓</span>
+        </a>)}
       </nav>
-      {SITE_DATA.publications.map((pub) => (
-        <article className="research-study" id={pub.id} key={pub.id}>
+      <a className="research-talks-link" href="#talks">{en ? "Talks & posters" : "报告与海报"} ↓</a>
+      {researchOrder.map((id, index) => {
+        const pub = SITE_DATA.publications.find(item => item.id === id)!;
+        const story = researchStories[id];
+        const overview = researchOverview[id];
+        return <article className="research-study explained-study" id={id} key={id}>
           <header>
-            <p className="research-category">
-              {pub.tags[0]}
-            </p>
-            <h2>{researchStories[pub.id].question[lang]}</h2>
-            <p className="study-paper-title">{pub.title}</p>
-            <p className="research-author-line">{pub.authors.join(" · ")}</p>
-            <p className="research-venue">
-              {pub.venue}, {pub.year}
-            </p>
+            <p className="research-category">0{index + 1} / {overview.name[lang]} · {id === "watermark" ? en ? "Ongoing research" : "进行中" : pub.year}</p>
+            <h2>{story.question[lang]}</h2>
           </header>
-          <p className="study-description">{researchStories[pub.id].answer[lang]}</p>
+          <p className="study-description">{story.answer[lang]}</p>
+          <p className="study-why">{overview.why[lang]}</p>
+          <div className="research-keywords" aria-label={en ? "Keywords explained" : "关键词解释"}>
+            {overview.keywords.map(keyword => <details key={keyword.term.en}>
+              <summary>{keyword.term[lang]} <span aria-hidden="true">＋</span></summary>
+              <p>{keyword.meaning[lang]}</p>
+            </details>)}
+          </div>
           <div className="study-contribution">
             <h3>{en ? "What this work contributes" : "这项研究的贡献"}</h3>
-            <p>{researchStories[pub.id].contribution[lang]}</p>
+            <p>{story.contribution[lang]}</p>
           </div>
-          <ResearchFigure kind={pub.id} lang={lang} />
+          {["watermark", "calibration", "validation"].includes(id)
+            ? <ResearchExplorer kind={id} lang={lang} />
+            : <ResearchFigure kind={id} lang={lang} />}
+          {id === "validation" && <ValidationEvidence lang={lang} />}
+          {id === "calibration" && <details className="study-evidence">
+            <summary>{en ? "02 / Real case: cardiac sodium-channel calibration" : "02 / 真实案例：心脏钠离子通道校准"}</summary>
+            <p>{en ? "The same 19 observations, with fits and parameter intervals under different calibration targets. These are saved research outputs, separate from the teaching example above." : "同样的 19 个观测，在不同校准目标下比较拟合曲线与参数区间。这里使用保存的研究结果，与上方教学示例分开。"}</p>
+            <ResearchFigure kind={id} lang={lang} />
+          </details>}
+          {id === "watermark" && <p className="study-status">{en ? "Ongoing work. This page introduces the research question and counting mechanism; empirical results will be added with a public research release." : "研究进行中。本页介绍研究问题与计数机制；实验结果将随公开研究材料一同更新。"}</p>}
+          <div className="study-capabilities"><h3>{en ? "Skills behind the work" : "这项工作体现的能力"}</h3><p>{overview.skills[lang]}</p></div>
           <details className="study-technical">
-            <summary>{en ? "Technical summary & scope" : "技术摘要与适用范围"}</summary>
+            <summary>{en ? "Go deeper: paper, methods & scope" : "继续深入：论文、方法与适用范围"}</summary>
+            <p className="study-paper-title">{pub.title}</p>
+            {pub.authors.length > 0 && <p className="research-author-line">{pub.authors.join(" · ")}</p>}
+            <p className="research-venue">{id === "watermark" ? en ? "Ongoing research" : "研究进行中" : `${pub.venue}, ${pub.year}`}</p>
             <p>{pub.abstract[lang]}</p>
+            <div className="research-row-links">
+              {pub.link && <a href={pub.link} target="_blank" rel="noreferrer">{en ? "Paper / publication" : "论文／发表页"} ↗</a>}
+              {id === "fourier" && <a href="https://arxiv.org/abs/2306.05840" target="_blank" rel="noreferrer">{en ? "Open preprint" : "开放预印本"} ↗</a>}
+              {id === "campanato" && <a href="https://arxiv.org/abs/2304.12120" target="_blank" rel="noreferrer">{en ? "Open preprint" : "开放预印本"} ↗</a>}
+              {id === "calibration" && <span>{en ? "Manuscript under review" : "论文在审"}</span>}
+            </div>
           </details>
-          <div className="research-row-links">
-            {pub.link && (
-              <a href={pub.link} target="_blank" rel="noreferrer">
-                {en ? "Paper / publication" : "论文／发表页"} ↗
-              </a>
-            )}
-            {pub.id === "fourier" && (
-              <a href="https://arxiv.org/abs/2306.05840">
-                {en ? "Open preprint" : "开放预印本"} ↗
-              </a>
-            )}
-            {pub.id === "campanato" && (
-              <a href="https://arxiv.org/abs/2304.12120">
-                {en ? "Open preprint" : "开放预印本"} ↗
-              </a>
-            )}
-            {pub.id === "calibration" && (
-              <span>{en ? "Manuscript under review" : "论文在审"}</span>
-            )}
-          </div>
-        </article>
-      ))}
+          <a className="study-back" href="#main-content">{en ? "Back to research overview" : "返回研究总览"} ↑</a>
+        </article>;
+      })}
       <section className="academic-events" id="talks" aria-labelledby="talks-title">
         <div className="academic-section-heading">
           <h2 id="talks-title">{en ? "Talks & posters" : "报告与海报"}</h2>

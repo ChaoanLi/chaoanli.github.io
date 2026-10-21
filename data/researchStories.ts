@@ -8,6 +8,12 @@ interface ResearchStory {
 }
 
 export const researchStories: Record<string, ResearchStory> = {
+  watermark: {
+    question: { en: "Can two text collections reveal a shared watermark key?", zh: "没有密钥，能看出两组文本共享同一水印配置吗？" },
+    answer: { en: "A watermark helps a key holder identify generated text. I study a different question: whether an outsider can link two text collections through the statistical traces of a reused key.", zh: "水印帮助持有密钥的一方识别生成文本。我研究另一个问题：外部观察者能否通过复用密钥留下的统计痕迹，把两组文本关联起来。" },
+    contribution: { en: "This project develops a statistical formulation and reference-based testing approach for watermark linkability. It separates authorized detection strength from the evidence available to a keyless observer, and studies the role of shared contexts and text budget.", zh: "这项工作建立水印可关联性的统计问题与基于参考集合的检验思路，区分授权检测者的检测强度与无密钥观察者能获得的证据，并研究共享上下文和文本量的作用。" },
+    guide: { en: "Compare the constructed collections and change the context width. The counter illustrates what a collision is; it does not decide whether a real key was reused.", zh: "比较两组构造文本，并改变上下文长度。计数器解释碰撞是什么，不用于判断真实密钥是否复用。" },
+  },
   validation: {
     question: { en: "Where does a simulator disagree with real measurements?", zh: "仿真模型究竟在哪些条件下偏离真实观测？" },
     answer: { en: "A model can follow the overall trend and still miss an important part of the input range. We test both the whole range and individual regions, so the question is not only whether a discrepancy exists, but where to investigate it.", zh: "模型可能抓住了整体趋势，却在某些输入条件下出现偏差。我们同时检验整体范围和局部区域，让判断从“模型有没有偏差”进一步走向“应该检查哪里”。" },

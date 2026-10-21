@@ -1,0 +1,10 @@
+{
+  "snapshot_date": "2026-10-20",
+  "source_commit": "3a9d3d3ef16bb71db48320c999f997c1c4c1bb42",
+  "source_file": "reproduce/results/shear_layer_pvalues.csv",
+  "export": "Copied CSV values without transformation; only the terminal newline may differ. The page selects the global and subdomain rows, formats numbers for display, and uses the saved Bonferroni-adjusted p-values and decisions at alpha = 0.05.",
+  "observation_source": "Wang, Chen and Tsui (2009), Bayesian validation of computer models, Technometrics 51(4), 439-451; doi:10.1198/TECH.2009.07011",
+  "sample_sizes": { "physical_observations": 32, "simulator_runs": 11 },
+  "related_preprint": "https://arxiv.org/abs/2604.17144",
+  "note": "This saved code-result snapshot may differ from earlier preprint figures. No experiments were rerun for the website."
+}

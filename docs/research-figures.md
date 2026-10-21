@@ -1,6 +1,6 @@
 # Research content and figure provenance
 
-Updated 2026-10-19. The website distinguishes saved research results from
+Updated 2026-10-20. The website distinguishes saved research results from
 mathematical examples. No synthetic data are presented as empirical findings.
 
 ## Biography and résumé
@@ -17,6 +17,20 @@ and the validation paper as under review at Technometrics. Neither is labeled
 accepted or published. The two pure mathematics papers are published.
 
 ## Validation
+
+The visible research page now uses `data/validation-pvalues.csv`, an unchanged
+numeric export of `reproduce/results/shear_layer_pvalues.csv` at source commit
+`3a9d3d3ef16bb71db48320c999f997c1c4c1bb42`. The source is the author's FMMT
+reproducibility package. `data/validation-provenance.json` records the source
+file, commit, sample sizes and export procedure without publishing private
+repository URLs. Global p = 0.0028001787. Six subdomain results use the saved
+Bonferroni-adjusted p-values; subdomains 2–5 reject at 0.05, 1 and 6 do not.
+The linked preprint supplies research context; its earlier figure may differ
+from this explicitly versioned result snapshot. The table is the current page's
+case-study evidence. No experiment was rerun for this website update.
+
+The following older image is retained as an archive asset, not displayed as
+the current validation result:
 
 `validation-shear-layer.png` is the original figure included in the public
 preprint [arXiv:2604.17144](https://arxiv.org/abs/2604.17144), section
@@ -97,7 +111,39 @@ Fourier identity against a 2D numerical FFT and verifies the data and assets.
 
 ## Reader-facing presentation
 
-The home page introduces each paper with an answerable question and its actual
+The research page displays five projects in the author's requested newest-first
+order: LLM watermarks, calibration, validation, Fourier analysis, Campanato spaces.
+`data/researchOverview.ts` holds bilingual topic labels, keyword definitions and
+capability descriptions. Every section separates its question, contribution,
+interactive intuition and deeper technical material. Existing section anchors
+and talk/poster links remain valid.
+
+`components/ResearchExplorer.tsx` uses deterministic teaching functions in
+`data/research-explainers.mjs`:
+
+- Validation: y = 0.2 + 0.5x, with a specified zero, local Gaussian bump or
+  constant discrepancy, plus a fixed sinusoidal fluctuation. Region values are
+  descriptive means of the specified discrepancy, never p-values.
+- Calibration: f(x) = x + 0.3 sin(2πx), simulator θx on [0,1]. Integrated
+  squared value error and value-plus-derivative error define two objectives.
+  Trapezoid quadrature gives the minimizing slope. Tests compare both values
+  with their analytic minimizers; these are not ion-channel results or CIs.
+- Watermark: hand-constructed word sequences illustrate context–continuation
+  collision counts, first occurrence per context per document, averaged over
+  cross-collection document pairs. Words stand in for tokenizer tokens. The
+  example does not infer a reused key from a count, display empirical power,
+  or imply that shared keys identify a human author. No private manuscript,
+  private repository link, run output or unpublished numeric finding is copied
+  into the public page. The ongoing-work section explains the research question
+  and testing approach approved for the website.
+
+Run `npm test` for educational numerical and CSV-consistency checks as well as
+the existing now-archive tests. `npm run build` packages the complete static site.
+The underlying calibration CSV was checked against the saved code output on
+2026-10-20: numeric fields agree; line endings differ. Existing plotted curves
+use these saved parameters rather than RMSE numbers copied from README text.
+
+The research page introduces each paper with an answerable question and its actual
 contribution, rather than reducing a dense multi-panel figure to a thumbnail.
 `data/researchStories.ts` holds matched English/Chinese introductions and reading
 guides. Full scientific figures, controls, sources, and technical scope remain

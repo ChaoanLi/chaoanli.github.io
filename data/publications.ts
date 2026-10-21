@@ -2,6 +2,18 @@ import { Publication } from "../types";
 
 export const publications: Publication[] = [
   {
+    id: "watermark",
+    title: "Statistical linkability of LLM watermarks",
+    authors: [],
+    venue: "Ongoing research",
+    year: 2026,
+    abstract: {
+      en: "This work asks whether an observer without a watermark key can test if two text collections share a key. A context–continuation collision score is compared with scores against reference collections. Valid inference depends on the reference sampling unit and appropriate exchangeability. A shared key concerns a generation configuration, not human authorship. The illustration explains the mechanism; it reports no new empirical results or claims about deployed systems.",
+      zh: "这项工作研究：不持有水印密钥的观察者，能否检验两组文本是否共享密钥。方法将上下文与后续 token 的碰撞得分，与参考集合的相应得分比较。有效推断取决于参考集合的抽样单位与相应可交换性。共享密钥指向生成配置，不等于同一人类作者。示例只解释机制，不报告新的实验结果，也不对已部署系统作出断言。",
+    },
+    tags: ["AI text provenance", "Watermark linkability", "Statistical testing"],
+  },
+  {
     id: "validation",
     title:
       "Statistical Validation of Computer Models: Global and Subdomain Hypothesis Testing",

@@ -4,6 +4,8 @@ import { SITE_DATA } from "../constants";
 import ResearchFigure from "../components/ResearchFigure";
 import { researchStories } from "../data/researchStories";
 import { researchOrder, researchOverview } from "../data/researchOverview";
+import { researchSummaries } from "../data/researchSummaries";
+import { Link } from "react-router-dom";
 import ResearchExplorer from "../components/ResearchExplorer";
 import ValidationEvidence from "../components/ValidationEvidence";
 import "../research-explainers.css";
@@ -24,22 +26,27 @@ export default function ResearchPage({ lang }: { lang: Language }) {
   return (
     <div className="site-wrap research-detail-page">
       <header className="academic-page-intro research-intro">
-        <p className="eyebrow">{en ? "RESEARCH / EXPLAINED" : "研究 / 从问题开始"}</p>
-        <h1>{en ? "What can we learn from a model’s statistical traces?" : "从统计痕迹中，读懂模型"}</h1>
+        <p className="eyebrow">{en ? "Research" : "研究"}</p>
+        <h1>{en ? <><span>Model reliability</span> &amp; <span>AI text privacy</span></> : <><span>模型可靠性</span>与 <span>AI 文本隐私</span></>}</h1>
         <p>{en
-          ? "I develop statistical methods to assess model discrepancies, define calibration targets, and study signals left by AI text watermarks. My earlier work is in harmonic analysis."
-          : "我研究如何从数据中发现模型偏差、定义合适的校准目标，以及理解 AI 文本水印留下的统计痕迹。此前，我研究调和分析。"}</p>
-        <div className="research-reading-route"><span>{en ? "Start with a question" : "从一个问题开始"}</span><span aria-hidden="true">→</span><span>{en ? "Try an example" : "动手理解"}</span><span aria-hidden="true">→</span><span>{en ? "Explore the evidence" : "深入证据与方法"}</span></div>
+          ? "I’m a Ph.D. student at Texas A&M University. I develop statistical methods to find where simulators disagree with measurements, estimate their parameters, and assess privacy risks in LLM text watermarks. My work combines mathematical analysis, Python implementation and experimental evaluation."
+          : "我是德州农工大学博士生，研究如何发现仿真模型偏差、估计模型参数，以及评估 LLM 文本水印的隐私风险。我的工作结合数学分析、Python 实现与实验验证。"}</p>
+        <ul className="research-track-record">
+          <li><a href="#fourier">{en ? "2 first-author mathematics papers published" : "2 篇第一作者数学论文已发表"}</a></li>
+          <li>{en ? "2 statistical-methodology manuscripts under review: " : "2 篇统计方法论文在审："}<a href="#calibration">{en ? "calibration" : "模型校准"}</a>{en ? " and " : "、"}<a href="#validation">{en ? "validation" : "模型验证"}</a></li>
+          <li><a href="#talk-crse-2026">{en ? "Selected oral presenter · CRSE Workshop, Wharton · 2026" : "入选口头报告 · 沃顿商学院 CRSE Workshop · 2026"}</a></li>
+        </ul>
+        <div className="research-contact-links">
+          <Link to="/resume">{en ? "Résumé" : "简历"} →</Link>
+          <Link to="/projects">{en ? "Software I build" : "我开发的软件"} →</Link>
+          <a href={`mailto:${SITE_DATA.profile.email}`}>{en ? "Contact" : "联系我"} ↗</a>
+        </div>
       </header>
-      <div className="research-overview-heading">
-        <h2>{en ? "Five ways into my research" : "五项研究，五个入口"}</h2>
-        <p>{en ? "Newest to oldest · no specialist background needed to start" : "按研究开展时间，从新到旧 · 无需专业背景也能开始"}</p>
-      </div>
       <nav className="research-overview" aria-label={en ? "Research topics, newest first" : "研究主题，从新到旧"}>
         {researchOrder.map((id, index) => <a key={id} href={`#${id}`}>
           <span className="overview-number">0{index + 1}</span>
           <strong>{researchOverview[id].name[lang]}</strong>
-          <span>{researchStories[id].question[lang]}</span>
+          <span>{researchSummaries[id][lang]}</span>
           <span className="overview-open">{en ? "Explore" : "了解这项工作"} ↓</span>
         </a>)}
       </nav>
@@ -54,7 +61,6 @@ export default function ResearchPage({ lang }: { lang: Language }) {
             <h2>{story.question[lang]}</h2>
           </header>
           <p className="study-description">{story.answer[lang]}</p>
-          <p className="study-why">{overview.why[lang]}</p>
           <div className="research-keywords" aria-label={en ? "Keywords explained" : "关键词解释"}>
             {overview.keywords.map(keyword => <details key={keyword.term.en}>
               <summary>{keyword.term[lang]} <span aria-hidden="true">＋</span></summary>
@@ -65,16 +71,16 @@ export default function ResearchPage({ lang }: { lang: Language }) {
             <h3>{en ? "What this work contributes" : "这项研究的贡献"}</h3>
             <p>{story.contribution[lang]}</p>
           </div>
-          {["watermark", "calibration", "validation"].includes(id)
-            ? <ResearchExplorer kind={id} lang={lang} />
-            : <ResearchFigure kind={id} lang={lang} />}
           {id === "validation" && <ValidationEvidence lang={lang} />}
           {id === "calibration" && <details className="study-evidence">
             <summary>{en ? "02 / Real case: cardiac sodium-channel calibration" : "02 / 真实案例：心脏钠离子通道校准"}</summary>
             <p>{en ? "The same 19 observations, with fits and parameter intervals under different calibration targets. These are saved research outputs, separate from the teaching example above." : "同样的 19 个观测，在不同校准目标下比较拟合曲线与参数区间。这里使用保存的研究结果，与上方教学示例分开。"}</p>
             <ResearchFigure kind={id} lang={lang} />
           </details>}
-          {id === "watermark" && <p className="study-status">{en ? "Ongoing work. This page introduces the research question and counting mechanism; empirical results will be added with a public research release." : "研究进行中。本页介绍研究问题与计数机制；实验结果将随公开研究材料一同更新。"}</p>}
+          {id === "watermark" && <p className="study-status">{en ? "Current work: a keyless, reference-based test of shared watermark keys. Empirical results are not yet public." : "当前工作：构建无密钥、基于参考集合的共享水印密钥检验。实验结果尚未公开。"}</p>}
+          {["watermark", "calibration", "validation"].includes(id)
+            ? <details className="study-demo"><summary>{en ? "Interactive illustration" : "交互示例"}</summary><ResearchExplorer kind={id} lang={lang} /></details>
+            : <ResearchFigure kind={id} lang={lang} />}
           <div className="study-capabilities"><h3>{en ? "Skills behind the work" : "这项工作体现的能力"}</h3><p>{overview.skills[lang]}</p></div>
           <details className="study-technical">
             <summary>{en ? "Go deeper: paper, methods & scope" : "继续深入：论文、方法与适用范围"}</summary>

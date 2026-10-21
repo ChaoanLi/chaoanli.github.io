@@ -1,10 +1,14 @@
-.research-intro { max-width: 880px; padding-bottom: 40px; }
+.research-intro { max-width: 880px; padding-top: 60px; padding-bottom: 36px; }
 .research-intro h1 { max-width: 850px; }
 .research-intro > p { max-width: 800px; }
-.research-reading-route { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; font-size: 13px; color: var(--muted); margin-top: 28px; }
-.research-overview-heading { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin: 12px 0 22px; }
-.research-overview-heading h2 { font-size: 21px; font-weight: 600; }
-.research-overview-heading p { color: var(--muted); font-size: 13px; }
+.research-intro h1 { font-size: clamp(32px,4.2vw,48px); }
+.research-intro h1 span { white-space: nowrap; }
+.research-intro > p:not(.eyebrow) { font-size: 17px; line-height: 1.8; color: #515154; }
+.research-track-record { list-style: none; padding: 0; margin: 22px 0; font-size: 14px; line-height: 1.8; }
+.research-track-record li { margin: 7px 0; }
+.research-track-record a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line); }
+.research-track-record a:hover { color: var(--green); }
+.research-contact-links { display: flex; flex-wrap: wrap; gap: 12px 24px; font-size: 14px; color: var(--green); margin-top: 22px; }
 .research-overview { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 0 32px; }
 .research-overview > a { padding: 24px 0; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 12px; }
 .research-overview > a strong { font-size: 19px; font-weight: 600; letter-spacing: -.02em; }
@@ -63,6 +67,9 @@
 .study-evidence { max-width: 900px; margin-top: 32px; }
 .study-evidence > summary { color: var(--green); font-size: 15px; cursor: pointer; min-height: 44px; padding: 12px 0; }
 .study-evidence > p { font-size: 15px; line-height: 1.8; margin: 14px 0; }
+.study-demo { max-width: 900px; margin-top: 24px; }
+.study-demo > summary { min-height: 44px; padding: 12px 0; color: var(--green); cursor: pointer; font-size: 15px; }
+.study-demo .research-explorer { margin-top: 8px; }
 .study-capabilities { padding: 24px 0; }
 .study-capabilities p, .study-status { font-size: 15px; line-height: 1.8; color: #515154; }
 .study-status { max-width: 800px; margin: 24px 0 0; }

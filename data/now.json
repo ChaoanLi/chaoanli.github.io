@@ -1,5 +1,21 @@
 [
   {
+    "date": "2026-09-25",
+    "title": { "en": "Zorich’s Workshop", "zh": "Zorich’s Workshop" },
+    "excerpt": {
+      "en": "I attended Zorich’s Workshop on Applied Statistics & AI and had a rewarding conversation with Dr. Quan Zhou.",
+      "zh": "参加了 Zorich’s Workshop on Applied Statistics & AI，也和 Dr. Quan Zhou 聊了聊，很有收获。"
+    },
+    "paragraphs": {
+      "en": [
+        "I attended the 2026 Zorich’s Workshop on Applied Statistics & AI. I also had a chance to chat with Dr. Quan Zhou and learned a lot from our conversation."
+      ],
+      "zh": [
+        "参加了 2026 Zorich’s Workshop on Applied Statistics & AI，也和 Dr. Quan Zhou 聊了聊，这次交流让我很有收获。"
+      ]
+    }
+  },
+  {
     "date": "2026-08-11",
     "title": { "en": "The workshop in Philadelphia", "zh": "费城的 workshop" },
     "excerpt": {

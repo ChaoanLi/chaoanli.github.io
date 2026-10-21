@@ -31,6 +31,9 @@ export default function ResearchPage({ lang }: { lang: Language }) {
         <p>{en
           ? "I’m a Ph.D. student at Texas A&M University. I develop statistical methods to find where simulators disagree with measurements, estimate their parameters, and assess privacy risks in LLM text watermarks. My work combines mathematical analysis, Python implementation and experimental evaluation."
           : "我是德州农工大学博士生，研究如何发现仿真模型偏差、估计模型参数，以及评估 LLM 文本水印的隐私风险。我的工作结合数学分析、Python 实现与实验验证。"}</p>
+        <p className="research-ownership">{en
+          ? "For the three current projects, my advisor proposed the research directions; I lead the method development, theoretical analysis, implementation and experiments."
+          : "以下三项当前研究由导师提出研究思路，我主要负责方法发展、理论分析、代码实现与实验验证。"}</p>
         <ul className="research-track-record">
           <li><a href="#fourier">{en ? "2 first-author mathematics papers published" : "2 篇第一作者数学论文已发表"}</a></li>
           <li>{en ? "2 statistical-methodology manuscripts under review: " : "2 篇统计方法论文在审："}<a href="#calibration">{en ? "calibration" : "模型校准"}</a>{en ? " and " : "、"}<a href="#validation">{en ? "validation" : "模型验证"}</a></li>
@@ -81,7 +84,7 @@ export default function ResearchPage({ lang }: { lang: Language }) {
           {["watermark", "calibration", "validation"].includes(id)
             ? <details className="study-demo"><summary>{en ? "Interactive illustration" : "交互示例"}</summary><ResearchExplorer kind={id} lang={lang} /></details>
             : <ResearchFigure kind={id} lang={lang} />}
-          <div className="study-capabilities"><h3>{en ? "Skills behind the work" : "这项工作体现的能力"}</h3><p>{overview.skills[lang]}</p></div>
+          <div className="study-capabilities"><h3>{["watermark", "calibration", "validation"].includes(id) ? en ? "My contribution" : "我主要负责的工作" : en ? "Methods behind the work" : "研究方法"}</h3><p>{overview.skills[lang]}</p></div>
           <details className="study-technical">
             <summary>{en ? "Go deeper: paper, methods & scope" : "继续深入：论文、方法与适用范围"}</summary>
             <p className="study-paper-title">{pub.title}</p>

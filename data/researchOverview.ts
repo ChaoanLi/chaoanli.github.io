@@ -13,7 +13,7 @@ export const researchOverview: Record<string, Overview> = {
   watermark: {
     name: { en: "LLM watermarks", zh: "LLM 水印" },
     why: { en: "Identifying AI text and protecting the separation between its sources can pull in different directions. Both properties need their own evaluation.", zh: "识别 AI 文本与保护来源之间的不可关联性，可能存在张力。两者需要分别评估。" },
-    skills: { en: "Formalizing a privacy question, designing controlled LLM experiments, and separating detection strength from statistical evidence of linkage.", zh: "将隐私问题形式化，设计有对照的 LLM 实验，并区分水印检测强度与来源关联的统计证据。" },
+    skills: { en: "I lead the statistical formulation and theoretical analysis, implement the tests, and design and run the LLM experiments.", zh: "我主要负责统计问题的形式化与理论分析、检验方法的代码实现，以及 LLM 实验的设计与运行。" },
     keywords: [
       { term: { en: "Text provenance", zh: "文本来源" }, meaning: { en: "What a text can reveal about the system that generated it.", zh: "文本能透露生成系统的哪些信息。" } },
       { term: { en: "Linkability", zh: "可关联性" }, meaning: { en: "Whether two collections can be connected through a shared watermark key, without knowing that key.", zh: "不知道密钥时，能否判断两组文本共享同一水印密钥。" } },
@@ -23,7 +23,7 @@ export const researchOverview: Record<string, Overview> = {
   calibration: {
     name: { en: "Model calibration", zh: "模型校准" },
     why: { en: "A parameter estimate is meaningful only after we say what “best fit” means. Different scientific priorities can define different targets.", zh: "先说清楚“拟合得最好”是什么意思，参数估计才有明确含义。不同科学目标可能对应不同参数。" },
-    skills: { en: "Defining estimands, unifying estimation methods, numerical optimization, and connecting uncertainty calculations to explicit assumptions.", zh: "定义估计目标，统一估计方法，进行数值优化，并把不确定性计算与明确的理论假设对应起来。" },
+    skills: { en: "I lead the derivation and theoretical analysis of the unified framework, its Python implementation, and evaluation through simulations and the ion-channel case study.", zh: "我主要负责统一框架的推导与理论分析、Python 实现，以及模拟研究和离子通道案例验证。" },
     keywords: [
       { term: { en: "Parameter estimation", zh: "参数估计" }, meaning: { en: "Choosing simulator settings using observations.", zh: "用观测数据选择模拟器的参数。" } },
       { term: { en: "Calibration target", zh: "校准目标" }, meaning: { en: "The parameter that minimizes the chosen measure of discrepancy.", zh: "使选定误差度量最小的参数。" } },
@@ -33,7 +33,7 @@ export const researchOverview: Record<string, Overview> = {
   validation: {
     name: { en: "Model validation", zh: "模型验证" },
     why: { en: "Before relying on a simulator, we need to know whether observations reveal systematic disagreement and where to investigate it.", zh: "依赖仿真模型之前，需要知道观测是否揭示了系统偏差，以及应该检查哪里。" },
-    skills: { en: "Turning a scientific question into testable hypotheses, developing a statistical method, and evaluating it with theory, simulations and a real case study.", zh: "将科学问题转为可检验的假设，开发统计方法，并通过理论、模拟和真实案例评估它。" },
+    skills: { en: "I lead the test derivation and theoretical proofs, implement the method in Python, and conduct the simulation studies and real-data analysis.", zh: "我主要负责检验方法的推导与理论证明、Python 实现，以及模拟研究和真实数据分析。" },
     keywords: [
       { term: { en: "Model reliability", zh: "模型可靠性" }, meaning: { en: "Understanding where model outputs are supported or challenged by observations.", zh: "理解模型输出在哪些条件下得到观测支持，或受到观测质疑。" } },
       { term: { en: "Local discrepancy", zh: "局部偏差" }, meaning: { en: "A systematic error confined to part of the input range.", zh: "只出现在部分输入范围内的系统误差。" } },

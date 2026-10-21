@@ -4,6 +4,7 @@
 .research-intro h1 { font-size: clamp(32px,4.2vw,48px); }
 .research-intro h1 span { white-space: nowrap; }
 .research-intro > p:not(.eyebrow) { font-size: 17px; line-height: 1.8; color: #515154; }
+.research-intro > .research-ownership { font-size: 14px; line-height: 1.8; margin-top: 16px; color: #515154; }
 .research-track-record { list-style: none; padding: 0; margin: 22px 0; font-size: 14px; line-height: 1.8; }
 .research-track-record li { margin: 7px 0; }
 .research-track-record a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line); }

@@ -50,3 +50,10 @@ test('published case-study decisions use adjusted p-values for all six regions',
   }
   assert.deepEqual(local.filter(row => row.reject).map(row => row.test), ['subdomain 2', 'subdomain 3', 'subdomain 4', 'subdomain 5']);
 });
+
+// The downloaded artifact and the build-time data must describe the same results.
+test('the downloadable CSV matches the data used by the page', () => {
+  const source = readFileSync(new URL('../data/validation-pvalues.csv', import.meta.url), 'utf8');
+  const download = readFileSync(new URL('../public/research/data/validation-pvalues.csv', import.meta.url), 'utf8');
+  assert.equal(download, source);
+});

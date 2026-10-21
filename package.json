@@ -7,9 +7,10 @@
     "test": "node --test scripts/*.test.mjs",
     "test:now": "node --test scripts/now-archive.test.mjs",
     "sync:content": "node -e \"require('fs').cpSync('content', 'public/content', {recursive: true})\"",
-    "dev": "npm run sync:content && vite",
-    "build": "npm run sync:content && vite build && node scripts/create-route-entrypoints.mjs",
-    "preview": "vite preview"
+    "dev": "npm run sync:content && npm run sync:research && vite",
+    "build": "npm run sync:content && npm run sync:research && vite build && node scripts/create-route-entrypoints.mjs",
+    "preview": "vite preview",
+    "sync:research": "node -e \"require('fs').copyFileSync('data/validation-pvalues.csv', 'public/research/data/validation-pvalues.csv')\""
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

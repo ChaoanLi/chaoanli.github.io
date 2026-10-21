@@ -1,6 +1,6 @@
 import React from "react";
 import { Language } from "../types";
-import csv from "../public/research/data/validation-pvalues.csv?raw";
+import csv from "../data/validation-pvalues.csv?raw";
 import { parseValidationResults } from "../data/validation-results.mjs";
 
 const rows = parseValidationResults(csv);

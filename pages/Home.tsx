@@ -30,9 +30,9 @@ export default function Home({ lang }: { lang: Language }) {
               : "此外，我也研究 LLM 水印中的统计问题，并开发服务于研究与教学的软件。"}
           </p>
           <div className="academic-links">
-            <a href="/Chaoan_Li_Resume.pdf" target="_blank" rel="noreferrer">
-              {en ? "Résumé (PDF)" : "简历（PDF）"} ↗
-            </a>
+            <Link to="/resume">
+              {en ? "Résumé (PDF)" : "简历（PDF）"} →
+            </Link>
             <a href={`mailto:${SITE_DATA.profile.email}`}>Email ↗</a>
             <a
               href={SITE_DATA.profile.googleScholar}

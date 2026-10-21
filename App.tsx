@@ -15,6 +15,7 @@ import Home from "./pages/Home";
 import ProjectsPage from "./pages/ProjectsPage";
 import StartPage from "./pages/StartPage";
 import NowPage, { NowArchive } from "./pages/NowPage";
+import ResumePage from "./pages/ResumePage";
 const ResearchPage = lazy(() => import("./pages/ResearchPage"));
 
 function Site() {
@@ -53,6 +54,7 @@ function Site() {
       ? (location.pathname === "/now/archive" ? `${lang === "en" ? "Archive" : "归档"} · nownownow` : "nownownow")
       : location.pathname.startsWith("/research") ? (lang === "en" ? "Research" : "研究")
       : location.pathname.startsWith("/projects") ? "Software"
+      : location.pathname.startsWith("/resume") ? (lang === "en" ? "Résumé" : "个人简历")
       : location.pathname.startsWith("/start") ? (lang === "en" ? "Start" : "导航") : "";
     document.title = pageTitle ? `${pageTitle} · Chaoan Li` : "Chaoan Li";
   }, [lang, location.pathname]);
@@ -85,10 +87,10 @@ function Site() {
                 {item[lang]}
               </Link>
             ))}
-            <a href="https://podcast.chaoanli.com/">{lang === "en" ? "Podcast" : "播客"} ↗</a>
-            <a href="/Chaoan_Li_Resume.pdf" target="_blank" rel="noreferrer">
+            <a href="https://podcast.chaoanli.com/" target="_blank" rel="noreferrer">{lang === "en" ? "Podcast" : "播客"} ↗</a>
+            <Link to="/resume" aria-current={location.pathname === "/resume" ? "page" : undefined}>
               {lang === "en" ? "Résumé (PDF)" : "简历（PDF）"}
-            </a>
+            </Link>
           </nav>
           <div className="header-actions">
             <button
@@ -128,16 +130,17 @@ function Site() {
                 {item[lang]} <ArrowUpRight size={16} />
               </Link>
             ))}
-            <a href="https://podcast.chaoanli.com/">{lang === "en" ? "Podcast" : "播客"} ↗</a>
-            <a href="/Chaoan_Li_Resume.pdf" target="_blank" rel="noreferrer">
-              {lang === "en" ? "Résumé (PDF)" : "简历（PDF）"} ↗
-            </a>
+            <a href="https://podcast.chaoanli.com/" target="_blank" rel="noreferrer">{lang === "en" ? "Podcast" : "播客"} ↗</a>
+            <Link to="/resume" aria-current={location.pathname === "/resume" ? "page" : undefined}>
+              {lang === "en" ? "Résumé (PDF)" : "简历（PDF）"}
+            </Link>
           </nav>
         )}
       </header>
       <main id="main-content" tabIndex={-1}>
         <Routes>
           <Route path="/" element={<Home lang={lang} />} />
+          <Route path="/resume" element={<ResumePage lang={lang} />} />
           <Route path="/research" element={<Suspense fallback={<p className="site-wrap">{lang === "en" ? "Loading research…" : "正在加载研究…"}</p>}><ResearchPage lang={lang} /></Suspense>} />
           <Route path="/projects" element={<ProjectsPage lang={lang} />} />
           <Route path="/start" element={<StartPage lang={lang} />} />

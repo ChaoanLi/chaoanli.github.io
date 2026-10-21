@@ -1,6 +1,6 @@
 import React, { useId, useState } from "react";
 import { Language } from "../types";
-import { validationExample, calibrationExample, contextCollisions } from "../data/research-explainers.mjs";
+import { validationExample, calibrationExample } from "../data/research-explainers.mjs";
 
 type Point = { x: number; y: number };
 
@@ -84,43 +84,26 @@ function Calibration({ en }: { en: boolean }) {
       { name: en ? "Calibrated simulator" : "校准后的模拟器", points: result.points.filter((_, i) => i % 10 === 0).map(p => ({ x: p.x, y: result.theta * p.x })) },
       { name: en ? "Target curve" : "目标曲线", points: result.points.filter((_, i) => i % 10 === 0).map(p => ({ x: p.x, y: p.y })), dashed: true },
     ]} />
-    <p className="explorer-takeaway" aria-live="polite">{en ? "Optimal slope" : "最优斜率"} θ = <strong>{result.theta.toFixed(3)}</strong>. {en ? "Changing the objective changes the parameter we are trying to estimate." : "改变目标，也就改变了我们要估计的参数。"}</p>
+    <p className="explorer-takeaway" aria-live="polite">{en ? "Optimal slope" : "最优斜率"} θ = <strong>{result.theta.toFixed(3)}</strong>. {en ? "Which value is correct? Each minimizes a different objective. The scientific question determines which objective is appropriate." : "哪个值才正确？两者分别使不同目标最小；应由科学问题决定哪个目标合适。"}</p>
     <p className="explorer-scope">{en ? "Exact teaching setup: f(x) = x + 0.3 sin(2πx), simulator θx, x ∈ [0,1]. We numerically minimize the integrated squared value error, with or without integrated squared derivative error. This is a concept example, not the ion-channel experiment or an uncertainty guarantee." : "明确的教学构造：f(x) = x + 0.3 sin(2πx)，模拟器为 θx，x ∈ [0,1]。数值最小化积分平方误差，并选择是否加入导数的积分平方误差。这是概念示例，不是离子通道实验，也不提供不确定性保证。"}</p>
   </>;
 }
 
-const collectionA = ["the quiet river meets the sea", "a small river meets the sea", "the old tree shades the path"];
-const collectionB = {
-  more: ["a wide river meets the sea", "the young tree shades the path", "the green tree shades the path"],
-  fewer: ["a wide river crosses the valley", "the young tree guards the field", "the green tree follows the stream"],
-};
-
 function Watermark({ en }: { en: boolean }) {
-  const [mode, setMode] = useState("more");
-  const [width, setWidth] = useState("1");
-  const B = collectionB[mode as keyof typeof collectionB];
-  const result = contextCollisions(collectionA, B, Number(width));
   return <>
-    <h3>{en ? "Look for repeated continuations across two collections" : "在两组文本之间，寻找重复的上下文与后续词"}</h3>
-    <p>{en ? "A reused watermark key can favor the same next token after a shared context. First understand what a collision counts; deciding whether it is unusual requires matched reference collections." : "复用的水印密钥可能让共享上下文之后的同一 token 更容易出现。先理解“碰撞”在数什么；要判断碰撞是否异常，还需要匹配的参考集合。"}</p>
-    <div className="explorer-controls" role="group" aria-label={en ? "Constructed text example" : "构造文本示例"}>
-      <Choice value="more" current={mode} onChange={setMode}>{en ? "More matching continuations" : "更多相同后续词"}</Choice>
-      <Choice value="fewer" current={mode} onChange={setMode}>{en ? "Fewer matching continuations" : "更少相同后续词"}</Choice>
-    </div>
-    <div className="explorer-text-pair">{[collectionA, B].map((collection, i) => <div key={i}>
-      <h4>{en ? "Collection" : "文本集合"} {i === 0 ? "A" : "B"}</h4>
-      {collection.map((text, j) => <p key={j} lang="en">{text}</p>)}
-    </div>)}</div>
-    <div className="explorer-controls" role="group" aria-label={en ? "Context width" : "上下文长度"}>
-      <span>{en ? "Context" : "上下文"}</span>
-      {["1", "2"].map(v => <Choice key={v} value={v} current={width} onChange={setWidth}>{v} {en ? "word(s)" : "个词"}</Choice>)}
-    </div>
-    <div className="explorer-collisions" aria-live="polite">
-      <p><strong>{result.total}</strong> {en ? "collisions across 9 document pairs" : "次碰撞，来自 9 对文本"} · {en ? "Mean score" : "平均得分"} <strong>{result.score.toFixed(2)}</strong></p>
-      <div>{result.matches.length ? result.matches.map(m => <code key={m}>{m}</code>) : <span>{en ? "No matching context–continuation pairs." : "没有相同的“上下文 → 后续词”组合。"}</span>}</div>
-    </div>
-    <p className="explorer-takeaway">{en ? "Detecting a watermark with its key and linking sources without a key are different tasks. Sharing a key also does not establish a shared human author." : "持有密钥检测水印，与不持有密钥关联来源，是不同的任务。共享密钥也不等于同一个人写作。"}</p>
-    <p className="explorer-scope">{en ? "Constructed counting demo, not LLM output. Words stand in for tokenizer tokens; only the first occurrence of a context in each document is counted. These scores alone cannot establish key reuse, detection power or privacy risk." : "这是手工构造的计数演示，不是 LLM 生成文本。用词代替分词器的 token，每篇只计同一上下文首次出现的位置。仅凭这里的得分，不能认定密钥复用、检测能力或隐私风险。"}</p>
+    <h3>{en ? "Two observers. Two different questions." : "两种观察者，回答不同的问题"}</h3>
+    <dl className="watermark-questions">
+      <div><dt>{en ? "Key holder" : "持有密钥的一方"}</dt><dd>{en ? "Given a text and the key: does this text carry my watermark?" : "拿着文本和密钥：这段文本带有我的水印吗？"}</dd></div>
+      <div><dt>{en ? "Outside observer" : "不持有密钥的外部观察者"}</dt><dd>{en ? "Given two text collections: do they share a watermark key?" : "只有两组文本：它们是否共享水印密钥？"}</dd></div>
+    </dl>
+    <p>{en ? "Counting repeated context–continuation pairs is only a first step. Repetition can also arise from ordinary language patterns and shared content." : "统计重复的“上下文—后续词”组合只是第一步。正常的语言规律和相似内容，也会造成重复。"}</p>
+    <ol className="watermark-reference-flow">
+      <li>{en ? "Score the two collections" : "计算两组文本的得分"}</li>
+      <li>{en ? "Compare against matched reference collections" : "与匹配的参考集合比较"}</li>
+      <li>{en ? "Assess whether the score is unusual under independent keys" : "判断这一得分在独立密钥下是否异常"}</li>
+    </ol>
+    <p className="explorer-takeaway">{en ? "A count alone is not evidence of key reuse. Reference collections provide the comparison needed for a statistical test; their sampling and exchangeability determine whether that test is valid." : "一个计数本身不是密钥复用的证据。参考集合提供统计检验所需的比较基准；抽样方式与可交换性决定检验是否有效。"}</p>
+    <p className="explorer-scope">{en ? "Method schematic, not an experiment result. No watermark key or real-world source is identified by this diagram." : "方法示意，不是实验结果。此图不识别任何真实水印密钥或来源。"}</p>
   </>;
 }
 
@@ -128,7 +111,7 @@ export default function ResearchExplorer({ kind, lang }: { kind: string; lang: L
   const id = useId();
   const en = lang === "en";
   return <section className={`research-explorer explorer-${kind}`} aria-labelledby={id}>
-    <p className="explorer-eyebrow" id={id}>{en ? "01 / BUILD AN INTUITION · INTERACTIVE EXAMPLE" : "01 / 建立直觉 · 可交互示例"}</p>
+    <p className="explorer-eyebrow" id={id}>{kind === "watermark" ? en ? "The testing problem" : "要检验的问题" : en ? "A worked example" : "一个具体例子"}</p>
     {kind === "watermark" ? <Watermark en={en} /> : kind === "calibration" ? <Calibration en={en} /> : <Validation en={en} />}
   </section>;
 }

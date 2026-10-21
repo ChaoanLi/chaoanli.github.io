@@ -29,6 +29,13 @@ The linked preprint supplies research context; its earlier figure may differ
 from this explicitly versioned result snapshot. The table is the current page's
 case-study evidence. No experiment was rerun for this website update.
 
+The opening case study plots all 32 physical observations and 11 simulator runs
+from the same pinned package, in `data/validation-observations.csv` and
+`data/validation-simulator.csv`. Straight segments only join simulator runs;
+they are not a newly fitted response. Six fixed bands use the saved regional
+test decisions, not visual separation between points and a curve. Downloadable
+copies match the build-time CSVs. The provenance file records original paths.
+
 The following older image is retained as an archive asset, not displayed as
 the current validation result:
 
@@ -128,11 +135,12 @@ and talk/poster links remain valid.
   squared value error and value-plus-derivative error define two objectives.
   Trapezoid quadrature gives the minimizing slope. Tests compare both values
   with their analytic minimizers; these are not ion-channel results or CIs.
-- Watermark: hand-constructed word sequences illustrate context–continuation
-  collision counts, first occurrence per context per document, averaged over
-  cross-collection document pairs. Words stand in for tokenizer tokens. The
-  example does not infer a reused key from a count, display empirical power,
-  or imply that shared keys identify a human author. No private manuscript,
+- Watermark: a static explanation distinguishes key-holder detection from
+  outsider linkability testing. A three-step flow explains why a score needs
+  matched reference comparisons and valid sampling assumptions; a raw count
+  alone is not evidence of key reuse. No interactive collision counter or
+  empirical power is shown, and shared keys do not identify a human author.
+  No private manuscript,
   private repository link, run output or unpublished numeric finding is copied
   into the public page. The ongoing-work section explains the research question
   and testing approach approved for the website.
@@ -143,8 +151,12 @@ The underlying calibration CSV was checked against the saved code output on
 2026-10-20: numeric fields agree; line endings differ. Existing plotted curves
 use these saved parameters rather than RMSE numbers copied from README text.
 
+The research page opens with one complete validation case before the newest-first
+project overview. Each project leaves one explicit conclusion; contributions,
+keyword definitions and technical details are expandable. Calibration asks which
+objective answers the scientific question, instead of calling one optimum best.
 The research page introduces each paper with an answerable question and its actual
-contribution, rather than reducing a dense multi-panel figure to a thumbnail.
+contribution.
 `data/researchStories.ts` holds matched English/Chinese introductions and reading
 guides. Full scientific figures, controls, sources, and technical scope remain
 on the research page. The statistical case studies remain distinct from the

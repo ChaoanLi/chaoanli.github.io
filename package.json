@@ -10,7 +10,7 @@
     "dev": "npm run sync:content && npm run sync:research && vite",
     "build": "npm run sync:content && npm run sync:research && vite build && node scripts/create-route-entrypoints.mjs",
     "preview": "vite preview",
-    "sync:research": "node -e \"require('fs').copyFileSync('data/validation-pvalues.csv', 'public/research/data/validation-pvalues.csv')\""
+    "sync:research": "node scripts/sync-research-data.mjs"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

@@ -57,3 +57,16 @@ test('the downloadable CSV matches the data used by the page', () => {
   const download = readFileSync(new URL('../public/research/data/validation-pvalues.csv', import.meta.url), 'utf8');
   assert.equal(download, source);
 });
+
+test('the case-study plot contains all physical observations and simulator runs without clipping', () => {
+  for (const [filename, count] of [['validation-observations.csv', 32], ['validation-simulator.csv', 11]]) {
+    const source = readFileSync(new URL('../data/' + filename, import.meta.url), 'utf8');
+    assert.equal(readFileSync(new URL('../public/research/data/' + filename, import.meta.url), 'utf8'), source);
+    const rows = parseValidationResults(source);
+    assert.equal(rows.length, count);
+    for (const row of rows) {
+      assert.ok(Number.isFinite(row.convective_mach) && row.convective_mach >= 0 && row.convective_mach <= 1.5);
+      assert.ok(Number.isFinite(row.compressibility_factor) && row.compressibility_factor >= 0.3 && row.compressibility_factor <= 1.4);
+    }
+  }
+});

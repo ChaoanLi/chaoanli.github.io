@@ -8,6 +8,7 @@ import { researchSummaries } from "../data/researchSummaries";
 import { Link } from "react-router-dom";
 import ResearchExplorer from "../components/ResearchExplorer";
 import ValidationEvidence from "../components/ValidationEvidence";
+import ValidationCaseStory from "../components/ValidationCaseStory";
 import "../research-explainers.css";
 
 export default function ResearchPage({ lang }: { lang: Language }) {
@@ -45,6 +46,7 @@ export default function ResearchPage({ lang }: { lang: Language }) {
           <a href={`mailto:${SITE_DATA.profile.email}`}>{en ? "Contact" : "联系我"} ↗</a>
         </div>
       </header>
+      <ValidationCaseStory lang={lang} />
       <nav className="research-overview" aria-label={en ? "Research topics, newest first" : "研究主题，从新到旧"}>
         {researchOrder.map((id, index) => <a key={id} href={`#${id}`}>
           <span className="overview-number">0{index + 1}</span>
@@ -64,33 +66,34 @@ export default function ResearchPage({ lang }: { lang: Language }) {
             <h2>{story.question[lang]}</h2>
           </header>
           <p className="study-description">{story.answer[lang]}</p>
-          <div className="research-keywords" aria-label={en ? "Keywords explained" : "关键词解释"}>
-            {overview.keywords.map(keyword => <details key={keyword.term.en}>
-              <summary>{keyword.term[lang]} <span aria-hidden="true">＋</span></summary>
-              <p>{keyword.meaning[lang]}</p>
-            </details>)}
-          </div>
-          <div className="study-contribution">
-            <h3>{en ? "What this work contributes" : "这项研究的贡献"}</h3>
-            <p>{story.contribution[lang]}</p>
-          </div>
-          {id === "validation" && <ValidationEvidence lang={lang} />}
-          {id === "calibration" && <details className="study-evidence">
-            <summary>{en ? "02 / Real case: cardiac sodium-channel calibration" : "02 / 真实案例：心脏钠离子通道校准"}</summary>
-            <p>{en ? "The same 19 observations, with fits and parameter intervals under different calibration targets. These are saved research outputs, separate from the teaching example above." : "同样的 19 个观测，在不同校准目标下比较拟合曲线与参数区间。这里使用保存的研究结果，与上方教学示例分开。"}</p>
-            <ResearchFigure kind={id} lang={lang} />
-          </details>}
-          {id === "watermark" && <p className="study-status">{en ? "Current work: a keyless, reference-based test of shared watermark keys. Empirical results are not yet public." : "当前工作：构建无密钥、基于参考集合的共享水印密钥检验。实验结果尚未公开。"}</p>}
-          {["watermark", "calibration", "validation"].includes(id)
-            ? <details className="study-demo"><summary>{en ? "Interactive illustration" : "交互示例"}</summary><ResearchExplorer kind={id} lang={lang} /></details>
-            : <ResearchFigure kind={id} lang={lang} />}
-          <div className="study-capabilities"><h3>{["watermark", "calibration", "validation"].includes(id) ? en ? "My contribution" : "我主要负责的工作" : en ? "Methods behind the work" : "研究方法"}</h3><p>{overview.skills[lang]}</p></div>
+          {id === "watermark" && <ResearchExplorer kind={id} lang={lang} />}
+          {id === "calibration" && <>
+            <ResearchExplorer kind={id} lang={lang} />
+            <details className="study-evidence">
+              <summary>{en ? "Real case: compare fits and parameter intervals" : "真实案例：比较拟合曲线与参数区间"}</summary>
+              <p>{en ? "These saved results use 19 cardiac sodium-channel observations. Compare the fitted curves, then switch to parameter intervals: similar-looking fits can give different parameter estimates." : "这里使用 19 个心脏钠离子通道观测的保存结果。先比较拟合曲线，再切换参数区间：看起来相近的拟合，也可能给出不同的参数。"}</p>
+              <ResearchFigure kind={id} lang={lang} />
+            </details>
+          </>}
+          {id === "validation" && <>
+            <p className="study-case-link"><a href="#validation-case-title">{en ? "See the measurements and simulator runs above" : "查看上方实测点与仿真运行的比较"} ↑</a></p>
+            <details className="study-evidence"><summary>{en ? "Inspect the six regional test results" : "查看六个区域的检验结果"}</summary><ValidationEvidence lang={lang} /></details>
+            <details className="study-demo"><summary>{en ? "Try changing the scope of a discrepancy" : "试试改变偏差影响的范围"}</summary><ResearchExplorer kind={id} lang={lang} /></details>
+          </>}
+          {(id === "fourier" || id === "campanato") && <ResearchFigure kind={id} lang={lang} />}
+          <p className="study-takeaway">{overview.why[lang]}</p>
+          {id === "watermark" && <p className="study-status">{en ? "Ongoing research; empirical results are not yet public." : "研究进行中，实验结果尚未公开。"}</p>}
           <details className="study-technical">
             <summary>{en ? "Go deeper: paper, methods & scope" : "继续深入：论文、方法与适用范围"}</summary>
             <p className="study-paper-title">{pub.title}</p>
             {pub.authors.length > 0 && <p className="research-author-line">{pub.authors.join(" · ")}</p>}
             <p className="research-venue">{id === "watermark" ? en ? "Ongoing research" : "研究进行中" : `${pub.venue}, ${pub.year}`}</p>
+            <div className="study-contribution"><h3>{en ? "Research contribution" : "研究贡献"}</h3><p>{story.contribution[lang]}</p></div>
+            {["watermark", "calibration", "validation"].includes(id) && <div className="study-capabilities"><h3>{en ? "My contribution" : "我主要负责的工作"}</h3><p>{overview.skills[lang]}</p></div>}
             <p>{pub.abstract[lang]}</p>
+            <div className="research-keywords" aria-label={en ? "Terms used in this work" : "相关术语"}>
+              {overview.keywords.map(keyword => <details key={keyword.term.en}><summary>{keyword.term[lang]} <span aria-hidden="true">＋</span></summary><p>{keyword.meaning[lang]}</p></details>)}
+            </div>
             <div className="research-row-links">
               {pub.link && <a href={pub.link} target="_blank" rel="noreferrer">{en ? "Paper / publication" : "论文／发表页"} ↗</a>}
               {id === "fourier" && <a href="https://arxiv.org/abs/2306.05840" target="_blank" rel="noreferrer">{en ? "Open preprint" : "开放预印本"} ↗</a>}

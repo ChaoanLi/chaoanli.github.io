@@ -1,5 +1,26 @@
 [
   {
+    "date": "2026-11-06",
+    "title": {
+      "en": "A happy ordinary day",
+      "zh": "平凡但开心的一天"
+    },
+    "excerpt": {
+      "en": "A happy day, a few good friends to spend time with—that’s not bad.",
+      "zh": "一天过得开心，有几个好朋友，可以一起玩，就还不错。"
+    },
+    "paragraphs": {
+      "en": [
+        "Lately I’ve sent out quite a few applications and taken quite a few online assessments. Afterwards, I wait to hear back. I keep waiting, but not a single interview has come.",
+        "Then I thought of Brush Up Life and Hot Spot. Maybe we don’t have to keep thinking about moving up. A happy day, a few good friends to spend time with—that’s not bad."
+      ],
+      "zh": [
+        "近来投了不少简历，也做了不少线上测评。做完了等消息，等来等去，一个面试也没有。",
+        "又想起《重启人生》和《热点》。我想，人也不必总惦记着往上走。一天过得开心，有几个好朋友，可以一起玩，就还不错。"
+      ]
+    }
+  },
+  {
     "date": "2026-09-25",
     "title": { "en": "Zorich’s Workshop", "zh": "Zorich’s Workshop" },
     "excerpt": {

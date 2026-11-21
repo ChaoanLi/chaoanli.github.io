@@ -1,5 +1,28 @@
 [
   {
+    "date": "2026-11-20",
+    "title": {
+      "en": "The little horse crosses the river",
+      "zh": "小马过河"
+    },
+    "excerpt": {
+      "en": "The ox and the squirrel both told the truth. They just stood a little differently in the water.",
+      "zh": "老牛和松鼠讲的都是实话。他们的个头差得远。"
+    },
+    "paragraphs": {
+      "zh": [
+        "上回写近况，还在说投了不少简历，一个面试也没等来。这回运气好，去了纽约，参加了 Barclays 的 Superday。以前一想到找工作，心里就发虚。如今再想起这三个字，倒能想起坐在对面的人了。",
+        "小时候读《小马过河》，总觉得小马多此一问，下去走走就是了。轮到自己，站在岸上，也恨不得把过路的都问一遍。老牛和松鼠讲的都是实话。他们的个头差得远。水到我身上什么地方，这回我也知道一点了。",
+        "面试有个好处，碰到难题，还容我想一想。守门员扑点球可没这个工夫。我还是面试吧。"
+      ],
+      "en": [
+        "The last time I wrote here, I’d sent out a pile of applications and was still waiting for a single interview. This time I got lucky. I went to New York for Barclays’ Superday. The words “job hunting” used to make me uneasy. Now when I hear them, I can picture the person sitting across from me.",
+        "As a child I wondered why the little horse in the story had so many questions about crossing the river. Just wade in and see. When my turn came, I’d gladly have asked everybody who passed along the bank. The ox and the squirrel both told the truth. There’s quite a difference in their heights. Now I have some idea where the water comes up to on me.",
+        "One nice thing about an interview is that a hard question leaves me a moment to think. A goalkeeper facing a penalty doesn’t get that moment. I’ll take the interview."
+      ]
+    }
+  },
+  {
     "date": "2026-11-06",
     "title": {
       "en": "A happy ordinary day",

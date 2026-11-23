@@ -16,7 +16,7 @@ export const profile: Profile = {
     { en: "Harmonic analysis", zh: "调和分析" },
   ],
   avatarUrl: "/chaoan-li-portrait.jpg",
-  linkedin: "https://www.linkedin.com/in/chaoan-li",
+  linkedin: "https://www.linkedin.com/in/chaoan-li-4036a6323/",
   researchgate: "https://www.researchgate.net/profile/Chaoan-Li-2",
   googleScholar: "https://scholar.google.com/citations?user=AVFau-sAAAAJ",
   github: "https://github.com/ChaoanLi",

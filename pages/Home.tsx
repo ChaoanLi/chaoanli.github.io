@@ -44,6 +44,9 @@ export default function Home({ lang }: { lang: Language }) {
             <a href={SITE_DATA.profile.github} target="_blank" rel="noreferrer">
               GitHub ↗
             </a>
+            <a href={SITE_DATA.profile.linkedin} target="_blank" rel="noreferrer">
+              LinkedIn ↗
+            </a>
           </div>
         </div>
         <aside className="academic-portrait">

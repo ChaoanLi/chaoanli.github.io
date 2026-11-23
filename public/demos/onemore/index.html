@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#ffffff"><meta name="description" content="OneMore helps friends find an evening to play together. Try a game-night invitation.">
+<title>OneMore · Weekend game night</title>
+<style>:root {
+  --ink: #202020;
+  --muted: #777;
+  --line: #eee;
+  --red: #df3e35;
+  --green: #43624b;
+  --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: #fff; color: var(--ink); font: 16px/1.6 var(--sans); -webkit-font-smoothing: antialiased; }
+button, input, select { font: inherit; }
+a { color: inherit; text-decoration: none; }
+a:hover { color: var(--red); }
+button, a, input, select { -webkit-tap-highlight-color: transparent; }
+button, a { touch-action: manipulation; }
+button { color: inherit; cursor: pointer; }
+button:disabled { cursor: default; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible { outline: 2px solid var(--red); outline-offset: 5px; }
+[hidden] { display: none !important; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.skip { position: absolute; top: -70px; left: 20px; padding: 10px; background: white; z-index: 5; }
+.skip:focus { top: 10px; }
+main { max-width: 1100px; margin: 76px auto 0; padding: 0 40px; }
+.invitation-layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 90px; align-items: start; }
+.story { position: sticky; top: 55px; }
+.club-mark { display: block; width: 112px; height: 112px; }
+.brand { display: inline-block; }
+.site-title { margin: 23px 0 10px; font-size: 28px; letter-spacing: -.6px; line-height: 1.2; }
+.story-lead { color: #777; font-size: 17px; line-height: 1.55; margin: 0 0 23px; }
+.site-header nav { display: flex; flex-wrap: wrap; align-items: center; gap: 15px; }
+.source-link { font-size: 12px; font-weight: 600; border: 2px solid #333; border-radius: 25px; padding: 2px 12px; line-height: 1.7; }
+.source-link:hover { border-color: var(--red); }
+.text-button { padding: 4px 0; border: 0; background: none; font-size: 12px; }
+.text-button:hover { color: var(--red); }
+.sidebar-event { margin-top: 40px; padding-top: 25px; border-top: 1px solid var(--line); }
+.eyebrow { color: #737373; font-size: 10px; letter-spacing: .5px; }
+.sidebar-event h3 { font-size: 15px; margin: 9px 0; font-weight: 600; }
+.event-facts { display: grid; gap: 3px; color: #777; font-size: 12px; }
+blockquote { margin: 22px 0 0; font-size: 13px; color: #777; }
+blockquote p { margin: 0 0 8px; }
+blockquote cite { font-style: normal; font-size: 11px; }
+.planner { min-width: 0; position: relative; padding-top: 0; }
+.planner::before { content: ''; position: absolute; left: -43px; top: 3px; height: 78px; width: 4px; background: var(--red); }
+.demo-intro { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 24px; }
+.demo-label { color: #777; font-size: 10px; letter-spacing: .5px; }
+.reset { font-size: 11px; color: #737373; }
+.event-heading .eyebrow { font-size: 11px; }
+h1 { font-size: 29px; line-height: 1.4; letter-spacing: -.6px; margin: 8px 0 13px; font-weight: 650; }
+.planner-description { color: #777; font-size: 16px; line-height: 1.7; margin: 0 0 28px; }
+.view-switch { display: flex; align-items: center; gap: 27px; border-bottom: 1px solid #e5e5e5; }
+.view-switch button { font-size: 13px; border: 0; border-bottom: 2px solid transparent; margin-bottom: -1px; padding: 8px 0 10px; background: none; color: #737373; }
+.view-switch button[aria-pressed=true] { color: #222; border-bottom-color: #222; font-weight: 600; }
+.guidance { color: #737373; font-size: 12px; line-height: 1.7; margin: 16px 0 28px; min-height: 40px; }
+.timezone-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-bottom: 12px; }
+.timezone-row>span { font-size: 10px; color: #737373; letter-spacing: .3px; }
+select { border: 0; background: #fff; padding: 6px 0; font-size: 11px; color: #777; cursor: pointer; max-width: 160px; }
+.slot { display: grid; grid-template-columns: 24px minmax(0,1fr) auto; align-items: center; gap: 7px 13px; padding: 22px 0 23px; border-top: 1px solid var(--line); }
+.slot input { width: 17px; height: 17px; margin: 0; accent-color: #333; cursor: pointer; }
+.slot input:disabled { cursor: default; }
+.slot-label { cursor: pointer; }
+.slot-title { font-size: 19px; font-weight: 600; letter-spacing: -.3px; }
+.slot-time { font-size: 13px; color: #737373; margin-top: 3px; }
+.slot-count { color: #737373; font-size: 12px; white-space: nowrap; align-self: start; }
+.slot.selected .slot-count { color: #333; }
+.slot-seats { display: none; }
+.slot-result { display: flex; align-items: center; gap: 7px; grid-column: 2 / -1; font-size: 12px; color: #aaa; line-height: 1.6; margin-top: 4px; }
+.slot-result.ready { color: var(--green); }
+.slot-result.warning { color: #b16d32; }
+.status-dot { width: 4px; height: 4px; background: currentColor; border-radius: 50%; flex-shrink: 0; }
+.confirm-slot { grid-column: 2 / -1; justify-self: start; padding: 5px 0; margin-top: 5px; font-size: 12px; border: 0; background: none; text-decoration: underline; text-underline-offset: 4px; }
+.confirm-slot:disabled { color: #bbb; text-decoration: none; }
+.view-host .slot input { visibility: hidden; }
+.view-host .slot-label { cursor: default; }
+.role-option { border-top: 1px solid var(--line); display: flex; align-items: start; gap: 13px; padding-top: 23px; margin: 0 0 25px; cursor: pointer; }
+.role-option input { width: 17px; height: 17px; margin: 4px 0 0; accent-color: #333; flex-shrink: 0; }
+.role-option strong { font-size: 14px; font-weight: 500; }
+.role-option small { display: block; color: #737373; font-size: 12px; margin-top: 4px; }
+.primary, .secondary { display: inline-flex; min-height: 38px; padding: 7px 21px; align-items: center; justify-content: center; border: 2px solid #292929; border-radius: 24px; background: #292929; color: white; font-size: 13px; line-height: 1.4; font-weight: 600; }
+.primary:hover { color: white; background: #555; border-color: #555; }
+.primary:disabled { background: #eee; border-color: #eee; color: #aaa; }
+.secondary { background: white; color: #333; }
+.response-status { font-size: 11px; color: #737373; margin: 12px 0 27px; min-height: 18px; }
+.response-status.saved { color: #666; }
+.outcome { margin: 26px 0; border-left: 3px solid var(--red); padding: 0 0 0 20px; }
+.outcome h3 { font-size: 23px; margin: 7px 0 11px; font-weight: 600; }
+.outcome p { font-size: 13px; color: #777; white-space: pre-line; margin-bottom: 19px; line-height: 1.8; }
+.outcome small { display: block; color: #737373; font-size: 11px; margin-top: 13px; }
+.people-line { font-size: 12px; color: #737373; padding: 20px 0; border-top: 1px solid var(--line); margin: 0; }
+.demo-boundary { color: #737373; font-size: 11px; line-height: 1.9; padding: 8px 0 22px; }
+.demo-boundary span { display: block; }
+.build-notes { border-top: 1px solid var(--line); }
+summary { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; font-size: 12px; color: #777; cursor: pointer; list-style: none; }
+summary::-webkit-details-marker { display: none; }
+.plus { font-size: 18px; color: #aaa; }
+details[open] .plus { transform: rotate(45deg); }
+.notes-grid { padding: 0 0 18px; }
+.notes-grid h3 { font-size: 13px; font-weight: 600; margin: 15px 0 4px; }
+.notes-grid p { font-size: 12px; color: #777; line-height: 1.8; margin: 0; }
+.site-footer { display: flex; gap: 20px; justify-content: space-between; color: #aaa; font-size: 11px; padding: 25px 0 40px; border-top: 1px solid var(--line); }
+.phone-jump { display: none; }
+@media (min-width: 1450px) { main { margin-top: 95px; } }
+@media (max-width: 1000px) { main { padding: 0 32px; } .invitation-layout { grid-template-columns: 210px minmax(0,1fr); gap: 60px; } .planner::before { left: -31px; } }
+@media (max-width: 720px) {
+  main { margin-top: 33px; padding: 0 24px; max-width: 600px; }
+  .invitation-layout { display: block; }
+  .story { position: static; }
+  .club-mark { width: 82px; height: 82px; }
+  .site-header { position: relative; padding-bottom: 26px; }
+  .site-title { font-size: 25px; margin: 17px 0 8px; }
+  .story-lead { font-size: 15px; margin: 0 0 12px; max-width: 340px; }
+  .site-header nav { position: absolute; top: 9px; right: 0; gap: 13px; }
+  .source-link { font-size: 10px; padding: 2px 9px; }
+  .text-button { font-size: 11px; }
+  .sidebar-event { display: none; }
+  .phone-jump { display: inline-block; font-size: 12px; color: #777; border-bottom: 1px solid #bbb; padding: 6px 0; }
+  .planner { border-top: 1px solid #eee; padding-top: 23px; }
+  .planner::before { display: none; }
+  .demo-intro { margin-bottom: 23px; }
+  h1 { font-size: 25px; line-height: 1.5; margin-bottom: 11px; }
+  .planner-description { font-size: 14px; line-height: 1.8; margin-bottom: 23px; }
+  .view-switch { gap: 25px; }
+  .guidance { font-size: 12px; margin-bottom: 24px; }
+  .slot { padding: 20px 0; gap: 8px 10px; grid-template-columns: 19px minmax(0,1fr) auto; }
+  .slot-title { font-size: 17px; }
+  .slot-time { font-size: 12px; }
+  .slot-count { font-size: 11px; }
+  .slot-result { font-size: 11px; }
+  .timezone-row>span { font-size: 9px; }
+  select { font-size: 10px; max-width: 125px; }
+  .role-option { gap: 12px; }
+  .role-option small { font-size: 11px; }
+  .role-option strong { font-size: 13px; }
+  #planner-heading { scroll-margin-top: 25px; }
+}
+@media (max-width: 360px) { main { padding: 0 18px; } .source-link { font-size: 9px; padding: 2px 7px; } .slot-title { font-size: 15px; } .site-header nav { gap: 10px; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
+
+.slot-roster { grid-column: 2 / -1; font-size: 11px; color: #737373; margin-top: 2px; }
+</style>
+</head>
+<body>
+<a class="skip" href="#invitation">Skip to invitation</a>
+<main>
+<div class="invitation-layout">
+<aside class="story" aria-label="About OneMore">
+<header class="site-header">
+<a class="brand" href="#" aria-label="OneMore home">
+<svg class="club-mark" viewBox="0 0 122 122" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M9 10L112 8 114 111 10 114 9 10Z" fill="white" stroke="#292929" stroke-width="1.3"/>
+<g fill="#df3e35" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="29" letter-spacing="-1"><text x="21" y="42" transform="rotate(-3 21 42)">ONE</text><text x="18" y="70" transform="rotate(2 18 70)">MORE</text></g>
+<g fill="none" stroke="#292929" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"><path d="M28 96L45 81 65 87 48 104 28 96Z M29 96L29 106 M48 104L48 111 M65 87L65 99 M45 81L45 73 M65 87L65 78 45 73 44 81"/><path d="M81 86L94 82 100 94 87 99 81 86Z"/><path d="M84 86L89 87 94 85 M89 87L91 96"/></g>
+</svg>
+</a>
+<h2 class="site-title">OneMore</h2>
+<p class="story-lead" data-i18n="lead">A place to turn “we should hang out” into an evening that works for everyone.</p>
+<a class="phone-jump" href="#planner-heading" data-i18n="jump">See the invitation ↓</a>
+<nav aria-label="Project"><a class="source-link" href="https://github.com/ChaoanLi/OneMore" target="_blank" rel="noopener" data-i18n="project">About the project ↗</a><button id="language-toggle" class="text-button" aria-label="Switch language">中文</button></nav>
+</header>
+<div class="sidebar-event"><span class="eyebrow" data-i18n="invited">THIS INVITATION</span><h3 data-i18n="eventName">A game night at Alex’s</h3><div class="event-facts"><span data-i18n="duration">About 3 hours</span><span data-i18n="location">Alex’s place</span><span data-i18n="players">4 players, including a game master</span></div><blockquote><p data-i18n="hostNote">“I’ll bring the games. Maya’s bringing snacks. New players welcome.”</p><cite data-i18n="hostCredit">Alex, hosting</cite></blockquote></div>
+</aside>
+<section class="planner" id="invitation" aria-labelledby="event-title">
+<div class="demo-intro"><span class="demo-label" data-i18n="demoLabel">TRY AN INVITATION</span><button class="text-button reset" id="reset-demo" data-i18n="reset">Start over ↺</button></div>
+<div class="event-heading"><div class="eyebrow" data-i18n="tryLabel">FROM ALEX · TO YOU</div><h1 id="event-title" data-i18n="title">Anyone free for a game night?</h1><p class="planner-description" data-i18n="plannerDescription">A few of us are trying to find an evening. Pick the times you can make.</p></div>
+<h2 id="planner-heading" tabindex="-1" class="sr-only" data-i18n="plannerHeading">Your availability</h2>
+<div class="view-switch" role="group" aria-label="Demo perspective"><button id="view-guest" aria-pressed="true" data-i18n="guestView">Your response</button><button id="view-host" aria-pressed="false" data-i18n="hostView">Host’s view</button></div>
+<p id="guest-guidance" class="guidance" data-i18n="guestGuidance">Pick an evening to see who can join.</p><p id="host-guidance" class="guidance" hidden data-i18n="hostGuidance">Choose an evening once the group has enough people and a game master.</p>
+<div class="timezone-row"><span data-i18n="evenings">WHEN CAN YOU MAKE IT?</span><label><span class="sr-only" data-i18n="timezone">Display timezone</span><select id="timezone"><option value="America/Chicago">Chicago · CT</option><option value="America/New_York">New York · ET</option><option value="Europe/London">London · UK</option><option value="Asia/Shanghai">北京 · CST</option></select></label></div>
+<div id="slots" class="slots"></div>
+<div id="guest-controls"><label class="role-option"><input type="checkbox" id="role-gm"><span><strong data-i18n="gmLabel">I can run the game</strong><small data-i18n="gmHelp">If you know the rules, you can help another evening work.</small></span></label><button id="submit-response" class="primary" data-i18n="submit">Save my response</button><button id="edit-response" class="secondary" hidden data-i18n="edit">Change my response</button></div>
+<p id="response-status" class="response-status" role="status" aria-live="polite"></p>
+<div id="outcome" class="outcome" hidden><span class="eyebrow" data-i18n="itsOn">CONFIRMED</span><h3 id="confirmed-title" tabindex="-1"></h3><p id="confirmed-detail"></p><a id="calendar-download" class="primary" hidden download="onemore-game-night.ics" data-i18n="calendar">Download calendar event ↓</a><small data-i18n="confirmNote">This is a demo. No invitations are sent.</small></div>
+<p class="people-line" data-i18n="people">Alex, Maya, Jordan and Sam have already responded.</p>
+<div class="demo-boundary"><span data-i18n="local">A demo with fictional friends.</span><span data-i18n="demoIntro">Your response stays in this browser.</span></div>
+<details class="build-notes"><summary><span data-i18n="notesTitle">A little more about this demo</span><span class="plus">+</span></summary><div class="notes-grid"><div><h3 data-i18n="engineTitle">How it finds a group</h3><p data-i18n="engineNote">The same scheduling rules as the full app check shared availability, group size and game-master coverage.</p></div><div><h3 data-i18n="scopeTitle">The full app</h3><p data-i18n="scopeNote">OneMore also has separate friend groups, waitlists, two languages and timezone-aware invitations.</p></div><div><h3 data-i18n="boundaryTitle">What happens here</h3><p data-i18n="boundaryNote">Everyone is fictional. Choices are stored on your device. You can try hosting and download a real calendar file; no messages are sent.</p></div></div></details>
+<footer class="site-footer"><span data-i18n="footerCredit">Made by Chaoan Li</span><a href="https://github.com/ChaoanLi/OneMore" target="_blank" rel="noopener" data-i18n="footerSource">Source ↗</a></footer>
+</section>
+</div>
+</main>
+<script>(()=>{var V={"Asia/Shanghai":"\u5317\u4EAC\u65F6\u95F4","Asia/Chongqing":"\u5317\u4EAC\u65F6\u95F4","Asia/Hong_Kong":"\u9999\u6E2F\u65F6\u95F4","Asia/Taipei":"\u53F0\u5317\u65F6\u95F4","Asia/Tokyo":"\u4E1C\u4EAC\u65F6\u95F4","America/New_York":"\u7F8E\u4E1C\u65F6\u95F4","America/Chicago":"\u7F8E\u4E2D\u65F6\u95F4","America/Denver":"\u5C71\u5730\u65F6\u95F4","America/Phoenix":"\u51E4\u51F0\u57CE\u65F6\u95F4","America/Los_Angeles":"\u7F8E\u897F\u65F6\u95F4","Europe/London":"\u4F26\u6566\u65F6\u95F4","Europe/Berlin":"\u67CF\u6797\u65F6\u95F4","Australia/Sydney":"\u6089\u5C3C\u65F6\u95F4"};var se=Object.keys(V).filter(e=>e!=="Asia/Chongqing");function L(e,t){return e.optionIds.length===0||e.optionIds.includes(t)}function $(e,t){return[...e].sort((n,i)=>n.userId===t?-1:i.userId===t?1:n.seq-i.seq).map(n=>n.userId)}function J(e,t,n){let i=[];for(let a of e)for(let c=0;c<a.min;c++)i.push(a);let s=i.map(()=>null),w=(a,c)=>{let h=n.get(a)??[];for(let m=0;m<i.length;m++){if(c.has(m)||!h.includes(i[m].key))continue;c.add(m);let v=s[m];if(v==null||w(v,c))return s[m]=a,!0}return!1};for(let a of t){if(s.every(c=>c!==null))break;w(a,new Set)}let g={},S=new Map;return i.forEach((a,c)=>{let h=s[c];if(h)(g[a.key]??=[]).push(h);else{let m=S.get(a.key)??{key:a.key,label:a.label,need:0};m.need+=1,S.set(a.key,m)}}),{assignments:g,missing:[...S.values()]}}function z(e,t,n,i){let s=i.filter(l=>l.intent==="joined"&&l.availability[n.id]==="yes"&&L(l,t.id)),w=i.filter(l=>!s.includes(l)&&(l.intent==="joined"||l.intent==="maybe")&&(l.availability[n.id]==="yes"||l.availability[n.id]==="maybe")&&L(l,t.id)),g=$(s,e.hostId),S=new Map(s.map(l=>[l.userId,l.roles])),{assignments:a,missing:c}=J(t.roles,g,S),h=Object.values(a).flat(),m=g.filter(l=>!h.includes(l)),v=[...h,...m],Y=v.slice(0,t.maxPlayers),H=v.slice(t.maxPlayers),U=Math.max(0,t.minPlayers-g.length),P=c.reduce((l,W)=>l+W.need,0),Z=U===0&&P===0;return{optionId:t.id,slotId:n.id,eligibleIds:g,maybeIds:$(w,e.hostId),feasible:Z,stillNeed:Math.max(U,P),missingRoles:c,roster:Y,waitlist:H,roleAssignments:a,full:g.length>=t.maxPlayers}}var j="onemore:invitation:v2",o=e=>document.querySelector(e),K={en:{jump:"See the invitation \u2193",tagline:"Find an evening to get together.",project:"About the project \u2197",demoLabel:"TRY AN INVITATION",demoIntro:"Your response stays in this browser.",reset:"Start over \u21BA",invited:"THIS INVITATION",title:"Anyone free for a game night?",lead:"A place to turn \u201Cwe should hang out\u201D into an evening that works for everyone.",eventName:"A game night at Alex\u2019s",private:"FRIENDS ONLY",duration:"About 3 hours",location:"Alex\u2019s place",players:"4 players, including a game master",hostNote:"\u201CI\u2019ll bring the games. Maya\u2019s bringing snacks. New players welcome.\u201D",hostCredit:"Alex, hosting",tryLabel:"FROM ALEX \xB7 TO YOU",local:"A demo with fictional friends.",plannerHeading:"Your availability",plannerDescription:"A few of us are trying to find an evening. Pick the times you can make.",guestView:"Your response",hostView:"Host\u2019s view",guestGuidance:(e,t)=>`Try ${e} to fill the table. Or ${t}, where a game master is still missing.`,hostGuidance:"Host preview: choose a time when enough people can come and someone can run the game.",evenings:"WHEN CAN YOU MAKE IT?",timezone:"Display timezone",gmLabel:"I can run the game",gmHelp:(e,t)=>`Know the rules? You could make ${t} happen.`,submit:"Save my response",edit:"Change my response",itsOn:"CONFIRMED",calendar:"Download calendar event \u2193",confirmNote:"This is a demo. No invitations are sent.",people:"Alex, Maya, Jordan and Sam have already responded.",whyLabel:"WHY ONE MORE?",whyHeading:"\u201CWe should hang out\u201D<br>deserves a date.",why1Title:"One link. Everyone\u2019s availability.",why1:"See the overlap without scrolling back through the group chat.",why2Title:"A full table, with the right people.",why2:"Four free people isn\u2019t enough if nobody can run the game. Roles count, too.",notesTitle:"A little more about this demo",engineTitle:"How it finds a group",engineNote:"The same scheduling rules as the full app check shared availability, group size and game-master coverage.",scopeTitle:"The full app",scopeNote:"OneMore also has separate friend groups, waitlists, two languages and timezone-aware invitations.",boundaryTitle:"What happens here",boundaryNote:"Everyone is fictional. Choices are stored on your device. You can try hosting and download a real calendar file; no messages are sent.",footerCredit:"Made by Chaoan Li",footerSource:"Source \u2197",hostSaved:"Choose an evening that works to confirm the plan.",saved:"\u2713 Response saved on this device. Try the host view next.",notSaved:"Select every evening you could make.",needPick:"Pick at least one evening to join.",ready:"Enough people, and a game master.",missingGM:"Players lined up \xB7 still needs a game master",confirm:"Choose this evening \u2192",confirmFirst:"Waiting for your response",confirmed:"\u2713 Confirmed by the host",reopen:"Editing reopens the plan. Save your changes when you\u2019re ready.",storage:"Storage unavailable \u2014 your response lasts until you close this page.",count:"players",needs:e=>`Needs ${e} more ${e===1?"player":"players"}`,available:"I\u2019m available",gm:"Game master",you:"You",waiting:"Waiting for a workable evening",done:"\u2713 A game night, finally. Your calendar file is ready.",dateTitle:"Game night is on."},zh:{jump:"\u770B\u770B\u8FD9\u6B21\u9080\u8BF7 \u2193",tagline:"\u627E\u4E2A\u5927\u5BB6\u90FD\u6709\u7A7A\u7684\u665A\u4E0A\u3002",project:"\u5173\u4E8E\u8FD9\u4E2A\u9879\u76EE \u2197",demoLabel:"\u8BD5\u8BD5\u8FD9\u5F20\u9080\u8BF7",demoIntro:"\u4F60\u7684\u9009\u62E9\u53EA\u4FDD\u5B58\u5728\u8FD9\u4E2A\u6D4F\u89C8\u5668\u91CC\u3002",reset:"\u91CD\u65B0\u4F53\u9A8C \u21BA",invited:"\u8FD9\u6B21\u7684\u9080\u8BF7",title:"\u8FD9\u5468\u6709\u7A7A\u4E00\u8D77\u73A9\u684C\u6E38\u5417\uFF1F",lead:"\u7EA6\u670B\u53CB\u51FA\u6765\u73A9\uFF0C\u627E\u4E00\u4E2A\u5927\u5BB6\u90FD\u6709\u7A7A\u7684\u65F6\u95F4\u3002OneMore \u5C31\u662F\u505A\u8FD9\u4EF6\u4E8B\u7684\u3002",eventName:"\u53BB Alex \u5BB6\u73A9\u684C\u6E38",private:"\u670B\u53CB\u5C0F\u805A",duration:"\u5927\u7EA6 3 \u5C0F\u65F6",location:"Alex \u5BB6",players:"4 \u4EBA\uFF0C\u9700\u8981\u4E00\u4F4D\u719F\u6089\u89C4\u5219\u7684\u4EBA",hostNote:"\u201C\u6E38\u620F\u6211\u5E26\uFF0CMaya \u5E26\u96F6\u98DF\u3002\u6CA1\u73A9\u8FC7\u4E5F\u6CA1\u5173\u7CFB\uFF0C\u6765\u4E86\u6559\u4F60\u3002\u201D",hostCredit:"Alex\uFF0C\u53D1\u8D77\u4EBA",tryLabel:"ALEX \u53D1\u6765\u4E86\u4E00\u5F20\u9080\u8BF7",local:"\u8FD9\u662F\u6F14\u793A\uFF0C\u670B\u53CB\u90FD\u662F\u865A\u6784\u7684\u3002",plannerHeading:"\u4F60\u6709\u7A7A\u7684\u65F6\u95F4",plannerDescription:"\u6211\u4EEC\u51E0\u4E2A\u60F3\u627E\u4E2A\u665A\u4E0A\u73A9\u684C\u6E38\u3002\u4F60\u54EA\u5929\u80FD\u6765\uFF1F\u53EF\u4EE5\u591A\u9009\u3002",guestView:"\u6211\u6765\u56DE\u5E94",hostView:"\u770B\u770B\u53D1\u8D77\u4EBA\u8FD9\u8FB9",guestGuidance:(e,t)=>`\u8BD5\u8BD5\u9009${e}\uFF0C\u8865\u9F50\u6700\u540E\u4E00\u4EBA\uFF1B\u6216\u9009${t}\uFF0C\u770B\u770B\u7F3A\u5C11\u4E3B\u6301\u4EBA\u4F1A\u600E\u6837\u3002`,hostGuidance:"\u53D1\u8D77\u4EBA\u6F14\u793A\uFF1A\u4EBA\u591F\u4E86\uFF0C\u4E5F\u6709\u4EBA\u80FD\u4E3B\u6301\u6E38\u620F\uFF0C\u5C31\u53EF\u4EE5\u5B9A\u4E0B\u6765\u3002",evenings:"\u4F60\u54EA\u5929\u6709\u7A7A\uFF1F",timezone:"\u663E\u793A\u65F6\u533A",gmLabel:"\u6211\u53EF\u4EE5\u4E3B\u6301\u6E38\u620F",gmHelp:(e,t)=>`\u719F\u6089\u89C4\u5219\uFF1F\u4E5F\u8BB8${t}\u8FD9\u5C40\u5C31\u9760\u4F60\u4E86\u3002`,submit:"\u4FDD\u5B58\u6211\u7684\u56DE\u5E94",edit:"\u6539\u4E00\u4E0B\u6211\u7684\u65F6\u95F4",itsOn:"\u65F6\u95F4\u5B9A\u4E86",calendar:"\u4E0B\u8F7D\u65E5\u5386\u6587\u4EF6 \u2193",confirmNote:"\u8FD9\u91CC\u53EA\u6F14\u793A\u786E\u8BA4\u8FC7\u7A0B\uFF0C\u4E0D\u4F1A\u7ED9\u4EFB\u4F55\u4EBA\u53D1\u6D88\u606F\u3002",people:"Alex\u3001Maya\u3001Jordan \u548C Sam \u5DF2\u7ECF\u586B\u597D\u4E86\u65F6\u95F4\u3002",whyLabel:"\u4E3A\u4EC0\u4E48\u662F ONE MORE\uFF1F",whyHeading:"\u628A\u300C\u4E0B\u6B21\u4E00\u5B9A\u300D<br>\u53D8\u6210\u8FD9\u6B21\u3002",why1Title:"\u4E00\u6761\u9080\u8BF7\uFF0C\u770B\u89C1\u6240\u6709\u4EBA\u7684\u7A7A\u95F2\u3002",why1:"\u8C01\u80FD\u6765\u3001\u54EA\u5929\u80FD\u6765\uFF0C\u4E0D\u7528\u518D\u7FFB\u51E0\u5341\u6761\u7FA4\u804A\u6D88\u606F\u3002",why2Title:"\u4E0D\u53EA\u51D1\u9F50\u4EBA\u6570\uFF0C\u8FD8\u8981\u6709\u4EBA\u80FD\u5E26\u5C40\u3002",why2:"\u56DB\u4E2A\u4EBA\u90FD\u6709\u7A7A\uFF0C\u5374\u6CA1\u4EBA\u4F1A\u4E3B\u6301\uFF0C\u4F9D\u7136\u5F00\u4E0D\u4E86\u5C40\u3002\u89D2\u8272\u4E5F\u4E00\u8D77\u8003\u8651\u3002",notesTitle:"\u5173\u4E8E\u8FD9\u4E2A\u6F14\u793A\uFF0C\u518D\u591A\u8BF4\u4E24\u53E5",engineTitle:"\u600E\u4E48\u5224\u65AD\u80FD\u4E0D\u80FD\u5F00\u5C40",engineNote:"\u8FD9\u91CC\u7528\u7684\u5C31\u662F\u5B8C\u6574\u5E94\u7528\u7684\u6210\u56E2\u89C4\u5219\uFF1A\u68C0\u67E5\u5171\u540C\u65F6\u95F4\u3001\u4EBA\u6570\uFF0C\u4EE5\u53CA\u6709\u6CA1\u6709\u4EBA\u80FD\u4E3B\u6301\u6E38\u620F\u3002",scopeTitle:"\u5B8C\u6574\u5E94\u7528\u8FD8\u6709\u4EC0\u4E48",scopeNote:"\u72EC\u7ACB\u7684\u670B\u53CB\u5708\u3001\u5019\u8865\u3001\u4E2D\u82F1\u5207\u6362\u548C\u8DE8\u65F6\u533A\u7EA6\u5C40\u3002\u8FD9\u4E2A\u9875\u9762\u53EA\u6F14\u793A\u5176\u4E2D\u4E00\u5F20\u9080\u8BF7\u3002",boundaryTitle:"\u8FD9\u91CC\u4F1A\u53D1\u751F\u4EC0\u4E48",boundaryNote:"\u670B\u53CB\u662F\u865A\u6784\u7684\uFF0C\u56DE\u5E94\u5B58\u5728\u4F60\u7684\u6D4F\u89C8\u5668\u91CC\u3002\u53EF\u4EE5\u8BD5\u505A\u53D1\u8D77\u4EBA\uFF0C\u4E5F\u80FD\u4E0B\u8F7D\u771F\u7684\u65E5\u5386\u6587\u4EF6\uFF0C\u4F46\u4E0D\u4F1A\u53D1\u51FA\u6D88\u606F\u3002",footerCredit:"Chaoan Li \u8BBE\u8BA1\u4E0E\u5F00\u53D1",footerSource:"\u6E90\u7801 \u2197",hostSaved:"\u9009\u4E00\u4E2A\u6EE1\u8DB3\u5F00\u5C40\u6761\u4EF6\u7684\u665A\u4E0A\uFF0C\u786E\u8BA4\u8FD9\u6B21\u7EA6\u5C40\u3002",saved:"\u2713 \u56DE\u5E94\u5DF2\u4FDD\u5B58\u5728\u5F53\u524D\u8BBE\u5907\u3002\u63A5\u4E0B\u6765\uFF0C\u8BD5\u8BD5\u53D1\u8D77\u4EBA\u89C6\u89D2\u3002",notSaved:"\u53EF\u4EE5\u591A\u9009\uFF0C\u628A\u4F60\u80FD\u6765\u7684\u665A\u4E0A\u90FD\u52FE\u4E0A\u3002",needPick:"\u5148\u9009\u4E00\u4E2A\u4F60\u80FD\u6765\u7684\u665A\u4E0A\u3002",ready:"\u4EBA\u591F\u4E86\uFF0C\u4E5F\u6709\u4EBA\u80FD\u4E3B\u6301\u3002",missingGM:"\u4EBA\u6570\u5DF2\u9F50 \xB7 \u8FD8\u7F3A\u4E00\u4F4D\u6E38\u620F\u4E3B\u6301\u4EBA",confirm:"\u5C31\u5B9A\u8FD9\u4E2A\u65F6\u95F4 \u2192",confirmFirst:"\u7B49\u5F85\u4F60\u5148\u63D0\u4EA4\u56DE\u5E94",confirmed:"\u2713 \u53D1\u8D77\u4EBA\u5DF2\u786E\u8BA4",reopen:"\u5DF2\u91CD\u65B0\u5F00\u653E\u7EA6\u5C40\uFF0C\u4FEE\u6539\u540E\u8BB0\u5F97\u4FDD\u5B58\u3002",storage:"\u6D4F\u89C8\u5668\u65E0\u6CD5\u4FDD\u5B58\uFF0C\u5173\u95ED\u9875\u9762\u540E\u4F1A\u4E22\u5931\u672C\u6B21\u56DE\u5E94\u3002",count:"\u4EBA",needs:e=>`\u8FD8\u5DEE ${e} \u4EBA`,available:"\u6211\u6709\u7A7A",gm:"\u6E38\u620F\u4E3B\u6301\u4EBA",you:"\u4F60",waiting:"\u7B49\u4E00\u4E2A\u771F\u7684\u80FD\u5F00\u5C40\u7684\u65F6\u95F4",done:"\u2713 \u8FD9\u6B21\u771F\u7684\u7EA6\u6210\u4E86\u3002\u53EF\u4EE5\u628A\u8FD9\u5C40\u653E\u8FDB\u65E5\u5386\u3002",dateTitle:"\u90A3\u5C31\u8FD9\u4E2A\u65F6\u95F4\u89C1\u3002"}},p="en",y="guest",I="America/Chicago",f=[],x=!1,r=!1,u=null,F=!0,N=!1,D=Object.fromEntries(new Intl.DateTimeFormat("en-US",{timeZone:"America/Chicago",year:"numeric",month:"2-digit",day:"2-digit"}).formatToParts(new Date).map(e=>[e.type,e.value])),O=new Date(Date.UTC(+D.year,+D.month-1,+D.day,12)),B=(5-O.getUTCDay()+7)%7||7;O.setUTCDate(O.getUTCDate()+B);function Q(e){let t=new Date(O);t.setUTCDate(t.getUTCDate()+e);let n=new Date(Date.UTC(t.getUTCFullYear(),t.getUTCMonth(),t.getUTCDate(),19)),i=+new Intl.DateTimeFormat("en-US",{timeZone:"America/Chicago",hour:"numeric",hourCycle:"h23"}).format(n);return new Date(n.getTime()+(19-i)*36e5)}var k=["fri","sat","sun"].map((e,t)=>({id:e,start:Q(t)})),X={id:"table",minPlayers:4,maxPlayers:4,roles:[{key:"gm",label:"Game master",min:1}]};function A(e,t,n,i=[]){return{userId:e,seq:t,intent:"joined",roles:i,optionIds:["table"],availability:Object.fromEntries(n.map(s=>[s,"yes"]))}}var ee=[A("Alex",0,["fri","sun"],["gm"]),A("Maya",1,["fri","sat"]),A("Jordan",2,["fri","sat"]),A("Sam",3,["sat","sun"])];function M(e){return z({hostId:"Alex"},X,e,[...ee,A("You",4,f,x?["gm"]:[])])}try{let e=JSON.parse(localStorage.getItem(j));e&&Array.isArray(e.choices)&&(f=k.filter(t=>e.choices.includes(t.id)).map(t=>t.id),x=e.gm===!0,r=e.submitted===!0&&f.length>0,["America/Chicago","America/New_York","Europe/London","Asia/Shanghai"].includes(e.zone)&&(I=e.zone),r&&e.weekend===k[0].start.toISOString()&&(u=k.find(t=>t.id===e.confirmed&&M(t).feasible)?.id||null),e.weekend&&e.weekend!==k[0].start.toISOString()&&(f=[],x=!1,r=!1,u=null))}catch{}function T(){try{localStorage.setItem(j,JSON.stringify({choices:f,gm:x,submitted:r,confirmed:u,zone:I,weekend:k[0].start.toISOString()}))}catch{F=!1}}var d=e=>K[p][e];function E(e){return new Intl.DateTimeFormat(p==="zh"?"zh-CN":"en-US",{timeZone:I,weekday:"long",month:"short",day:"numeric"}).format(e.start)}function q(e){return new Intl.DateTimeFormat(p==="zh"?"zh-CN":"en-US",{timeZone:I,hour:"numeric",minute:"2-digit",timeZoneName:"short"}).format(e.start)}function G(e){return e.replace(/\\/g,"\\\\").replace(/\n/g,"\\n").replace(/,/g,"\\,").replace(/;/g,"\\;")}function C(e){return e.toISOString().replace(/[-:]/g,"").replace(/\.\d{3}/,"")}function te(e){let t=p==="zh"?"OneMore \xB7 \u5468\u672B\u684C\u6E38\uFF08\u6F14\u793A\uFF09":"OneMore \xB7 Weekend game night (demo)",n=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//OneMore//Portfolio Demo//EN","CALSCALE:GREGORIAN","BEGIN:VEVENT",`UID:onemore-demo-${C(e.start)}@onemore.local`,`DTSTAMP:${C(new Date)}`,`DTSTART:${C(e.start)}`,`DTEND:${C(new Date(e.start.getTime()+3*36e5))}`,`SUMMARY:${G(t)}`,`DESCRIPTION:${G("Fictional demo event. No invitations have been sent. Players: "+M(e).roster.join(", "))}`,"LOCATION:Alex\u2019s place (fictional demo)","END:VEVENT","END:VCALENDAR",""];return"data:text/calendar;charset=utf-8,"+encodeURIComponent(n.join(`\r
+`))}var _=k.map(e=>{let t=document.createElement("article");t.className="slot",t.innerHTML=`<input type="checkbox" id="slot-${e.id}" data-slot="${e.id}"><label class="slot-label" for="slot-${e.id}"><div class="slot-title"></div><div class="slot-time"></div></label><div><div class="slot-count"></div><div class="slot-seats" aria-hidden="true"></div></div><div class="slot-roster"></div><div class="slot-result" data-slot-result="${e.id}" aria-live="polite"></div><button type="button" class="confirm-slot" data-confirm="${e.id}" hidden></button>`;let n=t.querySelector("input");return n.addEventListener("change",()=>{f=f.filter(i=>i!==e.id),n.checked&&f.push(e.id),r=!1,u=null,T(),b()}),t.querySelector("button").addEventListener("click",()=>{y!=="host"||!r||!M(e).feasible||u||(u=e.id,N=!1,T(),b(),o("#confirmed-title").focus())}),o("#slots").append(t),{slot:e,card:t,input:n}});function b(){document.documentElement.lang=p==="zh"?"zh-CN":"en",document.title=p==="zh"?"OneMore \xB7 \u4E00\u8D77\u73A9\u684C\u6E38":"OneMore \xB7 Weekend game night",document.querySelectorAll("[data-i18n]").forEach(t=>{let n=d(t.dataset.i18n);t.innerHTML=typeof n=="function"?n(...k.slice(0,2).map(i=>new Intl.DateTimeFormat(p==="zh"?"zh-CN":"en-US",{timeZone:I,weekday:"long"}).format(i.start))):n}),o("#language-toggle").textContent=p==="en"?"\u4E2D\u6587":"EN",o("#language-toggle").setAttribute("aria-label",p==="en"?"\u5207\u6362\u5230\u4E2D\u6587":"Switch to English"),o(".skip").textContent=p==="zh"?"\u8DF3\u5230\u9080\u8BF7":"Skip to invitation",o(".view-switch").setAttribute("aria-label",p==="zh"?"\u6F14\u793A\u89C6\u89D2":"Demo perspective"),o(".planner").classList.toggle("view-host",y==="host"),o("#view-guest").setAttribute("aria-pressed",String(y==="guest")),o("#view-host").setAttribute("aria-pressed",String(y==="host")),o("#guest-guidance").hidden=y!=="guest",o("#host-guidance").hidden=y!=="host",o("#timezone").value=I;for(let{slot:t,card:n,input:i}of _){let s=M(t),w=f.includes(t.id);i.checked=w,i.disabled=r||y==="host",i.setAttribute("aria-label",`${d("available")} \xB7 ${E(t)}`),n.classList.toggle("selected",w),n.querySelector(".slot-title").textContent=E(t),n.querySelector(".slot-time").textContent=q(t),n.querySelector(".slot-count").textContent=`${s.eligibleIds.length} / 4 ${d("count")}`,n.querySelector(".slot-seats").innerHTML=Array.from({length:4},(m,v)=>`<span class="seat ${v<s.eligibleIds.length?"filled":""} ${w&&v===s.eligibleIds.length-1?"mine":""}"></span>`).join("");let g=n.querySelector(".slot-result");g.className="slot-result"+(s.feasible?" ready":s.missingRoles.length&&s.eligibleIds.length>=4?" warning":"");let S=u===t.id?d("confirmed"):s.feasible?d("ready"):s.missingRoles.length&&s.eligibleIds.length>=4?d("missingGM"):d("needs")(s.stillNeed);g.replaceChildren();let a=document.createElement("span");a.className="status-dot",g.append(a,document.createTextNode(S));let c=s.roster.map(m=>m==="You"?d("you"):m).join(", ");g.title=c,n.querySelector(".slot-roster").textContent=c;let h=n.querySelector("button");h.hidden=y!=="host"||!!u,h.disabled=!r||!s.feasible,h.textContent=d(r?"confirm":"confirmFirst"),h.setAttribute("aria-label",`${h.textContent} \xB7 ${E(t)}`)}o("#guest-controls").hidden=y!=="guest",o("#role-gm").checked=x,o("#role-gm").disabled=r,o("#submit-response").hidden=r,o("#submit-response").disabled=f.length===0,o("#edit-response").hidden=!r;let e=o("#response-status");if(e.classList.toggle("saved",r),e.textContent=d(F?u?"done":r?y==="host"?"hostSaved":"saved":N?"reopen":"notSaved":"storage"),o("#outcome").hidden=!u,o("#calendar-download").hidden=!u,u){let t=k.find(i=>i.id===u);o("#confirmed-title").textContent=d("dateTitle");let n=M(t).roster.map(i=>i==="You"?d("you"):i).join(" \xB7 ");o("#confirmed-detail").textContent=`${E(t)} \xB7 ${q(t)}
+${n}`,o("#calendar-download").href=te(t)}else o("#calendar-download").removeAttribute("href")}o("#view-guest").addEventListener("click",()=>{y="guest",b()});o("#view-host").addEventListener("click",()=>{y="host",b()});o("#submit-response").addEventListener("click",()=>{f.length&&(r=!0,N=!1,T(),b(),o("#view-host").focus())});o("#edit-response").addEventListener("click",()=>{r=!1,u=null,N=!0,T(),b(),_[0].input.focus()});o("#role-gm").addEventListener("change",e=>{x=e.target.checked,r=!1,u=null,T(),b()});o("#language-toggle").addEventListener("click",()=>{p=p==="en"?"zh":"en",T(),b()});o("#timezone").addEventListener("change",e=>{I=e.target.value,T(),b()});o("#reset-demo").addEventListener("click",()=>{f=[],x=!1,r=!1,u=null,N=!1,y="guest",T(),b()});b();})();
+</script>
+</body></html>

@@ -5,7 +5,7 @@ import { SITE_DATA } from "../constants";
 export default function ProjectsPage({ lang }: { lang: Language }) {
   const en = lang === "en";
   const apps = SITE_DATA.projects.filter((p) =>
-    ["p2", "bsmoption"].includes(p.id),
+    ["onemore", "p2", "bsmoption"].includes(p.id),
   );
   return (
     <div className="site-wrap software-page">
@@ -25,7 +25,9 @@ export default function ProjectsPage({ lang }: { lang: Language }) {
           <p>{app.description[lang]}</p>
           <div className="research-row-links">
             <a href={app.liveUrl} target="_blank" rel="noreferrer">
-              {en ? "Open application" : "打开应用"} ↗
+              {app.id === "onemore"
+                ? (en ? "Try interactive demo" : "体验交互演示")
+                : (en ? "Open application" : "打开应用")} ↗
             </a>
             <a href={app.githubUrl} target="_blank" rel="noreferrer">
               {en ? "Source code" : "源代码"} ↗

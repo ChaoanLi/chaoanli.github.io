@@ -2,6 +2,19 @@ import { Project } from "../types";
 
 export const projects: Project[] = [
   {
+    id: "onemore",
+    title: { en: "OneMore", zh: "OneMore · 算我一个" },
+    description: {
+      en: "Scheduling for game nights with friends: find a shared time, check player counts and required roles, and confirm a group. Try a complete invitation without signing up.",
+      zh: "和朋友约局：找共同空闲、检查人数和所需角色，再确认开局。不用注册，就能体验从回应邀请到确认时间的完整流程。",
+    },
+    category: "Web Application",
+    tech: ["TypeScript", "React", "Hono", "SQLite"],
+    liveUrl: "/demos/onemore/",
+    githubUrl: "https://github.com/ChaoanLi/OneMore",
+    status: "active",
+  },
+  {
     id: "p1",
     title: { en: "EasyPod", zh: "轻松愉快播客" },
     description: {

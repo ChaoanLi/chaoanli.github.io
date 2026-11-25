@@ -1,0 +1,1030 @@
+{
+  "as_of": "2026-11-24",
+  "scope": "Public-source research notes. Historical panels do not identify current reviewers. Planned work in an award abstract is distinct from measured outcomes.",
+  "guides": [
+    {
+      "slug": "program",
+      "title": "What AMDO funds",
+      "group": "Program and evidence",
+      "summary": "Read the current call alongside the four older programs that shaped it. An AMDO question may begin with a material, an operator, a design choice or a production network.",
+      "sections": [
+        {
+          "heading": "Follow the decision across scales",
+          "text": "The program describes fundamental research on manufacturing, materials and service processes, their integration into facilities and supply chains, and the design and operation of these systems. Ask who can use an advance, which relationship is poorly understood and whether the result could carry beyond the original setting. A factory deployment alone leaves that last question open."
+        },
+        {
+          "heading": "Read the funding numbers at the right level",
+          "text": "NSF 26-515 accepts proposals at any time. It encourages ambitious projects that justify sustained effort of up to five years. Its expected 225–275 awards and approximately $100 million cover four CMMI programs together. A team choosing March 2027 sets its own target. Check the live solicitation and policy guide again near submission."
+        },
+        {
+          "heading": "Search beyond the current program name",
+          "text": "At 08:47–09:20 in the September 2026 CMMI webinar, NSF identifies Advanced Manufacturing, Manufacturing Systems Integration, Engineering Design and Systems Engineering, and Operations Engineering as predecessor programs. Their awards reveal prior questions and methods. Evaluate present fit against the current call."
+        }
+      ],
+      "sources": [
+        {
+          "label": "AMDO program description",
+          "url": "https://www.nsf.gov/funding/opportunities/amdo-advanced-manufacturing-design-operations"
+        },
+        {
+          "label": "NSF 26-515, Sections II, III and V",
+          "url": "https://www.nsf.gov/funding/opportunities/engineering-eng-civil-mechanical-manufacturing-innovation/nsf26-515/solicitation"
+        },
+        {
+          "label": "CMMI webinar and recording",
+          "url": "https://www.nsf.gov/funding/opportunities/engineering-eng-civil-mechanical-manufacturing-innovation/updates/121088"
+        }
+      ],
+      "prompt": "Read the current call and one neighboring predecessor award. Identify the decision maker, the unknown relationship and a result that would matter to a second user. Quote the section that supports program fit."
+    },
+    {
+      "slug": "award-landscape",
+      "title": "How to count the award portfolio",
+      "group": "Program and evidence",
+      "summary": "The answer to “how many?” changes with the unit. A program-code match, an institutional award and a collaborative project answer different questions.",
+      "sections": [
+        {
+          "heading": "Reconstruct the search",
+          "text": "The 24 November 2026 archive covers active and expired records under 088Y00 (Advanced Manufacturing), 229Y00 (Manufacturing Systems Integration), 072Y00 (Engineering Design and Systems Engineering) and 006Y00 (Operations Engineering). The four searches returned 956, 66, 194 and 464 distinct award IDs respectively. Across the union there were 1,655 IDs and 1,654 nonempty abstracts."
+        },
+        {
+          "heading": "Read an empty result carefully",
+          "text": "The search under the new AMDO code 361Y00 returned zero entries in that snapshot. Programs appear on different coding schedules, and some awards match several program codes. Adding the four totals double-counts overlapping records. Awards alone omit unsuccessful applications and unreported comparisons."
+        },
+        {
+          "heading": "Compare money on the same basis",
+          "text": "A restricted historical slice used standard and continuing grants with initial award action since January 2023. It contained 570 distinct institutional awards with positive estimated totals. Their median estimated funding was $317,820 and median recorded duration was three years. Separate estimated totals from obligations, group linked awards before estimating collaboration size and date every comparison."
+        }
+      ],
+      "sources": [
+        {
+          "label": "NSF award API search documentation",
+          "url": "https://www.research.gov/common/webapi/awardapisearch-v1.htm"
+        },
+        {
+          "label": "AMDO award-search entry",
+          "url": "https://www.nsf.gov/awardsearch/search-results?ProgEleCode=361Y00&BooleanElement=Any&BooleanRef=Any&ActiveAwards=true"
+        },
+        {
+          "label": "Example of a record without an abstract",
+          "url": "https://api.nsf.gov/services/v1/awards/2010792.json"
+        },
+        {
+          "label": "CMMI program context",
+          "url": "https://www.nsf.gov/funding/opportunities/engineering-eng-civil-mechanical-manufacturing-innovation/nsf26-515/solicitation"
+        }
+      ],
+      "prompt": "Design a reproducible portfolio query. Specify dates, program codes, funding field, unit and treatment of collaborations. Explain one claim about acceptance rates that the resulting data cannot support."
+    },
+    {
+      "slug": "process-mechanisms",
+      "title": "Materials processing and defect formation",
+      "group": "Research directions",
+      "summary": "A process engineer can change a cure cycle or forming condition. The scientific question is which physical mechanism the change affects and whether a finished part performs differently.",
+      "sections": [
+        {
+          "heading": "Follow the evidence from process to material",
+          "text": "NSF 2611536 describes in-situ measurements and multiscale models for curing-induced microcracking in thermoset composites. NSF 2555727 couples forming accuracy, fiber architecture and performance in continuous-fiber composites. The abstracts describe planned comparisons. Each raises the question of which internal state a surface signal can distinguish."
+        },
+        {
+          "heading": "Use a completed experiment to establish the boundary",
+          "text": "In resin transfer molding, Facciotto and colleagues compared modeled resin flow and local saturation against camera observations through a transparent mold. The setup exposes flow near an observable surface. Independent internal measurements would be needed to establish the same behavior in the interior of a thick part. A mechanical test would address a further claim about strength."
+        },
+        {
+          "heading": "Design the comparison",
+          "text": "Choose two plausible causes that produce similar visible defects, then select a measurement on which their predictions diverge. Identify the independent batch or specimen, the setting actually varied, the operator’s alternative and an engineering endpoint. Repeated images improve timing within a specimen. They do not create more independent batches."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Curing and microcracking, NSF 2611536",
+          "url": "https://api.nsf.gov/services/v1/awards/2611536.json"
+        },
+        {
+          "label": "Continuous-fiber forming, NSF 2555727",
+          "url": "https://api.nsf.gov/services/v1/awards/2555727.json"
+        },
+        {
+          "label": "Facciotto et al., multiscale void formation",
+          "url": "https://doi.org/10.1016/j.compositesa.2023.107675"
+        },
+        {
+          "label": "Related manufacturing award 2023323",
+          "url": "https://api.nsf.gov/services/v1/awards/2023323.json"
+        }
+      ],
+      "prompt": "Identify two mechanisms consistent with the same surface signal. What single additional measurement would distinguish them? Name the experimental unit and the claim that would survive an inconclusive result."
+    },
+    {
+      "slug": "multistage",
+      "title": "Multistage quality and machine health",
+      "group": "Research directions",
+      "summary": "A three-university NSF collaboration already connects quality propagation, equipment degradation and operational control. A narrower open question is when a supervisor can identify the stage at which to act.",
+      "sections": [
+        {
+          "heading": "One collaboration generated three award IDs",
+          "text": "The Wisconsin–Madison record lists Shiyu Zhou and $300,442, Rutgers–New Brunswick lists Yuebin Guo and $223,843, and Iowa lists Yong Chen and $207,158. The obligations sum to $731,443 as recorded on 24 November 2026. The three MSI awards began 1 January 2024 and share one title and abstract. Wisconsin and Rutgers show end dates in December 2026 and Iowa in December 2027. These are three institutional components of one predecessor project."
+        },
+        {
+          "heading": "What the project and industry evidence establish",
+          "text": "The abstract includes local anomaly indicators, machine degradation and prognosis, stochastic control, and laboratory and industrial validation. These are funded activities. Separate results are needed to assess achieved accuracy or plant impact. The CCAM digital-thread roadmap gives an independent reason to study linkage across stages, including trace-back of nonconforming feedstock and communication of downstream material requirements."
+        },
+        {
+          "heading": "What would change the decision?",
+          "text": "Follow a workpiece through two stages to final inspection, recording material lot, settings, intervention and decision-time information. Pieces from the same maintenance episode share an exposure. If servicing coincides with a change of material lot, improved quality has two plausible explanations. Compare the proposed action with the current hold-and-inspect rule. Until a steward can confirm action variation, permission and repeated episodes, limit the claim to record linkage."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Wisconsin award 2323082",
+          "url": "https://api.nsf.gov/services/v1/awards/2323082.json"
+        },
+        {
+          "label": "Rutgers award 2323083",
+          "url": "https://api.nsf.gov/services/v1/awards/2323083.json"
+        },
+        {
+          "label": "Iowa award 2323084",
+          "url": "https://api.nsf.gov/services/v1/awards/2323084.json"
+        },
+        {
+          "label": "NIST-hosted CCAM digital-thread roadmap",
+          "url": "https://doi.org/10.6028/NIST.GCR.24-057"
+        }
+      ],
+      "prompt": "Starting from these three records, count the collaboration and reconcile the obligated funding. Then describe a data trace and a counterexample that distinguish upstream maintenance from downstream compensation. Separate verified facts from the open decision."
+    },
+    {
+      "slug": "human-robot",
+      "title": "Human–robot work allocation",
+      "group": "Research directions",
+      "summary": "A line planner can assign, reorder or interrupt tasks. The outcome that matters to workers may be less rework, lower workload or safer recovery from an interruption.",
+      "sections": [
+        {
+          "heading": "Choose the action and its consequence",
+          "text": "Weitian Wang’s MSI CAREER award 2338767 concerns human factors and scheduling for collaborative manufacturing. A linked paper examines commonsense knowledge for robot perception. Perception supports a potential decision, such as requesting confirmation before acting. Its accuracy alone cannot establish whether reallocating work improves human or team outcomes."
+        },
+        {
+          "heading": "Use public observations for the claim they measure",
+          "text": "The HA4M data descriptor reports 217 videos from 41 people assembling an epicyclic gear train, with multiple sensor modalities and manually annotated actions. These records support studies of action recognition and variation across participants. A test of a new allocation policy also needs alternative assignments and observations of their consequences."
+        },
+        {
+          "heading": "Plan a fair test",
+          "text": "Compare against the existing assignment rule on the same task mix. Where people repeat a task, hold complete participants or sessions out of training and account for practice effects. State who can alter assignments, what workers consider an acceptable burden and what permissions govern recording or intervention. Without those conditions, retain the narrower recognition question."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Human–robot teams, NSF 2338767",
+          "url": "https://api.nsf.gov/services/v1/awards/2338767.json"
+        },
+        {
+          "label": "Robot perception, journal article",
+          "url": "https://doi.org/10.1109/TASE.2025.3565191"
+        },
+        {
+          "label": "HA4M dataset and annotations",
+          "url": "https://doi.org/10.1038/s41597-022-01843-z"
+        }
+      ],
+      "prompt": "Compare an action recognizer and a task-allocation policy. For each, identify an independent test unit, a baseline and an outcome. Which observations in HA4M support each comparison?"
+    },
+    {
+      "slug": "supply-networks",
+      "title": "Supply disruptions and recovery decisions",
+      "group": "Research directions",
+      "summary": "A planner facing a disruption must decide when to reroute, substitute a supplier or draw down stock. Retrospective visibility can make a policy appear more capable than it would have been on the day.",
+      "sections": [
+        {
+          "heading": "Compare two funded routes",
+          "text": "NSF 2548575 examines propagation of disruptions and adaptive sourcing, production and inventory decisions. NSF 2609644 addresses reconfiguration of service-oriented supply chains and counterfactual explanations. The former highlights a changing network state, the latter the choice among feasible alternatives. An investigator needs the timing of the information used for either decision."
+        },
+        {
+          "heading": "Reconstruct the planner’s view",
+          "text": "A useful record includes the first disruption notice, what suppliers and capacity were visible then, the lead time for each action, and subsequent fulfillment or shortage. Specify whether the independent event is an outage, a supplier or a region. Orders affected by the same outage share a shock. A national time series can motivate a question while leaving firm-to-firm propagation unresolved."
+        },
+        {
+          "heading": "Compare against a rule a planner could have used",
+          "text": "Give a simple inventory threshold or rerouting rule the same information and lead times as the proposed method. A policy that appears effective only with the final network state has benefited from hindsight. The Census data catalog distinguishes restricted microdata from public releases. Check field availability, linkage and permission before assuming a network can be reconstructed."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Disruption propagation, NSF 2548575",
+          "url": "https://api.nsf.gov/services/v1/awards/2548575.json"
+        },
+        {
+          "label": "Network reconfiguration, NSF 2609644",
+          "url": "https://api.nsf.gov/services/v1/awards/2609644.json"
+        },
+        {
+          "label": "U.S. Census restricted economic microdata",
+          "url": "https://www.census.gov/topics/research/guidance/restricted-use-microdata/economic-data.html"
+        },
+        {
+          "label": "CCAM roadmap",
+          "url": "https://doi.org/10.6028/NIST.GCR.24-057"
+        }
+      ],
+      "prompt": "Choose one disruption. Make a timeline of what the planner knew before each action, identify the independent event, and test whether a simple threshold policy had access to the same information."
+    },
+    {
+      "slug": "product-design",
+      "title": "Design tradeoffs and missing measurements",
+      "group": "Research directions",
+      "summary": "An early design decision can turn on a single uncertain attribute. The useful measurement is the one that could reverse a choice among feasible products.",
+      "sections": [
+        {
+          "heading": "Connect the attribute to a real choice",
+          "text": "NSF 2412472 investigates sparse lifecycle inventory data in the context of consumer electronics design. NSF 2419423 studies design teams under competitive conditions. Together they motivate two distinct questions. Can a designer measure the attribute that differentiates two alternatives? Will designers or customers act on that distinction?"
+        },
+        {
+          "heading": "Separate consideration from selection",
+          "text": "A study coauthored by Zhenghui Sha and Wei Chen models automotive choice in two stages. A buyer first considers a set of vehicles and then chooses within that set. A product change could affect either step. If only final choices are observed, both mechanisms may fit the same records. A survey or design experiment that observes the candidate set provides another test."
+        },
+        {
+          "heading": "Set the stopping rule before collecting data",
+          "text": "Name a material, component or performance feature that a designer can actually change. Compare alternatives under the same system boundary, service life and use pattern. If plausible uncertainty leaves their ordering intact, an expensive measurement has little decision value. If ranking flips, document who could supply the measurement and how a second analyst would reproduce it."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Lifecycle inventory and acquisition, NSF 2412472",
+          "url": "https://api.nsf.gov/services/v1/awards/2412472.json"
+        },
+        {
+          "label": "Competitive design teams, NSF 2419423",
+          "url": "https://api.nsf.gov/services/v1/awards/2419423.json"
+        },
+        {
+          "label": "Two-stage automotive choice study",
+          "url": "https://doi.org/10.1007/s11067-021-09526-9"
+        }
+      ],
+      "prompt": "Compare two feasible designs. Identify the single missing attribute most likely to reverse their ordering and give a counterexample. State whether the available evidence measures technical performance, user preference or both."
+    },
+    {
+      "slug": "circular-manufacturing",
+      "title": "Returned parts and remanufacturing",
+      "group": "Research directions",
+      "summary": "A remanufacturer can inspect, disassemble, repair or retire a returned component. The decision depends on hidden wear, uncertain service history and the outcome after an action.",
+      "sections": [
+        {
+          "heading": "Read the physical and operations precedents together",
+          "text": "NSF 2618914 describes updating a digital representation for robotic remanufacturing under variation in components and wear. A reverse-logistics study by Angelus and Özer analyzes forward, reverse and expedited flows in a serial supply system. One starts with the state of the component and the other with the value of moving stock. Connecting them requires observing both physical condition and disposition."
+        },
+        {
+          "heading": "Follow the returned item",
+          "text": "Preserve a component identifier, observable wear on arrival, available service history, the selected inspection or repair, and post-action performance or disposition. Several images of one component share its history. Returns from a common batch or service contract may share it too. Compare an added inspection against the current triage rule using the condition information actually available at intake."
+        },
+        {
+          "heading": "Look for the missing counterfactual",
+          "text": "If only obviously repairable parts are repaired, observing high performance among repaired parts alone cannot establish the benefit of repairing borderline cases. Define a safe way to validate a sample of uncertain cases, or narrow the study to condition classification. A public source can motivate traceability while leaving access to used components and reuse rights open."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Robotic remanufacturing, NSF 2618914",
+          "url": "https://api.nsf.gov/services/v1/awards/2618914.json"
+        },
+        {
+          "label": "Reverse logistics and expedited flows",
+          "url": "https://doi.org/10.1287/msom.2020.0874"
+        },
+        {
+          "label": "Circular manufacturing review",
+          "url": "https://doi.org/10.1520/SSMS20250023"
+        }
+      ],
+      "prompt": "Trace one returned part from arrival to disposition. Which unobserved outcome would make its repair appear better than it is? Name a comparison and the minimum record needed for a defensible claim."
+    },
+    {
+      "slug": "team",
+      "title": "What the team’s published work establishes",
+      "group": "Program and evidence",
+      "summary": "Published work by Rui Tuo, Satish T. S. Bukkapatnam and Xianyang Zhang spans physical manufacturing, operations and statistical inference. Two pairwise collaborations show what an interface between disciplines has looked like in practice.",
+      "sections": [
+        {
+          "heading": "Manufacturing measurements and operations",
+          "text": "Hui Yang, Bukkapatnam and Leandro Barajas modeled a multistage assembly line and compared throughput predictions with historical production and discrete-event simulation. In a different setting, Jin, Tuo, Tiwari, Bukkapatnam and colleagues used measured surface profiles to study quality evolution in finishing. One paper makes the line the unit of performance, the other examines physical surface measurements. Neither establishes access to a future plant."
+        },
+        {
+          "heading": "Statistical comparison and implementation",
+          "text": "Prakash, Tuo and Ding studied differences between wind-turbine power curves over a range of inputs. Li and Zhang’s fastcpd paper describes change-point methods and reproducible software for historical multivariate sequences. A Li–Zhang–Tuo preprint compares simulated and physical responses over a full domain or a subdomain. This distinction matters when a model agrees on average but misses an operating region."
+        },
+        {
+          "heading": "Test a prospective handoff",
+          "text": "A process investigator can specify a physical outcome and its measurement units. A modeler can identify overlapping input conditions and deliver predictions with uncertainty. An inference specialist can specify dependence, validation splits and a failure criterion. These are prospective roles. Ask for one example record, a common identifier and the outcome needed by the next group before assigning people, facilities or access."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Yang et al., multistage assembly line",
+          "url": "https://doi.org/10.1080/0951192X.2012.719085"
+        },
+        {
+          "label": "Jin et al., surface finishing study",
+          "url": "https://doi.org/10.1080/24725854.2022.2113481"
+        },
+        {
+          "label": "Prakash et al., wind-turbine curve comparison",
+          "url": "https://doi.org/10.1080/00401706.2021.1905073"
+        },
+        {
+          "label": "Li and Zhang, fastcpd and replication files",
+          "url": "https://www.jstatsoft.org/article/view/v116i06"
+        },
+        {
+          "label": "Li, Zhang and Tuo, model-validation preprint",
+          "url": "https://arxiv.org/abs/2604.17144"
+        }
+      ],
+      "prompt": "Identify one result each group has already demonstrated, a specific artifact another group could use and a resource or permission that still requires confirmation. Link each historical claim to its paper."
+    },
+    {
+      "slug": "reviewer-expertise",
+      "title": "What historical reviewers’ public work can teach",
+      "group": "Program and evidence",
+      "summary": "Dated service entries establish past participation in named programs. Published research helps a team ask better questions about its own evidence. Neither identifies who will review a future application.",
+      "sections": [
+        {
+          "heading": "Two examples with verifiable dates",
+          "text": "Qing Li’s public CV lists Manufacturing Systems Integration in 2024 and Advanced Manufacturing in 2022 on PDF page 11. Katherine Fu’s CV lists the Engineering Design and Systems Engineering proposal review panel in fall 2019 on PDF page 24. These are self-disclosed predecessor-program records. The reviewed CV sample contained no independently confirmed service explicitly labeled AMDO."
+        },
+        {
+          "heading": "Turn a result into a question",
+          "text": "Li, Guo and Kim studied change points in recurring events. An inference question suggested by their work is whether an apparent increase in failures reflects equipment deterioration or a change in observation or population. Fu and Song studied a design-by-analogy tool and measured several dimensions of design output. A design question suggested by their work is whether a tool increases the number of ideas, their independently judged quality, or both. These questions are the guide’s interpretation."
+        },
+        {
+          "heading": "Represent uncertainty faithfully",
+          "text": "Keep the dated service fact, paper finding and inferred question in separate fields. NSF’s panelist confidentiality form explains protection of reviewer identities and proceedings. Invite an internal reader to challenge a measurement or comparison without assigning that view to a named scholar. A public CV also provides no denominator for estimating how a panel will be composed."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Qing Li, public university CV, PDF p. 11",
+          "url": "https://www.engineering.iastate.edu/people/files/2024/08/LiQ_CV_2023-2024.pdf"
+        },
+        {
+          "label": "Li, Guo and Kim, recurring events",
+          "url": "https://doi.org/10.1080/00949655.2020.1792907"
+        },
+        {
+          "label": "Katherine Fu, public university CV, PDF p. 24",
+          "url": "https://edrl.engr.wisc.edu/wp-content/uploads/sites/142/2022/02/CV_Fu_Katherine_Feb1-2022.pdf"
+        },
+        {
+          "label": "Song and Fu, design by analogy",
+          "url": "https://doi.org/10.1115/1.4053683"
+        },
+        {
+          "label": "NSF panelist confidentiality form",
+          "url": "https://nsf-gov-resources.nsf.gov/files/COI-Confidentiality-Panelists-NSF_Form_1230P.pdf"
+        }
+      ],
+      "prompt": "For one named researcher, give the exact historical service label, one measured result from a paper and a separately labeled question that result suggests. Leave future panel membership unknown."
+    },
+    {
+      "slug": "award-to-paper",
+      "title": "How to link an award to a research result",
+      "group": "Program and evidence",
+      "summary": "An award abstract defines a funded plan. A publication can provide evidence about a method, a result and sometimes the specific award that supported it. Follow each link before assigning credit.",
+      "sections": [
+        {
+          "heading": "Look for three kinds of relationship",
+          "text": "Record separately whether a paper appears on the award’s output list, whether its published acknowledgment names the same award number, and whether an investigator is a coauthor. Note publication and award dates. A paper can be relevant prior work even if it predates the new funding. An award can support work that draws on other funds too."
+        },
+        {
+          "heading": "A two-school attribution test",
+          "text": "NSF 2005661 and 2005665 concern collaborative design research at Northwestern and Arkansas. Both records list a 2021 automotive-choice paper coauthored by Wei Chen and Zhenghui Sha. Its acknowledgment names an earlier NSF award, 1436658, and the Ford–Northwestern Alliance. A separate 2022 paper on product competition acknowledges both 2005661 and 2005665. Chen is a coauthor on that paper. The pair of cases shows why shared authors and award-listed outputs need separate columns."
+        },
+        {
+          "heading": "Ask what was actually tested",
+          "text": "For the automotive-choice study, the empirical object is consumer choice and the distinction between consideration and purchase. Change the technology, user population or decision and fresh evidence may be needed. In a literature comparison, preserve the exact endpoint, dataset and baseline before describing how the result might transfer."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Northwestern award 2005661",
+          "url": "https://api.nsf.gov/services/v1/awards/2005661.json"
+        },
+        {
+          "label": "Arkansas award 2005665",
+          "url": "https://api.nsf.gov/services/v1/awards/2005665.json"
+        },
+        {
+          "label": "Two-stage automotive choice, 2021",
+          "url": "https://doi.org/10.1007/s11067-021-09526-9"
+        },
+        {
+          "label": "Product competition paper, 2022",
+          "url": "https://doi.org/10.1115/1.4054299"
+        }
+      ],
+      "prompt": "Create one row per award–paper pair. Record the output listing, acknowledgment number, authors, dates, measured endpoint and claim boundary. Flag any relationship supported only by author overlap."
+    },
+    {
+      "slug": "multi-pi-writing",
+      "title": "Writing a multi-investigator NSF project",
+      "group": "Research practice",
+      "summary": "A useful work plan shows what each investigator hands to the next, how the recipient can accept it, and which conclusions remain possible if the handoff fails.",
+      "sections": [
+        {
+          "heading": "Read an authors’ original proposal",
+          "text": "Hamlington, Lovenduski and Niemeyer publicly deposited a collaborative proposal supported through two institutional awards. On PDF pages 3–4, the authors report earlier feedback and explain changes to the scientific hypotheses, external validation and broader impacts. Pages 5–6 connect objectives to tests, and pages 8–10 show preliminary work from the collaborators. The original plan and eventual award end dates answer different questions."
+        },
+        {
+          "heading": "Price the test and its fallback",
+          "text": "Work backward from a decision the project could support. Specify the experiment, independent units, comparator and acceptance threshold. Translate each dependency into an artifact, owner, recipient and date. Cost physical batches, measurements, labor and validation explicitly. A fallback that changes from physical validation to simulation also changes which claim survives. Make that tradeoff visible."
+        },
+        {
+          "heading": "Keep substantive and administrative review distinct",
+          "text": "NSF’s Project Summary uses Overview, Intellectual Merit and Broader Impacts under the cited PAPPG. Give broader impacts an identifiable audience, activity and evaluation, then check the solicitation and live policy guide for the version in force on submission. Multiple investigators at one institution and separately submitted collaborative proposals involve different administrative arrangements."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Authors’ openly deposited proposal",
+          "url": "https://doi.org/10.5281/zenodo.3460972"
+        },
+        {
+          "label": "Colorado award 1924636",
+          "url": "https://api.nsf.gov/services/v1/awards/1924636.json"
+        },
+        {
+          "label": "Oregon State award 1924658",
+          "url": "https://api.nsf.gov/services/v1/awards/1924658.json"
+        },
+        {
+          "label": "NSF PAPPG, proposal preparation",
+          "url": "https://www.nsf.gov/policies/pappg/24-1/ch-2-proposal-preparation"
+        },
+        {
+          "label": "Current PAPPG and supplements",
+          "url": "https://www.nsf.gov/policies/pappg"
+        }
+      ],
+      "prompt": "Build a handoff table from the public example: deliverable, sending and receiving group, acceptance test, resource, time dependency and consequence of delay. Mark which entries come from the authors and which are your suggestions."
+    },
+    {
+      "slug": "workflow",
+      "title": "An evidence-to-decision research workflow",
+      "group": "Research practice",
+      "summary": "Start with a consequential decision and a public record of demand. The output is a reason to investigate, narrow or park a question, plus the observation that could change the choice.",
+      "sections": [
+        {
+          "heading": "Find the nearest precedent and a counterexample",
+          "text": "GrantGuide illustrates retrieval of related funded work using NIH material. Adapt that practice to the relevant funder, retrieve stable identifiers and inspect original records. Search both the proposed approach and the simpler existing practice. Then record the strongest case in which the existing practice would suffice. A long reference list adds little if the counterexample remains unanswered."
+        },
+        {
+          "heading": "Give readers different questions",
+          "text": "Bäckman’s grant-review workflow assigns distinct responsibilities to readers. Here a domain reader checks physical meaning, a methods reader checks the unit and comparison, and an operations reader checks the decision and resource commitments. Each returns a source locator, a precise concern and the evidence that could resolve it. Preserve disagreement. Multiple model sessions can share the same blind spot."
+        },
+        {
+          "heading": "Hand back a decision someone can act on",
+          "text": "Record the source version, date, unit, measured outcome and permission to reuse it. Separate established facts, interpretations and unanswered questions. Ask the lead investigator for one bounded decision and give a condition for reopening it. In the multistage case, three award IDs already cover one integrated project. Finding repeated intervention episodes linked to final inspection would justify investigating a narrower action comparison."
+        }
+      ],
+      "sources": [
+        {
+          "label": "GrantGuide software paper",
+          "url": "https://doi.org/10.1016/j.softx.2024.101784"
+        },
+        {
+          "label": "GrantGuide, fixed retrieval implementation",
+          "url": "https://github.com/ElsevierSoftwareX/SOFTX-D-23-00668/blob/abca6f46bb76c40f6176ef26503b7544f205f7db/Grant_Guide/vector_databases.py"
+        },
+        {
+          "label": "Bäckman, fixed review instructions",
+          "url": "https://github.com/claesbackman/AI-research-feedback/blob/a64e0db1b794375299b4c38874c1c9f6369a48d7/Skills/review-grant/SKILL.md"
+        },
+        {
+          "label": "Multistage award record",
+          "url": "https://api.nsf.gov/services/v1/awards/2323082.json"
+        }
+      ],
+      "prompt": "Use only these sources to prepare a decision card. Include the affected user, substantiated need, closest precedent, simple alternative, independent data unit, counterexample, missing permission and one decision the lead investigator can make."
+    },
+    {
+      "slug": "review-calibration",
+      "title": "Test whether an AI-assisted review catches errors",
+      "group": "Research practice",
+      "summary": "A confident review can miss a wrong funding total or a broken experimental comparison. A paired exercise makes both misses and false alarms observable.",
+      "sections": [
+        {
+          "heading": "Use a known defect and a correct control",
+          "text": "Take an authorized copy of a public or team-owned document. In one version change one consequential fact, such as treating three linked institutional awards as independent demonstrations. Retain a correct version. Give them neutral labels in a shuffled order and withhold the answer key. Ask for the exact disputed claim, primary evidence and its consequence. Keep test copies out of the live research record."
+        },
+        {
+          "heading": "Count what the reader got right and wrong",
+          "text": "Report defects detected out of defects planted and false alarms out of correct claims. Keep unresolved cases and denominators. Thorne and colleagues compared reading strategies on six UK EPSRC proposals. Their section-level approach outperformed their tested full-proposal and simulated-panel methods on detecting seeded defects. That small study motivates testing a process locally. It supplies no AMDO award-probability model."
+        },
+        {
+          "heading": "Leave feasibility and confidential material with accountable people",
+          "text": "A SAGES study sent one unedited model-generated application to two reviewers who were unaware of its origin. One rated it Good and one Unacceptable. Both appreciated the writing, while objections included recruitment and access to a costly treatment. Ask a domain expert to check the real operational constraints. NSF also distinguishes applicant use of generative AI from the confidentiality obligations of people officially reviewing NSF material."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Thorne et al., study and limitations",
+          "url": "https://arxiv.org/html/2603.08281v1"
+        },
+        {
+          "label": "Fixed defect-detection implementation",
+          "url": "https://github.com/wrmthorne/grant-perturbation-analysis/blob/499aa48cd80b6c6e861f787353858e4d1a4d657b/scripts/perturbation_detection.py"
+        },
+        {
+          "label": "SAGES grant-writing pilot",
+          "url": "https://doi.org/10.1007/s44414-025-00007-x"
+        },
+        {
+          "label": "NSF policy on generative AI and merit review",
+          "url": "https://www.nsf.gov/policies/ai/merit-review"
+        }
+      ],
+      "prompt": "Design a blinded pair using one public award and a correct control. Define the answer key, unit, false-alarm rule and evidence required to accept a correction. State clearly whether anyone has actually taken the test."
+    }
+  ],
+  "sources": [
+    {
+      "id": "nsf-amdo",
+      "title": "NSF | Advanced Manufacturing, Design, and Operations",
+      "group": "Program and submission",
+      "summary": "The program covers manufacturing and service processes, their integration into systems and supply chains, and the design and operation of those systems.",
+      "limit": "The scope supplies a fit test. It gives no award quota or priority ranking for an individual method.",
+      "url": "https://www.nsf.gov/funding/opportunities/amdo-advanced-manufacturing-design-operations"
+    },
+    {
+      "id": "nsf-cmmi-solicitation",
+      "title": "NSF 26-515 | CMMI core programs",
+      "group": "Program and submission",
+      "summary": "AMDO is one of four core programs covered by this solicitation. Proposals are accepted at any time. Longer projects may be appropriate when the research warrants them.",
+      "limit": "Estimated awards and total funding cover the four programs together. March 2027 is a team planning target.",
+      "url": "https://www.nsf.gov/funding/opportunities/engineering-eng-civil-mechanical-manufacturing-innovation/nsf26-515/solicitation"
+    },
+    {
+      "id": "nsf-cmmi-webinar",
+      "title": "NSF | Briefing on the new CMMI programs",
+      "group": "Program and submission",
+      "summary": "At 08:47–09:20 the September 2026 briefing identifies the four predecessor programs behind AMDO: Advanced Manufacturing, Manufacturing Systems Integration, Engineering Design and Systems Engineering, and Operations Engineering.",
+      "limit": "Historical awards reveal precedents. The current solicitation determines whether a new question fits.",
+      "url": "https://www.nsf.gov/funding/opportunities/engineering-eng-civil-mechanical-manufacturing-innovation/updates/121088"
+    },
+    {
+      "id": "nsf-award-api",
+      "title": "NSF | Award Search API",
+      "group": "Program and submission",
+      "summary": "The archive queried program element codes, included active and expired awards and deduplicated IDs. A collaborative project may have an award ID at each participating institution.",
+      "limit": "Public award records supply no denominator of submitted proposals. A query that returns zero records describes the public index on its retrieval date.",
+      "url": "https://www.research.gov/common/webapi/awardapisearch-v1.htm"
+    },
+    {
+      "id": "nsf-pappg",
+      "title": "NSF | Proposal and Award Policies and Procedures Guide",
+      "group": "Program and submission",
+      "summary": "NSF posts its policy guide and subsequent supplements here. The version matters for sections, attachments, personnel documents and submission requirements.",
+      "limit": "Check the guide, supplements and solicitation in effect for the actual submission date.",
+      "url": "https://www.nsf.gov/policies/pappg"
+    },
+    {
+      "id": "nsf-merit-review",
+      "title": "NSF | How merit review works",
+      "group": "Program and submission",
+      "summary": "NSF sets out Intellectual Merit and Broader Impacts and explains how reviewers and program officers contribute to the funding decision.",
+      "limit": "These criteria do not identify individual reviewers, panel composition or the probability of funding.",
+      "url": "https://www.nsf.gov/funding/merit-review"
+    },
+    {
+      "id": "nsf-ai-review",
+      "title": "NSF | Generative AI and merit review",
+      "group": "Program and submission",
+      "summary": "NSF prohibits reviewers from uploading entrusted proposal or review information to unapproved generative AI tools. Applicants are responsible for accuracy and authenticity. NSF encourages disclosure of their use of AI.",
+      "limit": "Distinguish applicant-side preparation from service as an NSF reviewer. Check for subsequent agency guidance.",
+      "url": "https://www.nsf.gov/policies/ai/merit-review"
+    },
+    {
+      "id": "tamu-srs-routing",
+      "title": "Texas A&M | Sponsored Research Services submission guidelines",
+      "group": "Program and submission",
+      "summary": "SRS requests notice at least three weeks ahead, applicable administrative materials five business days ahead, and final technical materials one business day ahead.",
+      "limit": "Use the team's chosen submission date to discuss routing for an anytime solicitation. Confirm which office and additional unit rules apply.",
+      "url": "https://srs.tamu.edu/proposals/submission-guidelines/"
+    },
+    {
+      "id": "clinic-appointment-arrivals",
+      "title": "Kim, Whitt & Cha | Appointment-generated outpatient arrivals",
+      "group": "Awardee publications",
+      "summary": "Appointment creation, scheduled visit and arrival records at a Seoul endocrinology clinic let the authors reconstruct the schedule visible at the start of each day. Variation in those schedules explained much of the daily arrival variation.",
+      "limit": "The study validated an arrival model. An improvement in staffing or wait time would require an intervention or a separate policy comparison.",
+      "url": "https://www.columbia.edu/~ww2040/Appt_JOC_062617pm.pdf"
+    },
+    {
+      "id": "mirror-backpressure",
+      "title": "Kanoria & Qian | Dynamic resource allocation in closed networks",
+      "group": "Awardee publications",
+      "summary": "Mirror backpressure uses the current distribution of a fixed, circulating fleet. Under connectivity and demand conditions, the authors bound reward loss relative to a policy informed about demand rates.",
+      "limit": "The guarantees depend on the network and demand assumptions. Numerical examples do not demonstrate deployment on a transport platform.",
+      "url": "https://par.nsf.gov/servlets/purl/10471807"
+    },
+    {
+      "id": "reverse-logistics-flows",
+      "title": "Angelus & Özer | Coordinating forward, reverse and expedited flows",
+      "group": "Awardee publications",
+      "summary": "A serial inventory model distinguishes demand-level changes across periods from uncertainty within a period. Their distinction explains when moving inventory backward is valuable.",
+      "limit": "The verified NSF listing establishes a publication link. The archived author version does not establish an acknowledgment of award 1644935.",
+      "url": "https://par.nsf.gov/servlets/purl/10128753"
+    },
+    {
+      "id": "modulated-turning",
+      "title": "Eren, Nam & Sencer | Mechanics and dynamics of modulated turning",
+      "group": "Awardee publications",
+      "summary": "Time-domain simulations and turning experiments tested predicted chatter limits. Longer interruptions permitted up to about twice the stable cut width or depth of continuous cutting under the tested conditions.",
+      "limit": "The reported gain depends on the tested dynamics, parameters and equipment. A new machine needs its own stability and performance measurements.",
+      "url": "https://par.nsf.gov/servlets/purl/10341654"
+    },
+    {
+      "id": "resin-void-transport",
+      "title": "Facciotto et al. | Void formation in resin transfer molding",
+      "group": "Awardee publications",
+      "summary": "A dual-scale transport model represents resin flow inside and between fiber bundles. Transparent-mold imaging made it possible to compare predicted flow fronts and local saturation with observations.",
+      "limit": "Surface visibility alone cannot validate internal voids in thick parts or the mechanical strength of finished parts.",
+      "url": "https://par.nsf.gov/servlets/purl/10441137"
+    },
+    {
+      "id": "twin-validation-epochs",
+      "title": "He, Rhodes-Leader & Song | Digital twin validation over time",
+      "group": "Awardee publications",
+      "summary": "The authors compare simulation and system output distributions over multiple periods and variables. Controlled experiments examine power for marginal and joint discrepancies.",
+      "limit": "MSI award 2417616 lists the paper. The paper acknowledges earlier CAREER award 2045400. Distributional agreement does not establish which operating action is best.",
+      "url": "https://par.nsf.gov/servlets/purl/10630001"
+    },
+    {
+      "id": "commonsense-robot-perception",
+      "title": "Hidalgo et al. | Commonsense knowledge for robot perception",
+      "group": "Awardee publications",
+      "summary": "ConceptNet relations, object recognition and scene context support task-dependent placement decisions. The study tests ambiguous objects and explanations, including experiments with physical robots.",
+      "limit": "A placement experiment supplies no direct estimate of full-shift workload, factory throughput or long-run scheduling gains.",
+      "url": "https://par.nsf.gov/servlets/purl/10594472?download=1"
+    },
+    {
+      "id": "airfoil-isometric-embeddings",
+      "title": "Chen & Fuge | Isometric embeddings for airfoil inverse design",
+      "group": "Awardee publications",
+      "summary": "An autoencoder constrained to preserve geodesic distances recovered structure in an airfoil collection. The representation also exposed a numerical optimizer's dependence on angle of attack.",
+      "limit": "The results concern design geometry and a numerical solver. Wind-tunnel performance and manufacturability require separate tests.",
+      "url": "https://par.nsf.gov/servlets/purl/10521920"
+    },
+    {
+      "id": "two-stage-auto-choice",
+      "title": "Bi et al. | Vehicle consideration and purchase in China",
+      "group": "Awardee publications",
+      "summary": "Chinese auto surveys from 2013–2015 distinguish vehicles a buyer considered from the final purchase. The two-stage consumer–vehicle network includes both Wei Chen and Zhenghui Sha as authors.",
+      "limit": "Two later GOALI awards list the paper. Its acknowledgments identify earlier NSF award 1436658 and the Ford–Northwestern Alliance.",
+      "url": "https://par.nsf.gov/servlets/purl/10233100?download=1"
+    },
+    {
+      "id": "thermal-history-properties",
+      "title": "Xie, Saha, Bennett et al. | Thermal histories and local properties",
+      "group": "Awardee publications",
+      "summary": "Experiments on directed-energy-deposited thin walls connect wavelet features of thermal histories with local mechanical properties. The authors identify temperature and frequency features useful for prediction.",
+      "limit": "This is prior work for a later multi-site award beginning in 2027. It does not establish quality equivalence across production sites.",
+      "url": "https://doi.org/10.1038/s41524-021-00555-z"
+    },
+    {
+      "id": "streaming-input-selection",
+      "title": "Gonzalez-Hodar & Song | Ranking and selection with streaming input",
+      "group": "Awardee publications",
+      "summary": "The procedure separates uncertainty in estimated inputs from simulation noise, reducing work on inferior candidates and stopping at an estimated probability of a good selection. Examples include a finite-capacity queue.",
+      "limit": "The probability guarantee is approximate. A policy that changes the incoming observations introduces a distinct sampling problem.",
+      "url": "https://www.informs-sim.org/wsc25papers/con267.pdf"
+    },
+    {
+      "id": "product-competition-networks",
+      "title": "Ahmed et al. | Predicting competition between products",
+      "group": "Awardee publications",
+      "summary": "GraphSAGE predicts competition links for previously unseen vehicle models and is compared with network baselines. The paper acknowledges both collaborative GOALI awards, 2005661 and 2005665.",
+      "limit": "Forecasting a competition link cannot establish the causal sales effect of changing one product attribute. Wei Chen is an author. Zhenghui Sha is not.",
+      "url": "https://par.nsf.gov/servlets/purl/10416554?download=1"
+    },
+    {
+      "id": "cv-qing-li",
+      "title": "Qing Li | Manufacturing Systems Integration and Advanced Manufacturing",
+      "group": "Public service records",
+      "summary": "Page 11 lists proposal panel service for Manufacturing Systems Integration in 2024 and Advanced Manufacturing in 2022.",
+      "limit": "The CV identifies earlier program service. It supplies no current assignment or individual review.",
+      "url": "https://www.engineering.iastate.edu/people/files/2024/08/LiQ_CV_2023-2024.pdf"
+    },
+    {
+      "id": "cv-katherine-fu",
+      "title": "Katherine Fu | Engineering Design and Systems Engineering",
+      "group": "Public service records",
+      "summary": "The service table on page 24 names Fu as an EDSE proposal panel member in fall 2019 and lists earlier engineering design service in 2014.",
+      "limit": "These are dated self-reports. They do not identify a future AMDO panel.",
+      "url": "https://edrl.engr.wisc.edu/wp-content/uploads/sites/142/2022/02/CV_Fu_Katherine_Feb1-2022.pdf"
+    },
+    {
+      "id": "cv-phebe-vayanos",
+      "title": "Phebe Vayanos | Operations Engineering",
+      "group": "Public service records",
+      "summary": "Page 42 records Operations Engineering panel service in 2024. Page 43 separately records a 2016 optimization panel under Service, Manufacturing and Operations Research.",
+      "limit": "A historical service category does not reveal the proposals considered or how they were scored.",
+      "url": "https://viterbi.usc.edu/directory/cv/vayanos_phebe_cv.pdf"
+    },
+    {
+      "id": "cv-sinan-muftu",
+      "title": "Sinan Müftü | Advanced Manufacturing",
+      "group": "Public service records",
+      "summary": "Pages 29–30 explicitly list Advanced Manufacturing panel reviews in 2023 and 2020.",
+      "limit": "The record documents the named predecessor program; it identifies no applicants or new AMDO panelists.",
+      "url": "https://doctorat.tuiasi.ro/wp-content/uploads/2024/03/CV_Sinan-Muftu_Semnat_Referent-oficial.pdf"
+    },
+    {
+      "id": "cv-karl-haapala",
+      "title": "Karl Haapala | Manufacturing Machines and Equipment",
+      "group": "Public service records",
+      "summary": "Page 77 records NSF/CMMI Manufacturing Machines and Equipment program panel service in 2009 and 2014–2016.",
+      "limit": "Use this as historical equipment-program context. The CV does not state that Haapala reviewed a particular proposal.",
+      "url": "https://research.engr.oregonstate.edu/isl/sites/research.engr.oregonstate.edu.isl/files/cv.pdf"
+    },
+    {
+      "id": "cv-prahalada-rao",
+      "title": "Prahalada Rao | Advanced Manufacturing CAREER",
+      "group": "Public service records",
+      "summary": "Page 44 records Advanced Manufacturing CAREER panel service in September 2023. The next page includes a July 2016 SMOR proposal panel.",
+      "limit": "His published collaboration with Bukkapatnam is a separate fact and supplies no evidence of a shared review assignment.",
+      "url": "https://www.ise.vt.edu/content/dam/ise_vt_edu/Rao_CV_July_%202024.pdf"
+    },
+    {
+      "id": "cv-zhenghui-sha",
+      "title": "Zhenghui Sha | Engineering Research Initiation",
+      "group": "Public service records",
+      "summary": "Page 21 records panel service for the 2021 Engineering Research Initiation opportunity in EDSE.",
+      "limit": "The entry identifies a targeted ERI competition. The author's separate GOALI award records a different role.",
+      "url": "https://sidilab.net/wp-content/uploads/2023/03/cv_sha_mar_2023_public.pdf"
+    },
+    {
+      "id": "cv-jeannette-song",
+      "title": "Jeannette Song | Manufacturing Enterprise Systems",
+      "group": "Public service records",
+      "summary": "Page 14 lists a 2008 Manufacturing Enterprise Systems panel and a separate July 2020 Future Manufacturing service entry.",
+      "limit": "The two program labels differ. Neither is evidence of AMDO service.",
+      "url": "https://people.duke.edu/~jssong/documents/Jeannette_Song_CV.pdf"
+    },
+    {
+      "id": "cv-sarah-ryan",
+      "title": "Sarah Ryan | Manufacturing Enterprise Systems and SMOR",
+      "group": "Public service records",
+      "summary": "Page 24 records Manufacturing Enterprise Systems CAREER panels in 2004 and 2010, and a Service, Manufacturing and Operations Research panel in 2016.",
+      "limit": "The dates establish historical service only. No team or application is identified.",
+      "url": "https://www.engineering.iastate.edu/people/files/2024/08/Ryan_CV_Jun2024.pdf"
+    },
+    {
+      "id": "cv-sigrun-andradottir",
+      "title": "Sigrún Andradóttir | Operations research service",
+      "group": "Public service records",
+      "summary": "Page 20 groups review service across multiple years and program categories, including six panels for unsolicited Operations Research proposals.",
+      "limit": "Years and categories are separately summarized. Assigning a particular year to each category would go beyond the CV.",
+      "url": "https://feedback.coe.gatech.edu/sites/default/files/2024-09/CV_Andradottir.pdf"
+    },
+    {
+      "id": "cv-ozalp-ozer",
+      "title": "Özalp Özer | Manufacturing Enterprise Systems",
+      "group": "Public service records",
+      "summary": "Page 14 places Manufacturing Enterprise Systems panel membership under the period 2003–2005.",
+      "limit": "The interval does not specify an individual review. A later Operations Engineering award is a separate record.",
+      "url": "https://www.ozalpozer.com/pdf/OzerCVonline.pdf"
+    },
+    {
+      "id": "nist-in625-single-tracks",
+      "title": "NIST AM-Bench 2018 | IN625 single tracks on two machines",
+      "group": "Manufacturing evidence",
+      "summary": "The experiment compared three nominal single-track conditions on two machines. At the fastest condition mean widths were 106 and 100 micrometers, while mean depths were 30 and 60 micrometers.",
+      "limit": "Actual power, beam size, atmosphere and thermal imaging differed. A machine effect cannot be isolated by treating the two processes as identical.",
+      "url": "https://www.nist.gov/ambench/amb2018-02-description"
+    },
+    {
+      "id": "nist-in718-cross-sections",
+      "title": "NIST AM-Bench 2022 | IN718 track cross-sections",
+      "group": "Manufacturing evidence",
+      "summary": "The cross-section table comprises seven settings, three tracks per setting and two cuts per track, all on one plate. Its 42 measurements retain the track-level grouping.",
+      "limit": "Two cuts from one track are subsamples. This plate cannot independently validate build-to-build variability or performance across a continuous design space.",
+      "url": "https://doi.org/10.18434/mds2-2718"
+    },
+    {
+      "id": "nist-manufacturing-testbed",
+      "title": "NIST | Smart Manufacturing Systems Test Bed",
+      "group": "Manufacturing evidence",
+      "summary": "The technical report documents how a physical manufacturing test bed collects and exposes machine and production data. It can help specify the event identifiers and timestamps needed for a research question.",
+      "limit": "An acquisition architecture alone does not guarantee linked part identities, maintenance actions or independent quality measurements.",
+      "url": "https://nvlpubs.nist.gov/nistpubs/ams/NIST.AMS.200-2.pdf"
+    },
+    {
+      "id": "nist-digital-thread",
+      "title": "CCAM and NIST | Digital thread roadmap",
+      "group": "Manufacturing evidence",
+      "summary": "The roadmap documents industry input about exchanging and reusing information throughout manufacturing, including barriers to adoption and opportunities for research.",
+      "limit": "A named industry need supplies motivation. Access to a supplier network or its transaction-level data requires separate evidence.",
+      "url": "https://doi.org/10.6028/NIST.GCR.24-057"
+    },
+    {
+      "id": "nist-circular-manufacturing",
+      "title": "Manufacturing research | Circularity and traceability",
+      "group": "Manufacturing evidence",
+      "summary": "The review connects product design, systems modeling and traceability in circular manufacturing. It helps identify which lifecycle events must be observed before comparing repair, reuse and recycling.",
+      "limit": "A conceptual lifecycle framework does not supply part histories, disposition decisions or post-repair quality measurements.",
+      "url": "https://doi.org/10.1520/SSMS20250023"
+    },
+    {
+      "id": "assembly-ha4m",
+      "title": "HA4M | Multimodal observations of assembly work",
+      "group": "Manufacturing evidence",
+      "summary": "The data paper describes multimodal observations and action annotations for an assembly task, enabling comparison of recognition methods on a common activity.",
+      "limit": "Recognition accuracy is an observable endpoint here. Claims about worker workload, rescheduling or rework require interventions and their outcomes.",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9718853/"
+    },
+    {
+      "id": "faculty-surface-finishing",
+      "title": "Jin, Tuo, Bukkapatnam et al. | Surface quality during finishing",
+      "group": "Faculty publications",
+      "summary": "The coauthors used physically measured surfaces and functional summaries to test changes in quality between finishing stages. The study documents collaboration across statistics and manufacturing.",
+      "limit": "Past coauthorship does not establish current access to specimens, collaborators, laboratory time or permission to reuse data.",
+      "url": "https://par.nsf.gov/servlets/purl/10353327"
+    },
+    {
+      "id": "faculty-physical-validation",
+      "title": "Li, Zhang & Tuo | Global and regional validation of computer models",
+      "group": "Faculty publications",
+      "summary": "The preprint compares simulator and experimental responses over a full input domain and specified subregions. A shear-layer example illustrates how an aggregate comparison can conceal local model discrepancy.",
+      "limit": "The study's testing assumptions must be revisited for adaptively selected regions, repeated stopping or a different experimental endpoint.",
+      "url": "https://arxiv.org/abs/2604.17144v2"
+    },
+    {
+      "id": "faculty-assembly-flow",
+      "title": "Yang, Bukkapatnam & Barajas | Flow through a multistage assembly line",
+      "group": "Faculty publications",
+      "summary": "The authors built a continuous-flow model using records from an 18-machine assembly line. Simulated throughput over about a week of operation was within 5% of the historical average for their comparison.",
+      "limit": "One line's throughput comparison does not validate a maintenance policy or disrupted production schedule.",
+      "url": "https://doi.org/10.1080/0951192X.2012.719085"
+    },
+    {
+      "id": "faculty-transit-buffer",
+      "title": "Zhao, Dessouky & Bukkapatnam | Timetable buffers under random delays",
+      "group": "Faculty publications",
+      "summary": "The operations model allocates slack in a public transit timetable to reduce expected passenger waiting under random delays.",
+      "limit": "A production scheduling application would require its own delay costs, resource constraints and executable actions.",
+      "url": "https://doi.org/10.1287/trsc.1060.0170"
+    },
+    {
+      "id": "faculty-wind-curves",
+      "title": "Prakash, Tuo & Ding | Comparing wind turbine performance curves",
+      "group": "Faculty publications",
+      "summary": "The paper compares noisy, irregularly sampled power curves and estimates where in the input domain the performance of two turbines differs.",
+      "limit": "Differences between fitted curves do not identify which hardware or operating change caused them.",
+      "url": "https://doi.org/10.1080/00401706.2021.1905073"
+    },
+    {
+      "id": "faculty-multifidelity-budget",
+      "title": "Chen & Tuo | Fixed-budget multifidelity computer experiments",
+      "group": "Faculty publications",
+      "summary": "The authors study allocation of a fixed computational budget when simulation fidelities have different costs. The loss function makes the value of added simulation runs explicit.",
+      "limit": "A design for prediction accuracy may select different runs than one minimizing decision loss or the cost of a physical build.",
+      "url": "https://doi.org/10.1016/j.jspi.2025.106286"
+    },
+    {
+      "id": "faculty-fastcpd",
+      "title": "Li & Zhang | fastcpd software and reproducible examples",
+      "group": "Faculty publications",
+      "summary": "The Journal of Statistical Software article presents an R package for change-point detection with built-in models and user-specified losses, together with reproduction materials.",
+      "limit": "Retrospective segmentation can be benchmarked with these tools. A real-time alarm needs prospective delay and false-alarm evaluation.",
+      "url": "https://www.jstatsoft.org/article/view/v116i06"
+    },
+    {
+      "id": "guo-career-annotated",
+      "title": "Philip Guo | Annotated 2018 CAREER proposal",
+      "group": "Funded proposal examples",
+      "summary": "On PDF page 8 the author defines a substantive help session as at least ten back-and-forth exchanges. More than 6,547 such sessions supported the feasibility of voluntary real-time help on Python Tutor. NSF award 1845900 documents the award.",
+      "limit": "The unit is a session. Distinct users and learning gains require other measurements. The marginal comments were added after the award.",
+      "url": "https://www.sjsu.edu/research/docs/research-development/proposal-toolkits-and-document-templates/nsf/2018%20annotated%20version%20of%20funded%20CAREER%20proposal.pdf"
+    },
+    {
+      "id": "hamlington-collaborative",
+      "title": "Hamlington, Lovenduski & Niemeyer | Collaborative proposal",
+      "group": "Funded proposal examples",
+      "summary": "The authors share the summary and narrative of a funded two-university project. PDF pages 12–13 compare simulation configurations, and pages 15–16 connect computing resources to a three-year work plan.",
+      "limit": "The posted material omits a formal itemized budget. Later changes to the institutions' NSF award end dates cannot reconstruct the original personnel or salary split.",
+      "url": "https://doi.org/10.5281/zenodo.3460972"
+    },
+    {
+      "id": "book-friedland-folt-mercer",
+      "title": "Friedland, Folt & Mercer | Writing Successful Science Proposals",
+      "group": "Grantsmanship books",
+      "summary": "The third edition separates conceptual framework, anticipated and unexpected results, schedule and team science. Those chapters can be used to check whether each aim has a response to an unfavorable result.",
+      "limit": "This is cross-funder writing advice. Mandatory documents and page limits come from the applicable solicitation and policy guide.",
+      "url": "https://yalebooks.yale.edu/book/9780300241181/writing-successful-science-proposals/"
+    },
+    {
+      "id": "book-nsf-workbook",
+      "title": "Grant Writers' Seminars & Workshops | NSF Research.gov workbook",
+      "group": "Grantsmanship books",
+      "summary": "The May 2024 revision's public contents identify chapters on review principles, outlining a conceptual framework, broader impacts, final checks and the project summary.",
+      "limit": "This is an independent commercial workbook aligned to policy at publication. The publicly available contents are a guide to coverage.",
+      "url": "https://www.grantcentral.com/workbooks/national-science-foundation/"
+    },
+    {
+      "id": "book-schimel",
+      "title": "Joshua Schimel | Writing Science",
+      "group": "Grantsmanship books",
+      "summary": "Chapters on framing a challenge, developing action and reporting outcomes support a reverse outline of an opening argument. Later chapters discuss compression, editing and limitations.",
+      "limit": "A coherent narrative still needs independent support for its scientific premise, proposed test and projected benefit.",
+      "url": "https://www.oupjapan.co.jp/en/products/detail/9759"
+    },
+    {
+      "id": "github-grantguide",
+      "title": "GrantGuide | Retrieval and NIH drafting functions",
+      "group": "Open-source workflows",
+      "summary": "GrantGuide passes retrieved documents to its comparison function. Its separate aims-writing function takes the applicant's aims directly. The accompanying corpus contains funded summaries and public health statements.",
+      "limit": "A generated paragraph's evidentiary basis depends on which function produced it. Funded abstracts supply neither complete proposals nor declined controls.",
+      "url": "https://github.com/ElsevierSoftwareX/SOFTX-D-23-00668/blob/abca6f46bb76c40f6176ef26503b7544f205f7db/Grant_Guide/generate.py"
+    },
+    {
+      "id": "github-grantkit",
+      "title": "GrantKit | Assemble a reproducible review packet",
+      "group": "Open-source workflows",
+      "summary": "The packet builder assembles grant metadata, rubric, section text, word counts and lint findings into JSON. No model call is needed for this step.",
+      "limit": "The associated tests cover packet structure. A separate bundled formatting file misstates the font minimum for Times New Roman. Verify rules against NSF.",
+      "url": "https://github.com/GrantKit/grantkit/blob/005b0bf087fa2faf3789a2dd0bc01455f2fb8384/grantkit/core/review.py"
+    },
+    {
+      "id": "github-six-role-review",
+      "title": "Claes Bäckman | Six-role internal grant review",
+      "group": "Open-source workflows",
+      "summary": "The instructions restrict each pass to current materials and divide review among writing, internal consistency, significance, methods, resources and an adversarial reader.",
+      "limit": "The role instructions come without a human-alignment benchmark. Multiple simulated readers can share a blind spot.",
+      "url": "https://github.com/claesbackman/AI-research-feedback/blob/a64e0db1b794375299b4c38874c1c9f6369a48d7/Skills/review-grant/SKILL.md"
+    },
+    {
+      "id": "github-grant-perturbations",
+      "title": "Thorne et al. | Testing grant review with planted defects",
+      "group": "Open-source workflows",
+      "summary": "Across six EPSRC proposals the researchers introduced 42 types of defects. Overall detection was 21.2%. Section-level review had a higher average detection score than the single-pass or council systems in their comparison.",
+      "limit": "Repeated evaluations generated 7,347 observations from six underlying applications. Transfer to NSF requires new testing.",
+      "url": "https://github.com/wrmthorne/grant-perturbation-analysis/blob/499aa48cd80b6c6e861f787353858e4d1a4d657b/scripts/perturbation_detection.py"
+    },
+    {
+      "id": "github-grantreview-bench",
+      "title": "GrantReview-Bench | Results and baseline comparisons",
+      "group": "Open-source workflows",
+      "summary": "On 166 Open Grants applications in the repository's comparison, the full multi-agent system had AUC 0.393, single-call full-document review 0.522 and retrieval-only prediction 0.609.",
+      "limit": "These are repository-reported estimates for a selected corpus and model. Voluntary disclosure and funder mix limit any interpretation as a funding forecast.",
+      "url": "https://github.com/grantagent-bench/grantreview-bench/blob/4361fbc4aabf0cb6c94e7a4320bace12592138b3/results/ogrants166/ablation_table.md"
+    },
+    {
+      "id": "qian-grant-writing",
+      "title": "Qian et al. | LLM-assisted writing and grant outcomes",
+      "group": "Empirical studies of AI review",
+      "summary": "Two US universities' applications and public award records supported comparisons of linguistic indicators of AI use with funding outcomes. In the reported analysis, the positive NIH association had no significant NSF counterpart.",
+      "limit": "Language-based exposure estimates are noisy. Observational associations cannot isolate the causal effect of a particular writing workflow.",
+      "url": "https://doi.org/10.1073/pnas.2601439123"
+    },
+    {
+      "id": "williams-seed-proposals",
+      "title": "Williams et al. | Model and human reviews of seed grants",
+      "group": "Empirical studies of AI review",
+      "summary": "Three model families and three prompts were compared with four human reviewers on internal seed applications. Funding recommendations showed little agreement between models and people.",
+      "limit": "The sample was small, some applications served as prompt examples and the study did not evaluate outcomes after revision.",
+      "url": "https://doi.org/10.3389/feduc.2026.1856134"
+    },
+    {
+      "id": "chhabra-sages",
+      "title": "Chhabra et al. | Blinded review of a generated surgical grant",
+      "group": "Empirical studies of AI review",
+      "summary": "Two blinded reviewers scored one generated application Good and Unacceptable, respectively. Concerns included recruitment, the sample-size calculation and access to an expensive study drug.",
+      "limit": "The application used fictional investigators and preliminary data. A single case cannot estimate how authentic human–AI collaboration changes funding outcomes.",
+      "url": "https://doi.org/10.1007/s44414-025-00007-x"
+    },
+    {
+      "id": "nsf-2323082",
+      "title": "NSF 2323082 | Wisconsin–Madison multistage manufacturing award",
+      "group": "Collaborative award example",
+      "summary": "The project proposes joint machine-health and product-quality modeling, stochastic control, and testing in a lab and on production systems. The Wisconsin record lists $300,442, January 2024 through December 2026.",
+      "limit": "This is one institutional record in a three-university collaboration. Funding dates cannot establish time actually spent on field tests.",
+      "url": "https://api.nsf.gov/services/v1/awards/2323082.json"
+    },
+    {
+      "id": "nsf-2323083",
+      "title": "NSF 2323083 | Rutgers multistage manufacturing award",
+      "group": "Collaborative award example",
+      "summary": "Rutgers University's linked award records $223,843, January 2024 through December 2026, for the collaborative project on integrated product quality and machine health.",
+      "limit": "The shared project title and abstract do not establish a separate independent replication at Rutgers.",
+      "url": "https://api.nsf.gov/services/v1/awards/2323083.json"
+    },
+    {
+      "id": "nsf-2323084",
+      "title": "NSF 2323084 | Iowa multistage manufacturing award",
+      "group": "Collaborative award example",
+      "summary": "Iowa's record lists $207,158, January 2024 through December 2027. The three institutional estimates total $731,443. Iowa's listed term is one year longer than those for Wisconsin and Rutgers.",
+      "limit": "The total is a sum of award estimates. It does not identify a typical AMDO budget, the task budget for validation or the number of experiments performed.",
+      "url": "https://api.nsf.gov/services/v1/awards/2323084.json"
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+% Compile with pdflatex. The editable figure is included below.
+\documentclass[11pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,microtype,tikz,hyperref,fancyhdr}
+\usepackage[margin=0.88in,headheight=14pt,headsep=12pt]{geometry}
+\usepackage[compact]{titlesec}
+\definecolor{ink}{HTML}{1C4448}
+\definecolor{steel}{HTML}{CBDCDA}
+\definecolor{accent}{HTML}{883948}
+\hypersetup{colorlinks=true,urlcolor=ink,linkcolor=ink}
+\titleformat{\section}{\sffamily\Large\bfseries\color{ink}}{}{0pt}{}
+\titleformat{\subsection}{\sffamily\normalsize\bfseries\color{ink}}{}{0pt}{}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.54em}
+\setlength{\emergencystretch}{1.5em}
+\pagestyle{fancy}\fancyhf{}\lhead{\small\sffamily NSF AMDO}\rhead{\small\sffamily Initial project description}\rfoot{\small\sffamily Collaborative working draft\quad\thepage}
+\begin{document}
+
+\section*{When to Blend Recycled Polypropylene Lots}
+
+A compounder has two lots of recycled polypropylene and two orders due. A molded snap clip must flex far enough to engage its mating part. A ribbed housing must resist deflection and fill its thin ribs. Mixing the lots might supply both orders from one batch. It could also turn a lot suitable for clips into a blend that fails the clip requirement. Once the pellets are compounded together, the operator has lost the option to assign the original lots separately. We ask when testing a few grams of the proposed blend before committing the lots changes which orders can be filled.
+
+\subsection*{Objective and intellectual merit}
+
+We hypothesize that some pairs of lots produce a blend whose ductility departs reproducibly from the value predicted from the constituent lots. A small trial blend should be valuable when that departure crosses an order limit and a different routing is feasible. An equally plausible explanation is that the observed departure comes from sampling a heterogeneous sack or adding another melt-processing step. In that case extra measurements of the individual lots could buy as much useful information. We will test these explanations under equal assay budgets.
+
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm,font=\sffamily\footnotesize,
+ input/.style={draw=ink,fill=steel!45,rounded corners=2pt,align=center,minimum width=2.15cm,minimum height=.82cm},
+ route/.style={draw=ink,rounded corners=2pt,align=center,text width=4.0cm,minimum height=.80cm},
+ terminal/.style={draw=accent,rounded corners=2pt,align=center,text width=2.75cm,minimum height=.90cm}]
+\node[input] (lot) at (0,0) {Two incoming lots\\and two orders};
+\node[route] (single) at (4.17,.65) {Skip testing or\\test individual lots};
+\node[route] (pair) at (4.17,-.65) {Same options plus\\a trial-blend assay};
+\node[terminal] (action) at (8.85,0) {Blend or keep separate\\and assign to orders};
+\draw[ink,->] (lot.east) -- (single.west);
+\draw[ink,->] (lot.east) -- (pair.west);
+\draw[ink,->] (single.east) -- (action.west);
+\draw[ink,->] (pair.east) -- (action.west);
+\end{tikzpicture}
+\end{center}
+
+{\small\textbf{Figure 1.} With equal time and material, both policies can use any constituent test. The second can also test a small blend. Compare their shortage, assay and setup costs on unseen lots.}
+
+Ten industrial batches bought to common melt-flow and density specifications exhibited elongations at break from about 10\% to 100\% [1]. A separate investigation of eleven recycled feedstocks identified interacting polymer phases as a source of mechanical variability [2]. Both studies establish differences among lots. Teruel and colleagues went further, using a recycler's records to predict flow, ash, impact strength and shrinkage for mixtures and to select input batches [3]. The missing evidence is whether physically assaying a proposed pair before choosing its route improves the decision beyond such a model and better sampling of its constituents.
+
+For example, suppose equal quantities of lots A and B could separately fill a clip order and a housing order. The model predicts a common blend will fill both orders with one changeover saved. If a trial blend cracks during clip engagement, keeping A for clips and B for housings can protect the first order. That choice saves the cost of a clip shortage at the price of a changeover. If B also fails the housing test, the owner must weigh the possible shortages on both orders.
+
+We will choose experimental pairs where plausible errors in the mixture model imply different order assignments and a costly shortage. We will test whether this design improves decisions on unseen lots compared with balanced pair selection at the same assay budget.
+
+\newpage
+
+\section*{Aim 1 · Separate a blend effect from sampling and processing history}
+
+\textbf{Year 1.} Satish T. S. Bukkapatnam will lead the physical experiments. The first requirement is a compounder or molder willing to identify two orders, their demand, the allowable blend fractions and the actual acceptance tests. For the clip example we will measure the deformation at which a clip cracks and the force needed to engage it. For the housing we will measure stiffness and filling of the limiting feature. The owner must specify any required impact, shrinkage, dimensional or processing limits. Standard tensile bars can reveal a ductility change while the tooling is being arranged. The owner must establish how to accept material for each order before we can count kilograms qualified for it.
+
+\subsection*{Construct the contrast}
+
+We will retain portions of each source lot and draw material from multiple identified locations. In each production block we will prepare the two individual materials and one interior blend fraction permitted for both orders. Each pure material will undergo the same nominal compounding and molding histories as the mixture. We will record actual melt temperature, screw settings, residence time, molding conditions and specimen conditioning. This control matters because the extra melt pass or a change in thermal exposure can itself alter fracture behavior. In a separate comparison we will mold individual materials as received to estimate the effect of the additional processing pass.
+
+A charge is a fresh weighing, mixing and compounding operation. Several bars molded from the same charge improve measurement precision. Repeated charges, independently drawn across sacks or defined within-lot locations, establish manufacturing repeatability. We will randomize run order within day, document machine cleaning and check carryover where the material changes. Xianyang Zhang will use the resulting lot, charge and specimen variation to size the independent trials for an order-relevant difference. Rui Tuo will choose overlapping pairs so that each training lot meets several partners. A repeatable response unique to a pairing is distinguishable from a consistently weak constituent only if a lot is tested with more than one partner.
+
+\subsection*{Distinguish a physical effect from a change in the preferred route}
+
+At a fixed blend fraction, we will compare the measured response with constituent-based mixing rules calibrated on separate training charges. Differential scanning calorimetry, melt-flow measurements and fracture-surface inspection on selected pairs can distinguish changes in crystallinity, composition and local failure morphology. We will measure melt flow or shear viscosity over the molding range and record evidence of incomplete fill. A mechanically promising blend that cannot be molded under the order's process limits cannot be assigned there. The first milestone is a reproducible departure large enough to change a feasible assignment. If individual-lot variation or thermal history accounts for it, training a richer pair model has little justification.
+
+\newpage
+
+\section*{Aim 2 · Decide which pairs warrant a trial blend}
+
+\textbf{Year 2.} Tuo will model the constituent contribution to each property and any remaining dependence on the pair at the chosen fraction. Competing models will include a calibrated mixing rule and a batch-management predictor following Teruel et al. [3]. We will fit and tune the latter on the same training information as the proposed method and adapt its outcome set to the local specifications. Its historical commercial training data may be unavailable. Record which predictors can be measured on incoming local stock.
+
+The operator may draw on pure A, pure B and the single blend fraction qualified in Aim 1. Each assignment must meet the minimum charge size, ingredient mass balance, order demand and acceptance limits after expected processing losses. Tuo will rank candidate experiments by the expected reduction in shortage and setup costs per unit of assay budget, using the fitted models' uncertainty about each permitted recipe. Zhang will estimate uncertainty across lots and charges [4]. In a bank of independently prepared charges, targeted and balanced pair selection start with the same observations and model. The balanced design rotates partners across lots. Both designs retain repeated partners, reveal only requested assay results and face the same mass and staffed-time caps. Freeze a trial-blend policy learned by each design.
+
+\subsection*{Give the competing assay its best use}
+
+All policies receive the same routine records. The constituent policy can resample a heterogeneous lot, run a mechanical test, or measure each constituent's viscoelastic response across frequencies to detect phase interactions missed by a single melt-flow measurement [2]. It can use those results with the calibrated mixing rule or the adapted batch predictor. For the assay comparison, train both policies on the same development data with the same models. Both may skip testing or choose any constituent assay. Only the expanded policy may also assay a mixture, within the same budget and deadline. On unseen pairs, comparing the two learned trial-blend policies measures the value of experimental design. Comparing the targeted policy with the optimized constituent policy measures the value of permitting a trial blend under these policies. Include routine records alone as a reference. All policies face the same limits on grams, staffed time and deadline.
+
+\section*{Aim 3 · Fill the same orders from unseen lot pairs}
+
+\textbf{Year 3.} Test pairs share no source lots with training or with each other. Before any assays, divide each physical lot into equivalent, randomly drawn stocks for the policies. Give each policy the same scaled demands and reserve representative material from its stocks for independent outcome charges. Each policy commits its assignment after deducting its own assay consumption. Process its selected recipes, including separate stocks when called for. A blinded inspector will apply the owner's charge sampling and release rules to determine the accepted kilograms for each order. Subject to processor access, reserve disjoint pairs representative of incoming work before any recommendation. On matched line stocks execute the frozen bench-informed testing policy and the constituent policy, including pairs for which both keep lots separate. Record sampling, conditioning, purge, hands-on time and changeovers under line conditions. This estimates the return from following the bench advice in production. Bench-only results apply to laboratory-scale orders.
+
+\newpage
+
+\section*{What constitutes a better manufacturing decision?}
+
+Before validation the owner will set shortage and changeover costs, labor rates, a worthwhile net saving and a limit on the probability of missing the priority order. Compare total shortage, operating and assay costs, charging each cost once. Report shortage risk with uncertainty across independent pairs. For each order, record accepted kilograms actually delivered, capped at demand. Count each kilogram once. Reconcile both stocks against deliveries, assay and purge losses, rejects and unused inventory. Report staffed time and unfilled demand alongside costs. Independent charges measure variation within a pair. The number of disjoint test pairs determines precision for comparisons on new lots.
+
+\subsection*{Feasibility, team integration and scope}
+
+The Texas A\&M Soft Matter Facility lists a microcompounder, piston injection molder, tensile tester and calorimeter [5]. Before budgeting, Bukkapatnam will seek traceable lots, operator time and fixtures. The first pilot will establish the mass needed for representative sampling and the repeatability of separately compounded charges. Tuo and Zhang will use that evidence jointly to fix allowable assay budgets, order-relevant margins and the number of independently sourced pairs. For the larger-scale check we need a processor, available batch mass and an agreed performance test on a molded feature. Without that access the deliverable is a laboratory decision experiment with explicit scale limits.
+
+NSF's Convergence Accelerator has already funded work on selecting compatibilizers for variable recycled polypropylene, including predictive control of cost and quality [6]. Here the formulation additives are fixed. The proposed investment buys independently replicated comparisons of policies for testing and allocating real lots. The team will verify existing award deliverables, supplier and testing rights, facility commitments and an order owner's acceptance rules before requesting funds. If the upper bound on net saving from trial blending is below the owner's margin and constituent testing satisfies the shortage-risk limit, favor constituent testing for that workload under the two frozen policies. Intervals spanning a worthwhile saving leave the decision open.
+
+\subsection*{Broader impacts}
+
+We will develop a teaching exercise with lot assays, processing records, two orders and concealed independent test outcomes. Students and manufacturing trainees will allocate stock under a test budget before and after instruction using distinct lot pairs. We will match the difficulty of the two exercises using independent reference outcomes. We will measure qualified mass delivered to each order and material consumed by testing, comparing performance with an implementable fixed rule. A release of laboratory-generated records will include charge identifiers, failed batches and the assumptions needed to apply the exercise beyond the training materials.
+
+\subsection*{Selected sources}
+
+\begin{enumerate}
+\small\setlength{\itemsep}{0pt}
+\item \href{https://doi.org/10.1002/app.70501}{Impact of Seasonal Composition on the Long-Term Performance of Post-Consumer Recycled Polypropylene. Journal of Applied Polymer Science, 2026.}
+\item \href{https://doi.org/10.1016/j.wasman.2026.115586}{Kianpisheh et al. Identifying the roots of property variability in recycled polypropylene. 2026.}
+\item \href{https://doi.org/10.1016/j.jclepro.2023.140390}{Teruel et al. Machine learning and input batch management for recycled polypropylene. 2024.}
+\item \href{https://arxiv.org/abs/2604.17144}{Li, Zhang and Tuo. Statistical validation of computer models. Preprint, 2026.}
+\item \href{https://somf.engr.tamu.edu/instruments/}{Texas A\&M University. Soft Matter Facility instrument inventory.}
+\item \href{https://nsf-gov-resources.nsf.gov/2022-12/2022%20Cohort%20Track%20I%20Phase%201%20Award%20Announcements%20-%20Black%20%26%20Decker%20%28u.s.%29%20Inc.508.pdf}{NSF. Economically Sustainable Polypropylene Recycled Plastics Enabled by Compatibilizer Additives. Convergence Accelerator contract 49100423C0004.}
+\end{enumerate}
+\end{document}

@@ -1,0 +1,41 @@
+# AMDO Research Library
+
+> Public-source research notes. Historical panels do not identify current reviewers. Planned work in an award abstract is distinct from measured outcomes. Snapshot: 2026-11-24. Paths below resolve relative to this file.
+
+## Faculty discussion
+
+- [Two research directions and AI reviewer comments](index.html)
+- [Current stock allocation project](stock-allocation.html) and [LaTeX source](downloads/stock-allocation.tex)
+- [Current recycled-lot project](recycled-lot-blending.html) and [LaTeX source](downloads/recycled-lot-blending.tex)
+- [Three simulated lead-PI readings and revisions](lead-pi-review.html)
+- [Round 013 selection and complete review](question-reset.html) and [plain-text record](downloads/question-reset.md)
+
+## Earlier selections
+
+- [Defect evolution draft](defect-evolution.html) and [LaTeX source](downloads/defect-evolution.tex)
+- [Machining distortion draft](machining-distortion.html) and [LaTeX source](downloads/machining-distortion.tex)
+- [Draft assessment and revisions](faculty-concepts.html#draft-assessment)
+
+## Collections
+
+- [Evidence directory and open questions](downloads/evidence-directory.md)
+- [Guides and sources](downloads/library-context.md)
+- [Structured source register](downloads/library.json)
+- [Institutional award records](downloads/awards.json)
+
+## Guides
+
+- [What AMDO funds](downloads/guide-program.md): Read the current call alongside the four older programs that shaped it. An AMDO question may begin with a material, an operator, a design choice or a production network.
+- [How to count the award portfolio](downloads/guide-award-landscape.md): The answer to “how many?” changes with the unit. A program-code match, an institutional award and a collaborative project answer different questions.
+- [Materials processing and defect formation](downloads/guide-process-mechanisms.md): A process engineer can change a cure cycle or forming condition. The scientific question is which physical mechanism the change affects and whether a finished part performs differently.
+- [Multistage quality and machine health](downloads/guide-multistage.md): A three-university NSF collaboration already connects quality propagation, equipment degradation and operational control. A narrower open question is when a supervisor can identify the stage at which to act.
+- [Human–robot work allocation](downloads/guide-human-robot.md): A line planner can assign, reorder or interrupt tasks. The outcome that matters to workers may be less rework, lower workload or safer recovery from an interruption.
+- [Supply disruptions and recovery decisions](downloads/guide-supply-networks.md): A planner facing a disruption must decide when to reroute, substitute a supplier or draw down stock. Retrospective visibility can make a policy appear more capable than it would have been on the day.
+- [Design tradeoffs and missing measurements](downloads/guide-product-design.md): An early design decision can turn on a single uncertain attribute. The useful measurement is the one that could reverse a choice among feasible products.
+- [Returned parts and remanufacturing](downloads/guide-circular-manufacturing.md): A remanufacturer can inspect, disassemble, repair or retire a returned component. The decision depends on hidden wear, uncertain service history and the outcome after an action.
+- [What the team’s published work establishes](downloads/guide-team.md): Published work by Rui Tuo, Satish T. S. Bukkapatnam and Xianyang Zhang spans physical manufacturing, operations and statistical inference. Two pairwise collaborations show what an interface between disciplines has looked like in practice.
+- [What historical reviewers’ public work can teach](downloads/guide-reviewer-expertise.md): Dated service entries establish past participation in named programs. Published research helps a team ask better questions about its own evidence. Neither identifies who will review a future application.
+- [How to link an award to a research result](downloads/guide-award-to-paper.md): An award abstract defines a funded plan. A publication can provide evidence about a method, a result and sometimes the specific award that supported it. Follow each link before assigning credit.
+- [Writing a multi-investigator NSF project](downloads/guide-multi-pi-writing.md): A useful work plan shows what each investigator hands to the next, how the recipient can accept it, and which conclusions remain possible if the handoff fails.
+- [An evidence-to-decision research workflow](downloads/guide-workflow.md): Start with a consequential decision and a public record of demand. The output is a reason to investigate, narrow or park a question, plus the observation that could change the choice.
+- [Test whether an AI-assisted review catches errors](downloads/guide-review-calibration.md): A confident review can miss a wrong funding total or a broken experimental comparison. A paired exercise makes both misses and false alarms observable.

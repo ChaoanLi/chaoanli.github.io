@@ -20,6 +20,10 @@ For blending, ask an order owner for two anonymized acceptance rules, demand and
 
 The third reader assessed the proposals before the final assay-menu correction. Its recommendation to circulate concerns discussion drafts. The correction and its figure were verified in the final files and did not receive a fourth simulated vote.
 
+## Subsequent source and feasibility check
+
+After the three readings, the plate draft clarified that Hao et al. used in-process deformation observations to update machining allowances. The comparison must give that method its readings and count their cost. The randomized production trial supports a comparison against a rule that can run without another release. The blending draft now illustrates how the number of independent pairs limits any claim about priority-order risk. These editorial changes did not enter the simulated ballots. [Online allowance allocation](https://doi.org/10.1016/j.cja.2020.03.038)
+
 
 ## 1. The first faculty read
 

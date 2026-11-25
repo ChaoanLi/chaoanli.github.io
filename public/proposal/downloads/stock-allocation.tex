@@ -45,13 +45,13 @@ A released shape records the bending effect of stresses through the remaining th
 
 {\small\textbf{Figure 1.} Both reseated arms receive the same scan. Revealing its result changes only the information available when selecting a face split. All three arms receive blinded final inspection.}
 
-History-based adjustment of machining allowances has already been demonstrated on physical parts [1]. Remaining-stock limits establish when a shifted section can still meet its drawing [2]. An NSF GOALI award also coupled residual-stress estimation and tool-path design [4]. Our design will prioritize new cuts where plausible stress profiles favor opposite faces and the predicted difference matters to the drawing. We will compare this allocation of experiments with balanced sampling at the same machining budget.
+Hao et al. used online deformation readings to update allowances on alternating faces [1]. Li et al. developed a fixture that responds to workpiece deformation during machining [2]. An NSF GOALI award also coupled residual-stress estimation and tool-path design [4]. Our design will prioritize new cuts where plausible stress profiles favor opposite faces and the predicted difference matters to the drawing. We will compare this allocation of experiments with balanced sampling at the same machining budget.
 
 \newpage
 
 \section*{Aim 1 · Test for reversals in the better finishing cut}
 
-\textbf{Year 1.} Satish Bukkapatnam's group will qualify one functioning CNC mill, one two-sided fixture and an independent gauge for final free-state flatness. The drawing must permit a floating final mid-plane and leave enough stock for both faces to clean up under either split [2]. The group has demonstrated motion sensing on a Langmuir MR-1 [7], and Texas A\&M lists shared CNC equipment [5]. Qualification requires a staffed cut under load at the proposed dimensions, traceable stock, and repeated release, support and reseating trials. Set the support span and release sequence to the shop's best feasible practice, since unclamping itself can alter the measured shape [9]. Time that setup, quantify gauge scatter on repositioned parts and check thermal effects. If fixture correction alone meets the drawing, end the production trial.
+\textbf{Year 1.} Satish Bukkapatnam's group will qualify one functioning CNC mill, one two-sided fixture and an independent gauge for final free-state flatness. The shop must confirm on its drawing that the final mid-plane may shift and both faces retain sufficient cleanup stock under either split. The group has demonstrated motion sensing on a Langmuir MR-1 [7], and Texas A\&M lists shared CNC equipment [5]. Qualification requires a staffed cut under load at the proposed dimensions, traceable stock, and repeated release, support and reseating trials. Set the support span and release sequence to the shop's best feasible practice, since unclamping itself can alter the measured shape [9]. Time that setup, quantify gauge scatter on repositioned parts and check thermal effects. If fixture correction alone meets the drawing, end the production trial.
 
 \subsection*{Cross the face split with recorded stock origin}
 
@@ -77,7 +77,7 @@ Randomized cuts can establish which allocation performs better. Attribution to i
 
 \subsection*{Freeze what the operator can know}
 
-On randomized development cuts under the common release procedure, we will compare split choices from the scan with the best fixed split, a history-based allowance rule adapted from [1], and a reduced-layer-removal predictor [3]. We will account for each rule's observation costs. The best implementable history-only rule will supply the continuous-machining comparator for Year 3. Before evaluating either design, specify the job mix and use a common conversion for setup time and drawing loss agreed with the shop. Freeze both designs' rules for stopping and choosing a cut. Each stop decision can use only information already available under clamps.
+On randomized development cuts, benchmark a fixed split, the shop’s ordinary rule, a deformation-series rule adapted from Hao et al. [1], and a reduced-layer-removal predictor [3]. Give the Hao adaptation its sequence of in-process readings and charge the time to obtain them. Record any readings the pilot setup cannot reproduce. Year 3 compares against the best rule implementable without an extra release. A claim of superiority to the instrumented method would require a direct comparison on new stock. Before evaluating either design, specify the job mix and use a common conversion for setup time and drawing loss agreed with the shop. Freeze both designs' rules for stopping and choosing a cut. Each stop decision can use only information already available under clamps.
 
 \newpage
 
@@ -95,8 +95,8 @@ The shop will receive a table for the tested drawing and stock origins showing w
 
 \begin{enumerate}
 \small\setlength{\itemsep}{0pt}
-\item \href{https://doi.org/10.1016/j.cja.2020.03.038}{Hao et al. Online deformation monitoring and machining allowance control.}
-\item \href{https://doi.org/10.1016/j.cirp.2015.04.025}{Li et al. Stock allowance and compensation of machining distortion.}
+\item \href{https://doi.org/10.1016/j.cja.2020.03.038}{Hao et al. (2020). An allowance allocation method based on dynamic approximation via online inspection data for deformation control of structural parts.}
+\item \href{https://doi.org/10.1016/j.cirp.2015.04.025}{Li et al. (2015). Responsive fixture design using dynamic product inspection and monitoring technologies for the precision machining of large-scale aerospace parts.}
 \item \href{https://doi.org/10.3390/jmmp8010009}{Aurrekoetxea et al. Machining distortion prediction from reduced layer removal.}
 \item \href{https://www.nsf.gov/awardsearch/showAward?AWD_ID=1762722}{NSF. GOALI machining distortion project, award 1762722.}
 \item \href{https://texasmakes.tamu.edu/facilities/}{Texas A\&M. Institute for Manufacturing Systems facilities.}

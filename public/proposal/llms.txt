@@ -5,6 +5,7 @@
 ## Faculty discussion
 
 - [Two research directions and AI reviewer comments](index.html)
+- [Team machining records and missing plate evidence](cnc-workpieces.html)
 - [Current stock allocation project](stock-allocation.html) and [LaTeX source](downloads/stock-allocation.tex)
 - [Current recycled-lot project](recycled-lot-blending.html) and [LaTeX source](downloads/recycled-lot-blending.tex)
 - [Three simulated lead-PI readings and revisions](lead-pi-review.html)
